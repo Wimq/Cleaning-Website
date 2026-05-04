@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice – [Business Name]</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="invoice.css" />
+</head>
+<body class="invoice-body">
+
+<div class="invoice-toolbar no-print">
+  <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+    <a href="dashboard.html" class="btn btn-ghost btn-sm">← Back to Dashboard</a>
+    <button class="btn btn-primary" onclick="window.print()">
+      🖨️ Print / Save as PDF
+    </button>
+  </div>
+</div>
+
+<div class="invoice-wrapper container">
+  <div class="invoice-document" id="invoiceDoc">
+
+    <!-- HEADER -->
+    <header class="inv-header">
+      <div class="inv-brand">
+        <div class="inv-logo">✦</div>
+        <div class="inv-name">[Your Business Name]</div>
+        <div class="inv-sub">Professional Cleaning Services</div>
+      </div>
+      <div class="inv-title">INVOICE</div>
+    </header>
+
+    <!-- META -->
+    <div class="inv-meta">
+      <div class="inv-meta-col">
+        <strong>From:</strong>
+        <div>[Business Name]</div>
+        <div>[Address Line 1]</div>
+        <div>[Address Line 2]</div>
+        <div>[City], [Postcode]</div>
+        <div style="margin-top:8px;"><strong>UTR:</strong> [Your UTR Number]</div>
+        <div><strong>Email:</strong> your@email.co.uk</div>
+      </div>
+      <div class="inv-meta-col">
+        <strong>Billed To:</strong>
+        <div id="invCustomerName">Customer Name</div>
+        <div id="invCustomerAddr">Customer Address</div>
+        <div id="invCustomerEmail">customer@email.com</div>
+        <div id="invCustomerPhone">07000 000000</div>
+      </div>
+      <div class="inv-meta-col text-right">
+        <div class="inv-meta-row">
+          <span class="inv-lbl">Invoice No:</span>
+          <strong id="invNumber">INV-0001</strong>
+        </div>
+        <div class="inv-meta-row">
+          <span class="inv-lbl">Date Issued:</span>
+          <strong id="invDate">01 Jan 2025</strong>
+        </div>
+        <div class="inv-meta-row">
+          <span class="inv-lbl">Booking Ref:</span>
+          <strong id="invRef">BK-XXXX-1234</strong>
+        </div>
+        <div class="inv-meta-row">
+          <span class="inv-lbl">Payment Status:</span>
+          <strong class="text-success" style="color:var(--success);">PAID IN FULL</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEMS -->
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th style="width:120px;">Qty</th>
+          <th style="width:120px;text-align:right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody id="invItems">
+        <!-- populated by JS -->
+        <tr>
+          <td>
+            <div style="font-weight:600;">Deep Cleaning Service</div>
+            <div style="font-size:0.85em;color:var(--grey-600);">2 Bedrooms, 1 Bathroom</div>
+          </td>
+          <td>1</td>
+          <td style="text-align:right;">£120.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- TOTALS -->
+    <div class="inv-totals-wrap">
+      <div class="inv-notes">
+        <strong>Notes:</strong>
+        <p>Thank you for your business. This invoice confirms receipt of your payment.</p>
+        <p>Payment processed securely online.</p>
+      </div>
+      <div class="inv-totals">
+        <div class="inv-total-row">
+          <span>Subtotal</span>
+          <span id="invSubtotal">£120.00</span>
+        </div>
+        <div class="inv-total-row">
+          <span>VAT (0%)*</span>
+          <span>£0.00</span>
+        </div>
+        <div class="inv-total-row inv-grand-total">
+          <span>Total Paid</span>
+          <span id="invTotal">£120.00</span>
+        </div>
+        <div style="font-size:0.75rem;color:var(--grey-600);text-align:right;margin-top:8px;">
+          *Not registered for VAT
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="inv-footer">
+      <div>[Business Name] is a registered Sole Trader in the United Kingdom.</div>
+      <div>If you have any questions about this invoice, please contact your@email.co.uk</div>
+    </footer>
+
+  </div>
+</div>
+
+<script src="invoice.js"></script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – [Business Name]</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body class="dash-body">
+
+<!-- SIDEBAR -->
+<aside class="dash-sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="nav-logo">✦</div>
+    <span class="nav-name" style="color:white;">[<span style="color:var(--gold)">Business</span>]</span>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label">Overview</div>
+    <a href="#" class="sidebar-link active" data-view="overview">
+      <span class="sl-icon">📊</span><span>Dashboard</span>
+    </a>
+    <a href="#" class="sidebar-link" data-view="bookings">
+      <span class="sl-icon">📋</span><span>Bookings</span>
+      <span class="sl-badge" id="sidebarBookingCount">0</span>
+    </a>
+    <a href="#" class="sidebar-link" data-view="calendar">
+      <span class="sl-icon">🗓</span><span>Schedule</span>
+    </a>
+    <div class="sidebar-section-label">Finance</div>
+    <a href="#" class="sidebar-link" data-view="invoices">
+      <span class="sl-icon">📄</span><span>Invoices</span>
+    </a>
+    <a href="#" class="sidebar-link" data-view="earnings">
+      <span class="sl-icon">💷</span><span>Earnings</span>
+    </a>
+    <div class="sidebar-section-label">Operations</div>
+    <a href="#" class="sidebar-link" data-view="cleaners">
+      <span class="sl-icon">👤</span><span>Cleaners</span>
+    </a>
+    <a href="#" class="sidebar-link" data-view="settings">
+      <span class="sl-icon">⚙️</span><span>Settings</span>
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="index.html" class="sidebar-link">
+      <span class="sl-icon">🌐</span><span>View Website</span>
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="dash-main" id="dashMain">
+
+  <!-- TOPBAR -->
+  <header class="dash-topbar">
+    <div class="topbar-left">
+      <h1 class="topbar-title" id="topbarTitle">Dashboard</h1>
+      <div class="topbar-date" id="topbarDate"></div>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-notif">
+        <span>🔔</span>
+        <span class="notif-dot"></span>
+      </div>
+      <div class="topbar-user">
+        <div class="tu-avatar">B</div>
+        <div>
+          <div class="tu-name">Business Owner</div>
+          <div class="tu-role">Administrator</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- VIEWS -->
+
+  <!-- ===== OVERVIEW ===== -->
+  <div class="dash-view active" id="view-overview">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="sc-icon" style="background:rgba(201,168,76,0.1);">💷</div>
+        <div class="sc-content">
+          <div class="sc-label">Total Revenue</div>
+          <div class="sc-value" id="statRevenue">£0</div>
+          <div class="sc-change positive">↑ This month</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-icon" style="background:rgba(45,155,111,0.1);">📋</div>
+        <div class="sc-content">
+          <div class="sc-label">Total Bookings</div>
+          <div class="sc-value" id="statBookings">0</div>
+          <div class="sc-change positive">All time</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-icon" style="background:rgba(13,27,42,0.08);">⏳</div>
+        <div class="sc-content">
+          <div class="sc-label">Pending Jobs</div>
+          <div class="sc-value" id="statPending">0</div>
+          <div class="sc-change">Awaiting dispatch</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="sc-icon" style="background:rgba(220,53,69,0.08);">✅</div>
+        <div class="sc-content">
+          <div class="sc-label">Completed</div>
+          <div class="sc-value" id="statCompleted">0</div>
+          <div class="sc-change positive">Successful</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Bookings -->
+    <div class="dash-section">
+      <div class="ds-header">
+        <h3 class="ds-title">Recent Bookings</h3>
+        <button class="btn btn-ghost btn-sm" onclick="switchView('bookings')">View All →</button>
+      </div>
+      <div class="bookings-table-wrap">
+        <table class="bookings-table" id="overviewTable">
+          <thead>
+            <tr>
+              <th>Ref</th>
+              <th>Customer</th>
+              <th>Service</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="overviewTableBody">
+            <tr class="empty-row"><td colspan="7">No bookings yet. <a href="booking.html">Create a test booking</a> to see it here.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="dash-section">
+      <div class="ds-header">
+        <h3 class="ds-title">Quick Actions</h3>
+      </div>
+      <div class="quick-actions-grid">
+        <div class="qa-card" onclick="switchView('bookings')">
+          <span class="qa-icon">📋</span>
+          <div class="qa-label">Manage Bookings</div>
+        </div>
+        <div class="qa-card" onclick="window.open('invoice.html','_blank')">
+          <span class="qa-icon">📄</span>
+          <div class="qa-label">Generate Invoice</div>
+        </div>
+        <div class="qa-card" onclick="switchView('cleaners')">
+          <span class="qa-icon">👤</span>
+          <div class="qa-label">Assign Cleaner</div>
+        </div>
+        <div class="qa-card" onclick="window.open('booking.html','_blank')">
+          <span class="qa-icon">➕</span>
+          <div class="qa-label">New Booking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BOOKINGS VIEW ===== -->
+  <div class="dash-view" id="view-bookings">
+    <div class="view-header">
+      <div>
+        <div class="view-filters">
+          <input type="text" class="form-input" id="bookingSearch" placeholder="Search by name, ref, service…" style="max-width:280px;" oninput="filterBookings()" />
+          <select class="form-select" id="statusFilter" style="max-width:160px;" onchange="filterBookings()">
+            <option value="">All Statuses</option>
+            <option>Confirmed</option>
+            <option>Dispatched</option>
+            <option>Completed</option>
+            <option>Cancelled</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="window.open('booking.html','_blank')">+ New Booking</button>
+    </div>
+    <div class="bookings-table-wrap">
+      <table class="bookings-table">
+        <thead>
+          <tr>
+            <th>Ref</th>
+            <th>Customer</th>
+            <th>Service</th>
+            <th>Date & Time</th>
+            <th>Address</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="bookingsTableBody">
+          <tr class="empty-row"><td colspan="8">No bookings found.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== INVOICES VIEW ===== -->
+  <div class="dash-view" id="view-invoices">
+    <div class="view-header">
+      <div class="view-filters">
+        <input type="text" class="form-input" placeholder="Search invoices…" style="max-width:280px;" />
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="window.open('invoice.html','_blank')">+ Generate Invoice</button>
+    </div>
+    <div class="bookings-table-wrap">
+      <table class="bookings-table">
+        <thead>
+          <tr>
+            <th>Invoice #</th>
+            <th>Customer</th>
+            <th>Date Issued</th>
+            <th>Due Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="invoicesTableBody">
+          <tr class="empty-row"><td colspan="7">No invoices yet.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== CLEANERS VIEW ===== -->
+  <div class="dash-view" id="view-cleaners">
+    <div class="view-header">
+      <h3 style="font-family:'Inter';font-weight:700;color:var(--navy);">Cleaner Roster</h3>
+      <button class="btn btn-primary btn-sm" onclick="addCleaner()">+ Add Cleaner</button>
+    </div>
+    <div class="cleaners-grid" id="cleanersGrid"></div>
+  </div>
+
+  <!-- ===== EARNINGS VIEW ===== -->
+  <div class="dash-view" id="view-earnings">
+    <div class="earnings-summary">
+      <div class="es-card">
+        <div class="esc-label">Total Revenue</div>
+        <div class="esc-value text-gold" id="esRevenue">£0</div>
+      </div>
+      <div class="es-card">
+        <div class="esc-label">This Month</div>
+        <div class="esc-value" id="esMonth">£0</div>
+      </div>
+      <div class="es-card">
+        <div class="esc-label">Avg. Job Value</div>
+        <div class="esc-value" id="esAvg">£0</div>
+      </div>
+    </div>
+    <div class="dash-section">
+      <div class="ds-header"><h3 class="ds-title">Transaction History</h3></div>
+      <div class="bookings-table-wrap">
+        <table class="bookings-table">
+          <thead>
+            <tr><th>Ref</th><th>Customer</th><th>Service</th><th>Date</th><th>Amount</th><th>Status</th></tr>
+          </thead>
+          <tbody id="earningsTableBody">
+            <tr class="empty-row"><td colspan="6">No transactions yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CALENDAR VIEW ===== -->
+  <div class="dash-view" id="view-calendar">
+    <div class="dash-calendar-wrap">
+      <div class="dash-cal-header">
+        <button class="cal-nav-btn" onclick="dashCalPrev()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <h3 id="dashCalLabel" style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy);"></h3>
+        <button class="cal-nav-btn" onclick="dashCalNext()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <div class="dash-cal-days">
+        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+      </div>
+      <div class="dash-cal-grid" id="dashCalGrid"></div>
+    </div>
+  </div>
+
+  <!-- ===== SETTINGS VIEW ===== -->
+  <div class="dash-view" id="view-settings">
+    <div class="settings-grid">
+      <div class="settings-card">
+        <h3 class="settings-card-title">Business Information</h3>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">Business Name</label>
+          <input type="text" class="form-input" placeholder="[Your Business Name]" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">UTR Number</label>
+          <input type="text" class="form-input" placeholder="1234567890" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="your@email.co.uk" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-input" placeholder="+44 7XXX XXXXXX" />
+        </div>
+        <button class="btn btn-primary btn-sm">Save Changes</button>
+      </div>
+      <div class="settings-card">
+        <h3 class="settings-card-title">Registered Address</h3>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">Address Line 1</label>
+          <input type="text" class="form-input" placeholder="14 Oak Street" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">Address Line 2</label>
+          <input type="text" class="form-input" placeholder="Optional" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">City</label>
+          <input type="text" class="form-input" placeholder="London" />
+        </div>
+        <div class="form-group" style="margin-bottom:14px;">
+          <label class="form-label">Postcode</label>
+          <input type="text" class="form-input" placeholder="SW1A 1AA" />
+        </div>
+        <button class="btn btn-primary btn-sm">Save Address</button>
+      </div>
+      <div class="settings-card">
+        <h3 class="settings-card-title">Service Pricing</h3>
+        <div id="pricingSettings">
+          <div class="pricing-row"><span>Deep Cleaning</span><div style="display:flex;align-items:center;gap:8px;"><span>£</span><input type="number" class="form-input" style="width:80px;" value="120" /></div></div>
+          <div class="pricing-row"><span>Regular Cleaning</span><div style="display:flex;align-items:center;gap:8px;"><span>£</span><input type="number" class="form-input" style="width:80px;" value="70" /></div></div>
+          <div class="pricing-row"><span>End of Tenancy</span><div style="display:flex;align-items:center;gap:8px;"><span>£</span><input type="number" class="form-input" style="width:80px;" value="150" /></div></div>
+          <div class="pricing-row"><span>Ironing</span><div style="display:flex;align-items:center;gap:8px;"><span>£</span><input type="number" class="form-input" style="width:80px;" value="25" /></div></div>
+          <div class="pricing-row"><span>Oven Cleaning</span><div style="display:flex;align-items:center;gap:8px;"><span>£</span><input type="number" class="form-input" style="width:80px;" value="65" /></div></div>
+        </div>
+        <button class="btn btn-primary btn-sm" style="margin-top:16px;">Update Prices</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end dash-main -->
+
+<!-- JOB DISPATCH MODAL -->
+<div class="modal-overlay" id="dispatchModal" style="display:none;" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 class="modal-title">Dispatch Job</h3>
+      <button class="modal-close" onclick="document.getElementById('dispatchModal').style.display='none'">✕</button>
+    </div>
+    <div class="modal-body" id="dispatchModalBody">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="app.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

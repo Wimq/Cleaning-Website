@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try London's Best House Cleaners | Housekeep</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    </div>
+    <span class="nav-name">Housekeep</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#professionals">Professionals</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#faqs">FAQs</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="dashboard.html" class="nav-link-sub">Log in</a>
+    <a href="booking.html" class="nav-cta">Get a quote</a>
+  </div>
+  <button class="nav-mobile-toggle">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Spotless modern living room" />
+  </div>
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-content">
+    <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+      <div class="reveal" style="display:flex; justify-content:center; align-items:center; gap: 8px; margin-bottom: 32px; color: white; font-weight: 600;">
+        <span style="color: var(--accent); display:flex; align-items:center; gap:4px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Trustpilot
+        </span> 
+        <span style="opacity: 0.9;">TrustScore 4.5 | 8,245 reviews</span>
+      </div>
+      
+      <h1 class="hero-title reveal" style="font-size: clamp(3.5rem, 6vw, 5rem);">
+        Impeccable standards.<br/>Flawless execution.<br/>
+        <span style="display:block; margin-top:12px; color: var(--primary-light); font-weight: 500;">Experience the luxury of a pristine home.</span>
+      </h1>
+      
+      <div class="hero-booking-card reveal" style="transition-delay: 0.1s;">
+        <input type="text" id="heroPostcode" placeholder="Enter your postcode" />
+        <a href="booking.html" class="btn btn-primary" id="heroBookBtn">Find your cleaner</a>
+      </div>
+
+      <div class="hero-trust reveal" style="margin-top: 48px; transition-delay: 0.2s;">
+        <div class="trust-item">
+          <svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Fully insured
+        </div>
+        <div class="trust-item">
+          <svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          DBS checked
+        </div>
+        <div class="trust-item">
+          <svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Instant online booking
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section bg-white" id="how-it-works">
+  <div class="container">
+    <div class="section-title text-center reveal">Hassle-free house cleans</div>
+    <p class="section-subtitle text-center reveal" style="margin: 0 auto 80px;">No phone calls, no calendar mix-ups, no cash handling. Just a seamless experience from start to finish.</p>
+    
+    <div class="hiw-steps">
+      <div class="hiw-step reveal">
+        <div class="step-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <h3 class="step-title" style="font-size: 1.5rem; margin-bottom: 16px;">1. Match</h3>
+        <p class="step-desc" style="color: var(--text-muted); font-size: 1.05rem;">Just enter your postcode. We’ll pair you with the best local cleaner and give you an instant price.</p>
+      </div>
+      <div class="hiw-step reveal" style="transition-delay: 0.1s;">
+        <div class="step-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </div>
+        <h3 class="step-title" style="font-size: 1.5rem; margin-bottom: 16px;">2. Manage</h3>
+        <p class="step-desc" style="color: var(--text-muted); font-size: 1.05rem;">Customise and schedule your clean - every week or whenever suits you. You’re in full control.</p>
+      </div>
+      <div class="hiw-step reveal" style="transition-delay: 0.2s;">
+        <div class="step-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </div>
+        <h3 class="step-title" style="font-size: 1.5rem; margin-bottom: 16px;">3. Marvel</h3>
+        <p class="step-desc" style="color: var(--text-muted); font-size: 1.05rem;">...at your spotless house. Plus there’s no hassle with cash - we’ll bill your card when the clean is done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section bg-off" id="services">
+  <div class="container">
+    <div class="grid-2" style="align-items: center; gap: 80px;">
+      <div>
+        <h2 class="section-title reveal">Smarter, safer,<br/><span class="font-serif text-primary">simpler cleaning</span></h2>
+        <p class="section-subtitle reveal" style="margin: 0 0 40px; color: var(--navy-light);">We go out of our way to make the whole process as seamless as possible – from click to clean.</p>
+        
+        <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div style="display: flex; gap: 12px; align-items: flex-start; color: var(--navy-light); font-weight: 500;">
+            <svg style="color:var(--accent); width:20px; height:20px; flex-shrink:0; margin-top:2px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Book online or in the app
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; color: var(--navy-light); font-weight: 500;">
+            <svg style="color:var(--accent); width:20px; height:20px; flex-shrink:0; margin-top:2px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Cashless payment
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; color: var(--navy-light); font-weight: 500;">
+            <svg style="color:var(--accent); width:20px; height:20px; flex-shrink:0; margin-top:2px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Spare key holding
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; color: var(--navy-light); font-weight: 500;">
+            <svg style="color:var(--accent); width:20px; height:20px; flex-shrink:0; margin-top:2px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Customise your clean
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; color: var(--navy-light); font-weight: 500;">
+            <svg style="color:var(--accent); width:20px; height:20px; flex-shrink:0; margin-top:2px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Vetted, experienced cleaners
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start; color: var(--navy-light); font-weight: 500;">
+            <svg style="color:var(--accent); width:20px; height:20px; flex-shrink:0; margin-top:2px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> No contracts
+          </div>
+        </div>
+        <div style="margin-top: 48px;" class="reveal">
+          <a href="booking.html" class="btn btn-primary btn-lg">Get started now</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="app-card" style="background: linear-gradient(135deg, var(--navy), #1e1b4b);">
+          <div class="app-card-icon" style="background: rgba(255,255,255,0.05);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3 class="font-serif">The Housekeep Promise</h3>
+          <p>Your satisfaction is our absolute priority. If you're not entirely delighted with your clean, we'll return and re-clean your home for free. No questions asked.</p>
+          <div style="display:flex; gap:12px; align-items:center; color:white; font-weight:600; font-size:1.1rem;">
+            <svg style="color:var(--accent); width:24px; height:24px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 100% Satisfaction Guarantee
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUSIONS -->
+<section class="section bg-white">
+  <div class="container">
+    <h2 class="section-title text-center reveal">We go <span class="font-serif text-primary">above & beyond</span></h2>
+    <p class="section-subtitle text-center reveal" style="margin: 0 auto 80px;">We’ve set a new standard for thorough and thoughtful service. You don’t just get a quality clean - you get a Housekeep quality clean.</p>
+
+    <div class="grid-2">
+      <div class="service-list-card reveal">
+        <div class="slc-header">
+          <div class="slc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.5 14.5A9 9 0 0 1 11.5 23h-2A9 9 0 0 1 .5 14.5"></path><path d="M12.5 1v13.5"></path><path d="M6.5 7.5 12.5 1l6 6.5"></path></svg>
+          </div>
+          <h3 class="slc-title font-serif">Kitchen</h3>
+        </div>
+        <ul>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Wash dishes & load dishwasher</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dust and wipe all surfaces</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Scrub the hob & wipe countertops</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Clean sink, microwave & cupboards</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Vacuum and mop floors</li>
+        </ul>
+      </div>
+
+      <div class="service-list-card reveal" style="transition-delay: 0.1s;">
+        <div class="slc-header">
+          <div class="slc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14Z"></path><path d="M12 14v4"></path><path d="M12 10V6"></path><path d="M8 10h8"></path></svg>
+          </div>
+          <h3 class="slc-title font-serif">Bathroom</h3>
+        </div>
+        <ul>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Clean the toilet</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Scrub shower, bath and sink</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Clean cabinets, mirrors and fixtures</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Empty bins & wipe handles</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Vacuum and mop floors</li>
+        </ul>
+      </div>
+
+      <div class="service-list-card reveal">
+        <div class="slc-header">
+          <div class="slc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <h3 class="slc-title font-serif">Living Areas</h3>
+        </div>
+        <ul>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dust and wipe all accessible surfaces</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Wipe switches and handles</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Clean mirrors & glass tables</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Tidy up cushions and throws</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Vacuum and mop floors</li>
+        </ul>
+      </div>
+
+      <div class="service-list-card reveal" style="transition-delay: 0.1s;">
+        <div class="slc-header">
+          <div class="slc-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
+          </div>
+          <h3 class="slc-title font-serif">Bedrooms</h3>
+        </div>
+        <ul>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dust and wipe all accessible surfaces</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Wipe switches and handles</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Clean mirrors</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Make the bed (change linen if left out)</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Vacuum and mop floors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSIONALS / REVIEWS -->
+<section class="section bg-off" id="reviews">
+  <div class="container">
+    <h2 class="section-title text-center reveal">Tried & <span class="font-serif text-primary">trusted cleaners</span></h2>
+    <p class="section-subtitle text-center reveal" style="margin: 0 auto 60px;">We complete background checks and verify right to work. We monitor ratings from every clean to guarantee 5* quality.</p>
+    
+    <div class="grid-3">
+      <div class="review-card reveal">
+        <div class="rc-header">
+          <div class="rc-avatar">S</div>
+          <div>
+            <h4 style="font-size: 1.25rem; margin-bottom: 4px;">Sylreta</h4>
+            <div class="rc-stars">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+          </div>
+        </div>
+        <p class="rc-text">“This was my 2nd time having Sylreta clean my place and she was excellent. She went above and beyond my expectations. I would definitely recommend her.”</p>
+        <p class="rc-meta">Gwendolyn, London (W5) - Yesterday</p>
+      </div>
+
+      <div class="review-card reveal" style="transition-delay: 0.1s;">
+        <div class="rc-header">
+          <div class="rc-avatar">O</div>
+          <div>
+            <h4 style="font-size: 1.25rem; margin-bottom: 4px;">Omotayo</h4>
+            <div class="rc-stars">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+          </div>
+        </div>
+        <p class="rc-text">“Omotayo was punctual, pleasant and efficient. I haven't been very well so this clean was very much needed. I appreciated Omotayo following all my instructions.”</p>
+        <p class="rc-meta">Nazia, Essex (RM13) - Yesterday</p>
+      </div>
+
+      <div class="review-card reveal" style="transition-delay: 0.2s;">
+        <div class="rc-header">
+          <div class="rc-avatar">R</div>
+          <div>
+            <h4 style="font-size: 1.25rem; margin-bottom: 4px;">Raimonda</h4>
+            <div class="rc-stars">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+          </div>
+        </div>
+        <p class="rc-text">“She was very thorough, very considerate and very good at her job. I would definitely recommend her for any future cleans. 10/10 ⭐️.”</p>
+        <p class="rc-meta">R, Westminster (SW1V) - 2 days ago</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQS -->
+<section class="section bg-white" id="faqs">
+  <div class="container" style="max-width: 800px;">
+    <h2 class="section-title text-center reveal" style="margin-bottom: 60px;">FAQs</h2>
+    
+    <div style="display: flex; flex-direction: column;">
+      <div class="faq-item reveal">
+        <h4 class="faq-q">Do you have cleaners available near me?</h4>
+        <p class="faq-a">We have 5-star cleaners available throughout London & elsewhere in the UK. Just enter your postcode to check availability.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h4 class="faq-q">How does pricing work?</h4>
+        <p class="faq-a">It’s a simple hourly rate for cleaning or any other task. Get a quote by entering your postcode above.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h4 class="faq-q">Will I always have the same cleaner?</h4>
+        <p class="faq-a">Yes, if you select a recurring clean, we'll match you with a cleaner who comes on a recurring basis. If they're away, you can choose a temporary cover.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h4 class="faq-q">Is there a minimum contract?</h4>
+        <p class="faq-a">No, because we're sure you'll love the service! You can cancel or reschedule one or all your cleans in your online account any time until 12:00 the day before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="section bg-off" id="contact">
+  <div class="container text-center">
+    <div class="reveal" style="color: var(--primary); margin-bottom: 24px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    </div>
+    <h2 class="section-title reveal">Here for you <span class="font-serif text-primary">every day</span></h2>
+    <p class="section-subtitle reveal" style="margin: 0 auto;">We’re here for you, Monday-Friday from 08:00 to 18:00, and on weekends from 08:00 to 17:00.</p>
+    
+    <div class="reveal" style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+      <a href="mailto:support@housekeep.com" class="btn btn-primary btn-lg">Email support</a>
+      <a href="#" class="btn btn-secondary btn-lg">Live chat</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-brand">
+        <div class="nav-logo" style="background: white; color: var(--navy);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </div>
+        <span class="nav-name" style="color: white;">Housekeep</span>
+      </div>
+      <p>Professional, reliable cleaning services across the UK. Fully insured and DBS checked.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="booking.html">Regular cleaning</a></li>
+        <li><a href="booking.html">One-off cleaning</a></li>
+        <li><a href="booking.html">End of tenancy</a></li>
+        <li><a href="booking.html">Deep cleaning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Cards we accept</h4>
+      <div style="display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;">
+        <span class="badge badge-navy">Visa</span>
+        <span class="badge badge-navy">Mastercard</span>
+        <span class="badge badge-navy">Amex</span>
+      </div>
+      <h4>Follow us</h4>
+      <div style="display: flex; gap: 20px;">
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>Housekeep Clone © 2026. (Demo Purposes Only)</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Notice</a>
+      <a href="#">Terms and Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+  });
+  
+  // Booking CTA
+  document.getElementById('heroBookBtn').addEventListener('click', function(e) {
+    const pc = document.getElementById('heroPostcode').value;
+    this.href = `booking.html${pc ? '?postcode=' + pc : ''}`;
+  });
+
+  // Reveal Animations on Scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

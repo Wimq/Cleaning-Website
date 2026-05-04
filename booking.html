@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book your clean | HouseClean</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="booking.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo">H</div>
+    <span class="nav-name"><a href="index.html">HouseClean</a></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#how-it-works">How it works</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- BOOKING MAIN -->
+<main class="booking-main">
+  <!-- Progress Bar -->
+  <div class="booking-progress-bar">
+    <div class="container">
+      <div class="bpb-inner">
+        <div class="bpb-step active" id="prog-1">
+          <div class="bpb-dot">1</div>
+          <div class="bpb-label">Service</div>
+        </div>
+        <div class="bpb-line" id="line-1"></div>
+        <div class="bpb-step" id="prog-2">
+          <div class="bpb-dot">2</div>
+          <div class="bpb-label">Schedule</div>
+        </div>
+        <div class="bpb-line" id="line-2"></div>
+        <div class="bpb-step" id="prog-3">
+          <div class="bpb-dot">3</div>
+          <div class="bpb-label">Details</div>
+        </div>
+        <div class="bpb-line" id="line-3"></div>
+        <div class="bpb-step" id="prog-4">
+          <div class="bpb-dot">4</div>
+          <div class="bpb-label">Payment</div>
+        </div>
+        <div class="bpb-line" id="line-4"></div>
+        <div class="bpb-step" id="prog-5">
+          <div class="bpb-dot">✓</div>
+          <div class="bpb-label">Done</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="booking-layout container">
+    <!-- STEPS CONTAINER -->
+    <div class="booking-steps-wrap">
+
+      <!-- ====== STEP 1: SERVICE ====== -->
+      <div class="booking-step active" id="step-1">
+        <div class="step-header">
+          <h2 class="step-title-main">What do you need cleaning?</h2>
+          <p class="step-subtitle">Tell us about your home and we'll give you an instant price.</p>
+        </div>
+
+        <div class="service-selector-grid">
+          <div class="service-sel-card" data-svc="regular" onclick="selectService(this,'regular','Regular Cleaning',70)">
+            <div class="ssc-icon">🏠</div>
+            <div>
+              <div class="ssc-name">Regular Cleaning</div>
+              <div class="ssc-desc">Weekly or fortnightly clean</div>
+              <div class="ssc-price">From £70</div>
+            </div>
+            <div class="ssc-check">✓</div>
+          </div>
+          <div class="service-sel-card" data-svc="deep" onclick="selectService(this,'deep','Deep Cleaning',120)">
+            <div class="ssc-icon">✨</div>
+            <div>
+              <div class="ssc-name">Deep Cleaning</div>
+              <div class="ssc-desc">Top-to-bottom thorough clean</div>
+              <div class="ssc-price">From £120</div>
+            </div>
+            <div class="ssc-check">✓</div>
+          </div>
+          <div class="service-sel-card" data-svc="eot" onclick="selectService(this,'eot','End of Tenancy',150)">
+            <div class="ssc-icon">🔑</div>
+            <div>
+              <div class="ssc-name">End of Tenancy</div>
+              <div class="ssc-desc">Full deposit-return clean</div>
+              <div class="ssc-price">From £150</div>
+            </div>
+            <div class="ssc-check">✓</div>
+          </div>
+          <div class="service-sel-card" data-svc="oven" onclick="selectService(this,'oven','Oven Cleaning',65)">
+            <div class="ssc-icon">🍳</div>
+            <div>
+              <div class="ssc-name">Oven Cleaning</div>
+              <div class="ssc-desc">Professional oven descale</div>
+              <div class="ssc-price">From £65</div>
+            </div>
+            <div class="ssc-check">✓</div>
+          </div>
+        </div>
+
+        <div class="property-details-section">
+          <h3 class="pd-title">Property details</h3>
+          <div class="pd-grid">
+            <div class="form-group">
+              <label class="form-label">Bedrooms</label>
+              <select class="form-select" id="bedrooms" onchange="updateQuote()">
+                <option value="0">Studio / 0 beds</option>
+                <option value="1">1 Bedroom</option>
+                <option value="2" selected>2 Bedrooms</option>
+                <option value="3">3 Bedrooms</option>
+                <option value="4">4 Bedrooms</option>
+                <option value="5">5+ Bedrooms</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Bathrooms</label>
+              <select class="form-select" id="bathrooms" onchange="updateQuote()">
+                <option value="1">1 Bathroom</option>
+                <option value="2">2 Bathrooms</option>
+                <option value="3">3 Bathrooms</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Frequency</label>
+              <select class="form-select" id="frequency" onchange="updateQuote()">
+                <option>One-off</option>
+                <option>Weekly</option>
+                <option>Fortnightly</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Postcode</label>
+              <input type="text" class="form-input" id="postcode" placeholder="e.g. SW1A 1AA" oninput="updateQuote()" />
+            </div>
+          </div>
+
+          <div class="extras-section">
+            <h4 class="extras-title">Add extras</h4>
+            <div class="extras-grid">
+              <label class="extra-item">
+                <input type="checkbox" class="extra-check" data-price="25" onchange="updateQuote()"> Inside Oven (+£25)
+              </label>
+              <label class="extra-item">
+                <input type="checkbox" class="extra-check" data-price="15" onchange="updateQuote()"> Inside Fridge (+£15)
+              </label>
+              <label class="extra-item">
+                <input type="checkbox" class="extra-check" data-price="20" onchange="updateQuote()"> Interior Windows (+£20)
+              </label>
+              <label class="extra-item">
+                <input type="checkbox" class="extra-check" data-price="15" onchange="updateQuote()"> Ironing (1hr, +£15)
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <div></div>
+          <button class="btn btn-primary" onclick="goStep(2)">Continue</button>
+        </div>
+      </div>
+
+      <!-- ====== STEP 2: SCHEDULE ====== -->
+      <div class="booking-step" id="step-2">
+        <div class="step-header">
+          <h2 class="step-title-main">When would you like us to come?</h2>
+          <p class="step-subtitle">Choose a date and time that works for you.</p>
+        </div>
+
+        <div class="calendar-section">
+          <div class="calendar-nav">
+            <button class="cal-nav-btn" onclick="prevMonth()">←</button>
+            <div class="cal-month-label" id="calMonthLabel"></div>
+            <button class="cal-nav-btn" onclick="nextMonth()">→</button>
+          </div>
+          <div class="calendar-day-headers">
+            <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <div class="time-slots-section" id="timeSlotsSection" style="display:none;">
+          <h3 class="ts-title">Available times for <span id="selectedDateLabel"></span></h3>
+          <div class="time-slots-grid" id="timeSlotsGrid"></div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn btn-ghost" onclick="goStep(1)">Back</button>
+          <button class="btn btn-primary" onclick="goStep(3)" id="scheduleNext" disabled>Continue</button>
+        </div>
+      </div>
+
+      <!-- ====== STEP 3: DETAILS ====== -->
+      <div class="booking-step" id="step-3">
+        <div class="step-header">
+          <h2 class="step-title-main">Your details</h2>
+          <p class="step-subtitle">Where should we send your booking confirmation?</p>
+        </div>
+
+        <div class="details-form">
+          <div class="grid-2" style="margin-bottom:16px;">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" id="firstName" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" id="lastName" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="grid-2" style="margin-bottom:32px;">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" id="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="tel" class="form-input" id="phone" placeholder="07000 000000" required />
+            </div>
+          </div>
+
+          <h3 class="pd-title" style="margin-bottom: 16px;">Property address</h3>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="form-label">Address Line 1</label>
+            <input type="text" class="form-input" id="addr1" placeholder="Flat 2, 14 Oak Street" required />
+          </div>
+          <div class="grid-2" style="margin-bottom:32px;">
+            <div class="form-group">
+              <label class="form-label">City</label>
+              <input type="text" class="form-input" id="city" placeholder="London" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Postcode</label>
+              <input type="text" class="form-input" id="postcodeDetail" placeholder="SW1A 1AA" required />
+            </div>
+          </div>
+
+          <h3 class="pd-title" style="margin-bottom: 16px;">Access & Instructions</h3>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="form-label">How will the cleaner get in?</label>
+            <select class="form-select" id="access">
+              <option>I will be home to let them in</option>
+              <option>Key is in a safe/hidden</option>
+              <option>Leave key with concierge</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Any specific instructions?</label>
+            <textarea class="form-textarea" id="notes" placeholder="e.g. Please focus on the oven, watch out for the cat..."></textarea>
+          </div>
+
+          <label class="terms-check">
+            <input type="checkbox" id="termsAgree" /> 
+            <span>I agree to the <a href="#">Terms</a> & <a href="#">Privacy Policy</a></span>
+          </label>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn btn-ghost" onclick="goStep(2)">Back</button>
+          <button class="btn btn-primary" onclick="goStep(4)">Continue to Payment</button>
+        </div>
+      </div>
+
+      <!-- ====== STEP 4: PAYMENT ====== -->
+      <div class="booking-step" id="step-4">
+        <div class="step-header">
+          <h2 class="step-title-main">Secure payment</h2>
+          <p class="step-subtitle">Your card will only be charged after the clean is complete.</p>
+        </div>
+
+        <div class="payment-trust-strip">
+          <span>🔒 Secure 256-bit encryption</span>
+          <span>💳 No charge until clean is done</span>
+        </div>
+
+        <div class="payment-form">
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="form-label">Name on Card</label>
+            <input type="text" class="form-input" id="cardName" placeholder="Jane Smith" />
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="form-label">Card Number</label>
+            <input type="text" class="form-input" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCardNumber(this)" />
+          </div>
+          <div class="grid-2" style="margin-bottom:16px;">
+            <div class="form-group">
+              <label class="form-label">Expiry (MM/YY)</label>
+              <input type="text" class="form-input" id="cardExpiry" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">CVC</label>
+              <input type="text" class="form-input" id="cardCvv" placeholder="123" maxlength="4" />
+            </div>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn btn-ghost" onclick="goStep(3)">Back</button>
+          <button class="btn btn-primary btn-lg" id="payBtn" onclick="processPayment()">
+            <span id="payBtnText">Confirm Booking</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ====== STEP 5: CONFIRMATION ====== -->
+      <div class="booking-step" id="step-5">
+        <div class="confirmation-wrap">
+          <div class="confirm-icon">✓</div>
+          <h2 class="confirm-title">You're all set!</h2>
+          <p class="confirm-sub">Booking Reference: <strong id="confirmRef"></strong></p>
+          <p class="confirm-desc">We've sent a confirmation email to <strong id="confirmEmail"></strong>. We will assign a cleaner to your job shortly.</p>
+
+          <div class="confirm-summary-card" id="confirmSummaryCard"></div>
+
+          <div style="display: flex; justify-content: center; gap: 16px;">
+            <a href="index.html" class="btn btn-ghost">Return to home</a>
+            <button class="btn btn-primary" onclick="downloadInvoice()">View receipt</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ORDER SUMMARY SIDEBAR -->
+    <aside class="order-summary" id="orderSummary">
+      <div class="os-header">
+        <h3 class="os-title">Booking Summary</h3>
+        <span class="badge badge-success">Instant Quote</span>
+      </div>
+
+      <div class="os-service-block" id="osServiceBlock">
+        <div class="os-placeholder">Select a service to get started</div>
+      </div>
+
+      <div class="os-breakdown" id="osBreakdown" style="display:none;">
+        <div class="os-line"><span>Service</span><span id="osBase">£0</span></div>
+        <div class="os-line" id="osExtrasLine" style="display:none;"><span>Extras</span><span id="osExtras">£0</span></div>
+        <div class="os-line" id="osBedroomsLine" style="display:none;"><span>Size adj.</span><span id="osBedrooms">£0</span></div>
+        <div class="os-line os-total"><span>Total</span><span id="osTotal">£0</span></div>
+      </div>
+
+      <div class="os-details" id="osDetails"></div>
+
+      <div class="os-trust">
+        <div class="os-trust-item"><span>🔒</span> Fully secure checkout</div>
+        <div class="os-trust-item"><span>✅</span> Instant confirmation</div>
+        <div class="os-trust-item"><span>🔄</span> Free cancellation (48hr)</div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="app.js"></script>
+<script src="booking.js"></script>
+</body>
+</html>
