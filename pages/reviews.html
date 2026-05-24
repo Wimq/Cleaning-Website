@@ -15,15 +15,10 @@
    HYBRID PREMIUM THEME
    ═══════════════════════════════════════════ */
 body { 
-    background-color: var(--off); /* Warm cream base instead of all blue */
+    background-color: var(--off); /* Warm cream base */
     color: var(--navy); 
     overflow-x: hidden;
 }
-
-/* Header stays light/transparent on dark hero, then flips */
-.header { position: absolute; width: 100%; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.header a:not(.btn) { color: #fff !important; }
-.logo-text { color: #fff !important; }
 
 /* ═══════════════════════════════════════════
    CINEMATIC DARK HERO
@@ -463,21 +458,22 @@ select.form-input option { background: var(--navy); color: #fff; }
                 </div>
                 
                 <div class="form-card">
-                    <form onsubmit="event.preventDefault(); alert('Your verified testimonial has been securely submitted for moderation.'); this.reset();">
+                    <form id="reviewForm" onsubmit="return handleReviewSubmit(event);">
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Full Name</label>
-                                <input type="text" class="form-input" placeholder="John Doe" required>
+                                <input type="text" id="reviewName" class="form-input" placeholder="John Doe" required>
                             </div>
                             <div class="form-group">
                                 <label>Course / Placement</label>
-                                <input type="text" class="form-input" placeholder="e.g. LLB Law at UCL" required>
+                                <input type="text" id="reviewCourse" class="form-input" placeholder="e.g. LLB Law at UCL" required>
                             </div>
                         </div>
                         
                         <div class="form-group" style="margin-bottom: 1.5rem;">
                             <label>Experience Rating</label>
-                            <select class="form-input" required>
+                            <select id="reviewRating" class="form-input" required>
+                                <option value="">Select a rating...</option>
                                 <option value="5">⭐⭐⭐⭐⭐ Exceptional</option>
                                 <option value="4">⭐⭐⭐⭐ Very Good</option>
                                 <option value="3">⭐⭐⭐ Good</option>
@@ -486,11 +482,39 @@ select.form-input option { background: var(--navy); color: #fff; }
                         
                         <div class="form-group" style="margin-bottom: 2rem;">
                             <label>Your Testimonial</label>
-                            <textarea class="form-input" placeholder="Detail the specific challenges you faced..." required></textarea>
+                            <textarea id="reviewText" class="form-input" placeholder="Detail the specific challenges you faced..." required></textarea>
+                        </div>
+
+                        <!-- Consent Checkbox -->
+                        <div style="margin-bottom: 2rem; display: flex; align-items: flex-start; gap: 0.8rem;">
+                            <input type="checkbox" id="reviewConsent" style="width: 20px; height: 20px; margin-top: 2px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0;" required>
+                            <label for="reviewConsent" style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5; cursor: pointer; text-transform: none; letter-spacing: 0;">I agree that my full name will be publicly displayed alongside my testimonial on the Kensington Ivy website.</label>
                         </div>
                         
                         <button type="submit" class="btn-submit-premium">Submit Verification</button>
                     </form>
+                    <script>
+                    function handleReviewSubmit(e) {
+                        e.preventDefault();
+                        const name = document.getElementById('reviewName').value.trim();
+                        const course = document.getElementById('reviewCourse').value.trim();
+                        const rating = document.getElementById('reviewRating').value;
+                        const text = document.getElementById('reviewText').value.trim();
+                        const consent = document.getElementById('reviewConsent').checked;
+
+                        if (!name || !course || !rating || !text) {
+                            alert('Please fill in every field before submitting.');
+                            return false;
+                        }
+                        if (!consent) {
+                            alert('You must agree to your full name being displayed on the website before submitting.');
+                            return false;
+                        }
+                        alert('Thank you, ' + name + '! Your verified testimonial has been securely submitted for moderation.');
+                        document.getElementById('reviewForm').reset();
+                        return false;
+                    }
+                    </script>
                 </div>
             </div>
         </div>
