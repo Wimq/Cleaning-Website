@@ -12,6 +12,7 @@ header = header_match.group(1) if header_match else ""
 # Fix page title for new pages
 header_clearing = re.sub(r'<title>.*?</title>', '<title>Clearing Support | Kensington Ivy</title>', header)
 header_registries = re.sub(r'<title>.*?</title>', '<title>University Registries | Kensington Ivy</title>', header)
+header_admissions = re.sub(r'<title>.*?</title>', '<title>Admissions Timeline | Kensington Ivy</title>', header)
 
 # Extract footer
 footer_match = re.search(r'(<footer class="footer">.*)', base_html, re.DOTALL)
@@ -34,6 +35,7 @@ def fix_paths_safe(html_str):
 
 header_clearing = fix_paths_safe(header_clearing)
 header_registries = fix_paths_safe(header_registries)
+header_admissions = fix_paths_safe(header_admissions)
 footer = fix_paths_safe(footer)
 
 clearing_content = """
@@ -112,6 +114,77 @@ with open('pages/clearing-support.html', 'w', encoding='utf-8') as f:
 
 with open('pages/registries.html', 'w', encoding='utf-8') as f:
     f.write(header_registries + registries_content + footer)
+
+admissions_content = """
+<section class="container" style="padding: 8rem 0; min-height: 60vh;">
+    <h1 style="font-family: var(--ff-head); font-size: 3rem; color: var(--navy); margin-bottom: 1.5rem;">The Elite Admissions Timeline</h1>
+    <p style="font-size: 1.2rem; color: #555; max-width: 800px; line-height: 1.8; margin-bottom: 4rem;">
+        From the initial consultation to your first day on campus, Kensington Ivy provides an unparalleled, end-to-end concierge admissions service. Our timeline is designed to maximize your chances of acceptance while completely removing the administrative burden from your shoulders.
+    </p>
+
+    <div style="position: relative; max-width: 900px; margin: 0 auto;">
+        <!-- Timeline Line -->
+        <div style="position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: rgba(201,162,88,0.3);"></div>
+        
+        <!-- Step 1 -->
+        <div style="position: relative; padding-left: 5rem; margin-bottom: 3rem;">
+            <div style="position: absolute; left: 0; top: 0; width: 50px; height: 50px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: bold; box-shadow: 0 4px 10px rgba(201,162,88,0.4);">
+                <i data-lucide="message-circle" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="color: var(--navy); font-family: var(--ff-head); font-size: 1.8rem; margin-bottom: 0.5rem;">1. Initial Consultation & Assessment</h3>
+            <p style="color: #666; line-height: 1.6; font-size: 1.1rem;">We begin with an in-depth review of your academic background, career ambitions, and personal preferences. This allows our senior consultants to map out a bespoke strategy tailored to your unique profile.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="position: relative; padding-left: 5rem; margin-bottom: 3rem;">
+            <div style="position: absolute; left: 0; top: 0; width: 50px; height: 50px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 4px 10px rgba(10,17,40,0.2);">
+                <i data-lucide="target" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="color: var(--navy); font-family: var(--ff-head); font-size: 1.8rem; margin-bottom: 0.5rem;">2. Academic Strategy & Course Selection</h3>
+            <p style="color: #666; line-height: 1.6; font-size: 1.1rem;">Leveraging our proprietary placement data, we curate a list of target, reach, and safety institutions. We align course modules with your long-term career trajectory.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="position: relative; padding-left: 5rem; margin-bottom: 3rem;">
+            <div style="position: absolute; left: 0; top: 0; width: 50px; height: 50px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: bold; box-shadow: 0 4px 10px rgba(201,162,88,0.4);">
+                <i data-lucide="file-edit" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="color: var(--navy); font-family: var(--ff-head); font-size: 1.8rem; margin-bottom: 0.5rem;">3. Elite Application Assembly</h3>
+            <p style="color: #666; line-height: 1.6; font-size: 1.1rem;">Our editorial team polishes your personal statement, CV, and academic references to world-class standards. We ensure your application stands out to the most discerning admissions tutors.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="position: relative; padding-left: 5rem; margin-bottom: 3rem;">
+            <div style="position: absolute; left: 0; top: 0; width: 50px; height: 50px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 4px 10px rgba(10,17,40,0.2);">
+                <i data-lucide="handshake" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="color: var(--navy); font-family: var(--ff-head); font-size: 1.8rem; margin-bottom: 0.5rem;">4. Direct University Negotiation</h3>
+            <p style="color: #666; line-height: 1.6; font-size: 1.1rem;">We leverage our registry network to advocate for your profile directly. For Clearing and adjustment cases, this includes rapid grade-negotiation.</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div style="position: relative; padding-left: 5rem; margin-bottom: 3rem;">
+            <div style="position: absolute; left: 0; top: 0; width: 50px; height: 50px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; color: var(--navy); font-weight: bold; box-shadow: 0 4px 10px rgba(201,162,88,0.4);">
+                <i data-lucide="passport" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="color: var(--navy); font-family: var(--ff-head); font-size: 1.8rem; margin-bottom: 0.5rem;">5. Visa Support & Compliance</h3>
+            <p style="color: #666; line-height: 1.6; font-size: 1.1rem;">For international students, our legal compliance team handles CAS generation and Tier 4 (Student Route) visa applications, ensuring a seamless, error-free immigration process.</p>
+        </div>
+
+        <!-- Step 6 -->
+        <div style="position: relative; padding-left: 5rem;">
+            <div style="position: absolute; left: 0; top: 0; width: 50px; height: 50px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 4px 10px rgba(10,17,40,0.2);">
+                <i data-lucide="graduation-cap" style="width: 24px; height: 24px;"></i>
+            </div>
+            <h3 style="color: var(--navy); font-family: var(--ff-head); font-size: 1.8rem; margin-bottom: 0.5rem;">6. Arrival & Enrollment</h3>
+            <p style="color: #666; line-height: 1.6; font-size: 1.1rem;">Our concierge service extends to airport transfers, accommodation sourcing, and on-campus enrollment support to guarantee a stress-free transition.</p>
+        </div>
+    </div>
+</section>
+"""
+
+with open('pages/admissions.html', 'w', encoding='utf-8') as f:
+    f.write(header_admissions + admissions_content + footer)
 
 # Fix the global links in index.html and responsive/index.html via simple python replace
 for file in ['index.html', 'responsive/index.html']:
