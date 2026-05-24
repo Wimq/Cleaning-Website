@@ -140,33 +140,32 @@ body {
     border-color: rgba(201,162,88,0.3);
     box-shadow: 0 30px 60px rgba(0,0,0,0.08);
 }
-.journey-card.full-width { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
-@media (max-width: 900px) { .journey-card.full-width { grid-template-columns: 1fr; } }
-
-.journey-metrics {
-    display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem;
-    background: var(--off); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.03);
+.journey-card::before {
+    content: '"'; position: absolute; top: 1.5rem; left: 2.5rem;
+    font-family: var(--ff-head); font-size: 8rem; color: rgba(201,162,88,0.1);
+    line-height: 1; pointer-events: none;
 }
-.metric-block { flex: 1; text-align: center; }
-.metric-title { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; display: block; font-weight: 600;}
-.metric-value { font-family: var(--ff-head); font-size: 1.4rem; color: var(--navy); font-weight: 700; }
-.metric-arrow { color: var(--gold); width: 24px; height: 24px; }
+.journey-card.full-width { grid-column: 1 / -1; display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: center; }
+@media (max-width: 900px) { .journey-card.full-width { grid-template-columns: 1fr; gap: 2rem; } }
 
-.journey-text { font-family: var(--ff-head); font-size: 1.6rem; line-height: 1.5; color: var(--navy); font-style: italic; margin-bottom: 3rem; }
-.journey-card.full-width .journey-text { font-size: 2rem; }
+.journey-text { font-family: var(--ff-head); font-size: 1.8rem; line-height: 1.5; color: var(--navy); font-style: italic; margin-bottom: 3rem; position: relative; z-index: 2; }
+.journey-card.full-width .journey-text { font-size: 2.2rem; }
 
-.journey-author { display: flex; align-items: center; gap: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 2rem; }
+.journey-author { display: flex; align-items: center; gap: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 2rem; position: relative; z-index: 2; }
 .author-circle { width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--ff-head); font-size: 1.2rem; }
 .author-details h4 { color: var(--navy); margin-bottom: 0.2rem; font-size: 1.1rem; font-weight: 700; }
 .author-details p { color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 500; }
+.author-highlight { display: inline-block; background: var(--off); padding: 0.3rem 0.8rem; border-radius: 8px; color: var(--navy); font-size: 0.8rem; font-weight: 600; margin-top: 0.5rem; border: 1px solid rgba(201,162,88,0.3); }
 
 /* ═══════════════════════════════════════════
    CLEAN MASONRY GRID (Standard Reviews)
    ═══════════════════════════════════════════ */
 .masonry-section { padding: 4rem 0 8rem 0; }
 .masonry-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
 }
+@media (max-width: 1000px) { .masonry-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .masonry-grid { grid-template-columns: 1fr; } }
 
 .glass-item {
     background: #fff;
@@ -179,61 +178,85 @@ body {
 .glass-item::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); opacity: 0; transition: opacity 0.3s ease; }
 .glass-item:hover::before { opacity: 1; }
 
-.tp-stars-small { display: flex; gap: 0.2rem; margin-bottom: 1.5rem; }
-.tp-stars-small i { color: #00b67a; fill: #00b67a; width: 20px; height: 20px; }
+.tp-stars-small { display: flex; gap: 0.3rem; margin-bottom: 1.5rem; }
+.tp-stars-small i { color: var(--gold); fill: var(--gold); width: 20px; height: 20px; }
 
 .glass-item p { font-size: 1.05rem; line-height: 1.7; color: #444; margin-bottom: 2rem; }
 .glass-meta h5 { color: var(--navy); font-size: 1.1rem; margin-bottom: 0.2rem; font-weight: 700; }
 .glass-meta span { color: #888; font-size: 0.85rem; font-weight: 500;}
 
 /* ═══════════════════════════════════════════
-   PREMIUM SUBMIT FORM (Dark Contrast Section)
+   PREMIUM SUBMIT FORM
    ═══════════════════════════════════════════ */
 .submit-section {
     padding: 8rem 0;
-    background: var(--navy);
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2541 100%);
     position: relative;
+    overflow: hidden;
 }
 .submit-section::before {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
+    content: ''; position: absolute; top: -50%; right: -30%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,162,88,0.08) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
 }
-.form-container {
-    max-width: 800px; margin: 0 auto;
-    background: #fff;
+.submit-section::after {
+    content: ''; position: absolute; bottom: -30%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,162,88,0.05) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
+}
+.form-layout {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem;
+    align-items: center; position: relative; z-index: 2;
+}
+@media (max-width: 900px) { .form-layout { grid-template-columns: 1fr; gap: 3rem; } }
+.form-intro h2 {
+    font-family: var(--ff-head); font-size: 3.5rem; color: #fff; line-height: 1.2; margin-bottom: 1.5rem;
+}
+.form-intro h2 span { color: var(--gold); font-style: italic; }
+.form-intro p { color: rgba(255,255,255,0.6); font-size: 1.15rem; line-height: 1.8; margin-bottom: 2.5rem; }
+.form-trust-badges { display: flex; gap: 2rem; }
+.form-badge {
+    display: flex; align-items: center; gap: 0.8rem;
+    color: rgba(255,255,255,0.5); font-size: 0.9rem;
+}
+.form-badge i { color: var(--gold); width: 20px; height: 20px; }
+.form-card {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 30px;
-    padding: 5rem;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.2);
-    position: relative; z-index: 2;
+    padding: 3.5rem;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.3);
 }
-@media (max-width: 768px) { .form-container { padding: 3rem 2rem; } }
-.form-header { text-align: center; margin-bottom: 3rem; }
-.form-header h2 { font-family: var(--ff-head); font-size: 2.8rem; color: var(--navy); margin-bottom: 1rem; }
-.form-header p { color: #666; font-size: 1.1rem; }
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+@media (max-width: 768px) { .form-card { padding: 2.5rem 2rem; } }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
 @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
-.form-group label { display: block; color: var(--navy); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.8rem; }
+.form-group { margin-bottom: 0; }
+.form-group label { display: block; color: rgba(255,255,255,0.5); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.6rem; }
 .form-input {
-    width: 100%; padding: 1.2rem;
-    background: var(--off);
-    border: 1px solid rgba(0,0,0,0.05);
+    width: 100%; padding: 1.1rem 1.2rem;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
-    color: var(--navy); font-size: 1rem; font-family: var(--ff-body);
+    color: #fff; font-size: 1rem; font-family: var(--ff-body);
     transition: all 0.3s ease;
 }
-.form-input:focus { outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(201,162,88,0.1); }
-textarea.form-input { min-height: 150px; resize: vertical; }
-select.form-input { appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230a1128" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>'); background-repeat: no-repeat; background-position: right 1.2rem center; }
+.form-input:focus { outline: none; border-color: var(--gold); background: rgba(0,0,0,0.5); box-shadow: 0 0 20px rgba(201,162,88,0.1); }
+.form-input::placeholder { color: rgba(255,255,255,0.25); }
+textarea.form-input { min-height: 120px; resize: vertical; }
+select.form-input { appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23c9a258" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>'); background-repeat: no-repeat; background-position: right 1.2rem center; }
+select.form-input option { background: var(--navy); color: #fff; }
 
 .btn-submit-premium {
     width: 100%;
-    background: var(--navy);
-    color: var(--gold); font-weight: 700; font-size: 1.2rem;
-    padding: 1.5rem; border: none; border-radius: 12px; cursor: pointer;
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--gold), #b8923e);
+    color: var(--navy); font-weight: 700; font-size: 1.1rem;
+    padding: 1.3rem; border: none; border-radius: 12px; cursor: pointer;
+    transition: all 0.3s ease; letter-spacing: 0.5px;
 }
-.btn-submit-premium:hover { background: #1a2542; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.btn-submit-premium:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(201,162,88,0.3); }
 
 </style>
 </head>
@@ -300,72 +323,42 @@ select.form-input { appearance: none; background-image: url('data:image/svg+xml;
             <!-- Case 1: Full Width -->
             <div class="journey-card full-width">
                 <div>
-                    <div class="journey-metrics">
-                        <div class="metric-block">
-                            <span class="metric-title">Initial Hurdle</span>
-                            <span class="metric-value">Missed Firm Offer</span>
-                        </div>
-                        <i data-lucide="arrow-right" class="metric-arrow"></i>
-                        <div class="metric-block">
-                            <span class="metric-title">Final Outcome</span>
-                            <span class="metric-value">King's College London</span>
-                        </div>
-                    </div>
-                    <div class="journey-author">
+                    <p class="journey-text">"I panicked on results day when I missed my firm offer. The Kensington Ivy team took complete control, bypassed the massive clearing queues instantly, and secured me a spot at KCL within 4 hours. Unbelievable precision and service."</p>
+                </div>
+                <div>
+                    <div class="journey-author" style="border: none; padding-top: 0;">
                         <div class="author-circle">SM</div>
                         <div class="author-details">
                             <h4>Sarah M.</h4>
                             <p>Law (LLB) Applicant</p>
+                            <span class="author-highlight">Secured: King's College London</span>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <p class="journey-text">"I panicked on results day when I missed my offer. The Kensington Ivy team took complete control, bypassed the massive clearing queues instantly, and secured me a spot at KCL within 4 hours. Unbelievable precision and service."</p>
                 </div>
             </div>
 
             <!-- Case 2 -->
             <div class="journey-card">
-                <div class="journey-metrics">
-                    <div class="metric-block">
-                        <span class="metric-title">Status</span>
-                        <span class="metric-value">No A-Levels</span>
-                    </div>
-                    <i data-lucide="arrow-right" class="metric-arrow"></i>
-                    <div class="metric-block">
-                        <span class="metric-title">Placed</span>
-                        <span class="metric-value">Found. Year</span>
-                    </div>
-                </div>
-                <p class="journey-text" style="font-size: 1.4rem;">"As a mature student returning to education in my 30s, the UCAS process felt impossible. They mapped out an exact pathway and handled every detail. I start next month."</p>
+                <p class="journey-text">"As a mature student returning to education in my 30s, the UCAS process felt impossible. They mapped out an exact pathway and handled every detail. I start next month."</p>
                 <div class="journey-author">
                     <div class="author-circle">JT</div>
                     <div class="author-details">
                         <h4>James T.</h4>
                         <p>Mature Applicant</p>
+                        <span class="author-highlight">Placed: Foundation Year</span>
                     </div>
                 </div>
             </div>
 
             <!-- Case 3 -->
             <div class="journey-card">
-                <div class="journey-metrics">
-                    <div class="metric-block">
-                        <span class="metric-title">Hurdle</span>
-                        <span class="metric-value">MMI Interviews</span>
-                    </div>
-                    <i data-lucide="arrow-right" class="metric-arrow"></i>
-                    <div class="metric-block">
-                        <span class="metric-title">Outcome</span>
-                        <span class="metric-value">1st Choice MBBS</span>
-                    </div>
-                </div>
-                <p class="journey-text" style="font-size: 1.4rem;">"The bespoke interview preparation for Medicine was phenomenal. The consultants knew exactly what the panels demanded. I walked in perfectly confident."</p>
+                <p class="journey-text">"The bespoke interview preparation for Medicine was phenomenal. The consultants knew exactly what the panels demanded. I walked in perfectly confident."</p>
                 <div class="journey-author">
                     <div class="author-circle">AK</div>
                     <div class="author-details">
                         <h4>Aisha K.</h4>
                         <p>Medicine Student</p>
+                        <span class="author-highlight">Outcome: 1st Choice MBBS</span>
                     </div>
                 </div>
             </div>
@@ -453,40 +446,52 @@ select.form-input { appearance: none; background-image: url('data:image/svg+xml;
     <!-- PREMIUM SUBMISSION FORM -->
     <section class="submit-section">
         <div class="container">
-            <div class="form-container">
-                <div class="form-header">
-                    <h2>Share Your Story</h2>
-                    <p>Have you secured an elite placement through Kensington Ivy? Your verified testimonial contributes to our legacy of success.</p>
+            <div class="form-layout">
+                <div class="form-intro">
+                    <h2>Share Your <span>Story</span></h2>
+                    <p>Have you secured an elite placement through Kensington Ivy? Your verified testimonial contributes to our legacy of success and helps future students make informed decisions.</p>
+                    <div class="form-trust-badges">
+                        <div class="form-badge">
+                            <i data-lucide="shield-check"></i>
+                            <span>Verified Only</span>
+                        </div>
+                        <div class="form-badge">
+                            <i data-lucide="lock"></i>
+                            <span>GDPR Secure</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <form onsubmit="event.preventDefault(); alert('Your verified testimonial has been securely submitted for moderation.'); this.reset();">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" class="form-input" placeholder="Enter your full name" required>
+                <div class="form-card">
+                    <form onsubmit="event.preventDefault(); alert('Your verified testimonial has been securely submitted for moderation.'); this.reset();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" class="form-input" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Course / Placement</label>
+                                <input type="text" class="form-input" placeholder="e.g. LLB Law at UCL" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Course / Placement</label>
-                            <input type="text" class="form-input" placeholder="e.g. LLB Law at UCL" required>
+                        
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label>Experience Rating</label>
+                            <select class="form-input" required>
+                                <option value="5">⭐⭐⭐⭐⭐ Exceptional</option>
+                                <option value="4">⭐⭐⭐⭐ Very Good</option>
+                                <option value="3">⭐⭐⭐ Good</option>
+                            </select>
                         </div>
-                    </div>
-                    
-                    <div class="form-group" style="margin-bottom: 2rem;">
-                        <label>Experience Rating</label>
-                        <select class="form-input" required>
-                            <option value="5">⭐⭐⭐⭐⭐ Exceptional - Exceeded Expectations</option>
-                            <option value="4">⭐⭐⭐⭐ Very Good - Highly Recommend</option>
-                            <option value="3">⭐⭐⭐ Good - Met Expectations</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group" style="margin-bottom: 3rem;">
-                        <label>Your Testimonial</label>
-                        <textarea class="form-input" placeholder="Detail the specific challenges you faced and how our consultants resolved them..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit-premium">Submit Verification</button>
-                </form>
+                        
+                        <div class="form-group" style="margin-bottom: 2rem;">
+                            <label>Your Testimonial</label>
+                            <textarea class="form-input" placeholder="Detail the specific challenges you faced..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit-premium">Submit Verification</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -497,14 +502,6 @@ select.form-input { appearance: none; background-image: url('data:image/svg+xml;
     <div style="position: absolute; top: 0; right: 10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,162,88,0.05) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none;"></div>
 
     <div class="container" style="position: relative; z-index: 2;">
-        <!-- Pre-footer CTA -->
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 3rem; margin-bottom: 5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
-            <div>
-                <h3 style="font-family: var(--ff-head); font-size: 2rem; color: #fff; margin-bottom: 0.5rem;">Ready to secure your future?</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; margin: 0;">Speak to our admissions experts today for a free consultation.</p>
-            </div>
-            <a href="../pages/register.html" class="btn btn-gold" style="font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 50px;">Start Your Journey</a>
-        </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
             
@@ -515,16 +512,16 @@ select.form-input { appearance: none; background-image: url('data:image/svg+xml;
                 <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.8; max-width: 320px; margin-bottom: 2.5rem;">The UK's premier university placement and admissions partner. Built on absolute academic excellence.</p>
                 <div style="display: flex; gap: 1rem;">
                     <a href="#" aria-label="Instagram" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-                        <i data-lucide="instagram" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
                     <a href="#" aria-label="TikTok" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
                         <svg viewBox="0 0 24 24" fill="currentColor" style="width: 22px; height: 22px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
                     </a>
                     <a href="#" aria-label="LinkedIn" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-                        <i data-lucide="linkedin" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                     </a>
                     <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='#00b67a'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-                        <i data-lucide="star" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                     </a>
                 </div>
             </div>
