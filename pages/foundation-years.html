@@ -3,323 +3,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation Years | Kensington Ivy</title>
+    <title>Foundation Years & Alternative Entry | Kensington Ivy</title>
+    <meta name="description" content="Discover alternative pathways into elite UK universities. Kensington Ivy secures Foundation Year and Access to HE placements with guaranteed progression.">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
-<style>
-body { background-color: var(--off, #ebe0cd); }
+    <style>
+        /* Light Theme Override - No Navy Backgrounds */
+        :root {
+            --fy-bg: #fdfbf7;
+            --fy-card: #ffffff;
+            --fy-accent: #f4ecd8;
+            --fy-text: #1a1a1a;
+            --fy-text-light: #555555;
+            --fy-border: rgba(0,0,0,0.06);
+        }
+        
+        body { background-color: var(--fy-bg); color: var(--fy-text); }
 
-.hero-foundation {
-    background: linear-gradient(135deg, var(--navy) 0%, #1c2541 100%);
-    padding: 10rem 0 8rem 0;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-}
-.hero-foundation::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: 50%;
-    width: 1000px; height: 1000px;
-    background: radial-gradient(circle, rgba(201,162,88,0.15) 0%, transparent 60%);
-    transform: translateX(-50%);
-    pointer-events: none;
-}
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-.hero-foundation h1 {
-    font-family: var(--ff-head);
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-.hero-foundation p {
-    font-size: 1.25rem;
-    color: rgba(255,255,255,0.8);
-    line-height: 1.6;
-}
+        /* HEADER FIX FOR LIGHT PAGE */
+        .header { background: rgba(255,255,255,0.95) !important; border-bottom: 1px solid var(--fy-border); }
 
-.intro-section {
-    padding: 6rem 0;
-    background: #fff;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-.intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-}
-@media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; } }
-.intro-text h2 {
-    font-family: var(--ff-head);
-    font-size: 2.5rem;
-    color: var(--navy);
-    margin-bottom: 1.5rem;
-}
-.intro-text p {
-    color: #555;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-}
+        /* ═══════════════════════════════════════════════════ */
+        /*  LIGHT HERO                                        */
+        /* ═══════════════════════════════════════════════════ */
+        .fy-hero {
+            padding: 12rem 0 8rem 0;
+            background: linear-gradient(180deg, #ffffff 0%, var(--fy-bg) 100%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--fy-border);
+        }
+        .fy-hero::before {
+            content: ''; position: absolute; top: 0; right: 0;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(201,162,88,0.08) 0%, transparent 60%);
+            transform: translate(30%, -30%); pointer-events: none;
+        }
+        .fy-hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .fy-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--fy-accent);
+            color: var(--gold);
+            border-radius: 50px;
+            font-weight: 700; font-size: 0.85rem;
+            letter-spacing: 0.15em; text-transform: uppercase;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(201,162,88,0.2);
+        }
+        .fy-hero h1 {
+            font-family: var(--ff-head);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1.05;
+            color: var(--fy-text);
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+        .fy-hero h1 em {
+            font-style: italic; font-weight: 400; color: var(--gold);
+        }
+        .fy-hero p {
+            font-size: 1.3rem; color: var(--fy-text-light);
+            line-height: 1.8; margin-bottom: 3rem;
+            max-width: 750px; margin-left: auto; margin-right: auto;
+        }
 
-.pathways-section {
-    padding: 8rem 0;
-    background: var(--off);
-}
-.pathways-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 5rem;
-}
-.pathways-header h2 { font-family: var(--ff-head); font-size: 3rem; color: var(--navy); margin-bottom: 1rem; }
-.pathways-header p { color: var(--muted); font-size: 1.1rem; line-height: 1.6; }
+        /* ═══════════════════════════════════════════════════ */
+        /*  DATA STRIP                                        */
+        /* ═══════════════════════════════════════════════════ */
+        .fy-data-strip {
+            padding: 4rem 0;
+            background: #ffffff;
+            border-bottom: 1px solid var(--fy-border);
+        }
+        .fy-data-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+            text-align: center;
+        }
+        .fy-data-item h3 {
+            font-family: var(--ff-head); font-size: 3rem;
+            color: var(--gold); margin-bottom: 0.5rem; line-height: 1;
+        }
+        .fy-data-item p {
+            font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 0.1em; font-weight: 700; color: var(--fy-text-light);
+        }
 
-.pathways-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-@media (max-width: 900px) { .pathways-grid { grid-template-columns: 1fr; } }
+        /* ═══════════════════════════════════════════════════ */
+        /*  THE REALITY OF ENTRY SECTION                      */
+        /* ═══════════════════════════════════════════════════ */
+        .fy-reality {
+            padding: 8rem 0;
+            position: relative;
+        }
+        .fy-reality-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+            align-items: center;
+        }
+        .fy-reality h2 {
+            font-family: var(--ff-head); font-size: 3.5rem;
+            color: var(--fy-text); margin-bottom: 1.5rem; line-height: 1.1;
+        }
+        .fy-reality p {
+            font-size: 1.15rem; color: var(--fy-text-light);
+            line-height: 1.8; margin-bottom: 1.5rem;
+        }
+        .fy-feature-list { list-style: none; margin-top: 2rem; }
+        .fy-feature-list li {
+            display: flex; gap: 1rem; align-items: flex-start;
+            margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--fy-text);
+        }
+        .fy-feature-list i { color: var(--gold); margin-top: 3px; flex-shrink: 0; }
 
-.path-card {
-    background: #fff;
-    padding: 3rem;
-    border-radius: 16px;
-    border-top: 6px solid var(--gold);
-    box-shadow: 0 20px 40px rgba(10,17,40,0.04);
-    transition: transform 0.3s ease;
-}
-.path-card:hover { transform: translateY(-10px); }
-.path-icon {
-    width: 60px; height: 60px;
-    border-radius: 50%;
-    background: rgba(201,162,88,0.1);
-    color: var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 2rem;
-}
-.path-card h3 {
-    font-family: var(--ff-head);
-    color: var(--navy);
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-.path-card p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-.path-card ul { list-style: none; padding: 0; }
-.path-card li {
-    display: flex; gap: 0.8rem;
-    margin-bottom: 1rem;
-    color: var(--navy);
-    font-size: 0.95rem;
-    align-items: flex-start;
-}
-.path-card li i { color: var(--gold); margin-top: 2px; }
+        .fy-image-box {
+            background: var(--fy-accent);
+            border-radius: 24px;
+            padding: 4rem;
+            text-align: center;
+            border: 1px solid rgba(201,162,88,0.2);
+            position: relative;
+        }
+        .fy-image-box h4 {
+            font-family: var(--ff-head); font-size: 2rem; color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .fy-image-box p { font-size: 1.1rem; color: var(--fy-text-light); }
 
-.cta-clean { text-align: center; padding: 8rem 0; background: var(--navy); color: #fff; }
-.cta-clean h2 { font-family: var(--ff-head); font-size: 3rem; margin-bottom: 1.5rem; }
-.cta-clean p { color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem; }
+        /* ═══════════════════════════════════════════════════ */
+        /*  PATHWAYS DEEP DIVE                                */
+        /* ═══════════════════════════════════════════════════ */
+        .fy-pathways {
+            padding: 10rem 0;
+            background: #ffffff;
+            border-top: 1px solid var(--fy-border);
+            border-bottom: 1px solid var(--fy-border);
+        }
+        .fy-pathways-header { text-align: center; max-width: 800px; margin: 0 auto 6rem; }
+        .fy-pathways-header h2 { font-family: var(--ff-head); font-size: 3.5rem; color: var(--fy-text); margin-bottom: 1.5rem; }
+        
+        .fy-path-card {
+            display: grid; grid-template-columns: 350px 1fr; gap: 4rem;
+            background: var(--fy-bg);
+            border: 1px solid var(--fy-border);
+            border-radius: 24px;
+            padding: 4rem;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fy-path-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.04);
+            border-color: rgba(201,162,88,0.3);
+        }
+        .fy-path-left h3 {
+            font-family: var(--ff-head); font-size: 2.2rem; color: var(--fy-text); margin-bottom: 1rem;
+        }
+        .fy-path-duration {
+            display: inline-block; padding: 0.4rem 1rem; background: var(--fy-accent);
+            color: var(--gold); font-weight: 700; font-size: 0.8rem; border-radius: 50px;
+            text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;
+        }
+        .fy-path-right p {
+            font-size: 1.1rem; color: var(--fy-text-light); line-height: 1.8; margin-bottom: 2rem;
+        }
+        .fy-path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .fy-req-box {
+            background: #ffffff; border: 1px solid var(--fy-border);
+            padding: 1.5rem; border-radius: 16px;
+        }
+        .fy-req-box h5 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.5rem; }
+        .fy-req-box p { font-size: 1rem; color: var(--fy-text); font-weight: 500; margin: 0;}
 
-</style>
+        /* ═══════════════════════════════════════════════════ */
+        /*  PROCESS TIMELINE                                  */
+        /* ═══════════════════════════════════════════════════ */
+        .fy-process {
+            padding: 8rem 0;
+            background: var(--fy-bg);
+        }
+        .fy-process-container {
+            max-width: 800px; margin: 0 auto;
+        }
+        .fy-step {
+            display: flex; gap: 3rem; margin-bottom: 4rem; position: relative;
+        }
+        .fy-step::after {
+            content: ''; position: absolute; top: 60px; bottom: -4rem; left: 29px;
+            width: 2px; background: var(--fy-border);
+        }
+        .fy-step:last-child::after { display: none; }
+        .fy-step-num {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: #ffffff; border: 2px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--ff-head); font-size: 1.5rem; font-weight: 700; color: var(--gold);
+            position: relative; z-index: 2; flex-shrink: 0;
+        }
+        .fy-step-content {
+            background: #ffffff; border: 1px solid var(--fy-border);
+            padding: 2.5rem; border-radius: 20px; flex: 1;
+        }
+        .fy-step-content h4 { font-family: var(--ff-head); font-size: 1.8rem; color: var(--fy-text); margin-bottom: 1rem; }
+        .fy-step-content p { color: var(--fy-text-light); line-height: 1.7; font-size: 1.05rem; }
+
+        /* ═══════════════════════════════════════════════════ */
+        /*  CTA (LIGHT THEME)                                 */
+        /* ═══════════════════════════════════════════════════ */
+        .fy-cta {
+            padding: 10rem 0;
+            background: #ffffff;
+            border-top: 1px solid var(--fy-border);
+            text-align: center;
+            position: relative;
+        }
+        .fy-cta::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(201,162,88,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .fy-cta h2 { font-family: var(--ff-head); font-size: 4rem; color: var(--fy-text); margin-bottom: 1.5rem; }
+        .fy-cta p { font-size: 1.25rem; color: var(--fy-text-light); max-width: 600px; margin: 0 auto 3rem; line-height: 1.6; }
+
+        @media (max-width: 1024px) {
+            .fy-reality-grid { grid-template-columns: 1fr; }
+            .fy-path-card { grid-template-columns: 1fr; }
+            .fy-data-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .fy-data-grid { grid-template-columns: 1fr; }
+            .fy-step { flex-direction: column; gap: 1.5rem; }
+            .fy-step::after { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<header class="header">
-    <div class="container header-inner">
-        <a href="../index.html" class="logo">
-            <span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span>
-        </a>
-        <nav class="top-links" style="gap: 2rem;">
-            <a href="find-courses.html" style="color: var(--navy); font-weight: 500;">Find Courses</a>
-            <a href="registries.html" style="color: var(--navy); font-weight: 500;">University Registries</a>
-            <a href="foundation-years.html" style="color: var(--navy); font-weight: 500;">Foundation Years</a>
-            <a href="about.html?v=3" style="color: var(--navy); font-weight: 500;">About Us</a>
-        </nav>
-        <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="register.html" class="btn btn-gold">Enquire Now</a>
-            <button class="menu-toggle" onclick="document.querySelector('.top-links').classList.toggle('active')" aria-label="Toggle Menu">
-                <i data-lucide="menu"></i>
-            </button>
-        </div>
-    </div>
-</header>
-
-<section class="hero-foundation">
-    <div class="container">
-        <div class="hero-content">
-            <h1>Guaranteed Progression.</h1>
-            <p>Missed your conditional entry grades? Kensington Ivy specializes in matching students with Access to HE and Foundation courses that offer guaranteed pathways directly into elite undergraduate degree programs.</p>
-        </div>
-    </div>
-</section>
-
-<section class="intro-section">
-    <div class="container">
-        <div class="intro-grid">
-            <div class="intro-text">
-                <h2>Alternative Entry Excellence</h2>
-                <p>Not every student follows a traditional academic route. Standard A-Level or IB grades do not always reflect a student's true potential, ambition, or intellect. Recognizing this, Kensington Ivy has established robust partnerships with leading UK institutions that offer dedicated, fully integrated Foundation Years and Access to Higher Education diplomas.</p>
-                <p>These specialized programs allow you to spend an initial year building the foundational knowledge required for your specific degree. Upon successful completion of this preparatory year, you are <strong>guaranteed progression</strong> into Year 1 of your chosen undergraduate program at the same institution.</p>
+    <!-- LIGHT NAV -->
+    <nav style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--fy-border);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0;">
+            <a href="../index.html" style="text-decoration: none;">
+                <span style="font-family: var(--ff-head); font-weight: 800; font-size: 1.6rem; color: var(--fy-text);">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 1.6rem; color: var(--gold);">Ivy</span>
+            </a>
+            <div style="display: flex; gap: 2.5rem; align-items: center;">
+                <a href="../index.html" style="color: var(--fy-text-light); font-weight: 500; font-size: 0.95rem; text-decoration: none;">Home</a>
+                <a href="find-courses.html" style="color: var(--fy-text-light); font-weight: 500; font-size: 0.95rem; text-decoration: none;">Find Courses</a>
+                <a href="about.html?v=3" style="color: var(--fy-text-light); font-weight: 500; font-size: 0.95rem; text-decoration: none;">About Us</a>
+                <a href="foundation-years.html" style="color: var(--gold); font-weight: 600; font-size: 0.95rem; text-decoration: none;">Foundation Years</a>
+                <a href="register.html" class="btn btn-gold" style="padding: 0.75rem 1.75rem; font-size: 0.9rem;">Enquire Now</a>
             </div>
-            <div style="background: var(--off); padding: 3rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05);">
-                <h3 style="font-family: var(--ff-head); font-size: 1.8rem; color: var(--navy); margin-bottom: 1.5rem;">Competitive Fields We Place In:</h3>
-                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem;">
-                        <span style="font-weight: 600; color: var(--navy);">Medicine (MBBS)</span> <i data-lucide="check" style="color: var(--gold);"></i>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem;">
-                        <span style="font-weight: 600; color: var(--navy);">LLB Law</span> <i data-lucide="check" style="color: var(--gold);"></i>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem;">
-                        <span style="font-weight: 600; color: var(--navy);">Computer Science</span> <i data-lucide="check" style="color: var(--gold);"></i>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 0.5rem;">
-                        <span style="font-weight: 600; color: var(--navy);">Engineering (BEng/MEng)</span> <i data-lucide="check" style="color: var(--gold);"></i>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="font-weight: 600; color: var(--navy);">Business & Finance</span> <i data-lucide="check" style="color: var(--gold);"></i>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="fy-hero">
+        <div class="container">
+            <div class="fy-hero-content">
+                <span class="fy-tag">Guaranteed Progression</span>
+                <h1>The Elite Backdoor to<br><em>Top Universities.</em></h1>
+                <p>Missed your conditional entry grades? Kensington Ivy specializes in mapping exact academic profiles to integrated Foundation Year and Access to HE diplomas, securing your immediate place on campus with guaranteed progression into Year 1.</p>
+                <a href="register.html" class="btn btn-gold" style="padding: 1.2rem 3rem; font-size: 1.1rem; box-shadow: 0 15px 30px rgba(201,162,88,0.2);">Request Placement Evaluation <i data-lucide="arrow-right" style="width: 18px; margin-left: 8px;"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- DATA STRIP -->
+    <section class="fy-data-strip">
+        <div class="container">
+            <div class="fy-data-grid">
+                <div class="fy-data-item">
+                    <h3>98%</h3>
+                    <p>Progression Rate to Year 1</p>
+                </div>
+                <div class="fy-data-item">
+                    <h3>0</h3>
+                    <p>A-Level Retakes Required</p>
+                </div>
+                <div class="fy-data-item">
+                    <h3>130+</h3>
+                    <p>Partner Institutions</p>
+                </div>
+                <div class="fy-data-item">
+                    <h3>100%</h3>
+                    <p>Student Finance Eligible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE REALITY -->
+    <section class="fy-reality">
+        <div class="container">
+            <div class="fy-reality-grid">
+                <div>
+                    <h2>Rethink Traditional Academic Entry.</h2>
+                    <p>Standard A-Level or IB grades are not the only measure of your intellect or ambition. Every year, thousands of brilliant students miss their conditional offers by a narrow margin, forcing them into clearing chaos or devastating gap years.</p>
+                    <p>At Kensington Ivy, we bypass this. We secure placements in specialized "Year 0" programs taught directly on the main university campus. You receive full student status, accommodation, and finance, while studying a tailored curriculum designed to prepare you for the exact rigours of your chosen degree.</p>
+                    
+                    <ul class="fy-feature-list">
+                        <li><i data-lucide="check-circle"></i> <strong>Full Campus Integration:</strong> You are a fully registered university student from day one, with access to all societies, libraries, and facilities.</li>
+                        <li><i data-lucide="check-circle"></i> <strong>Guaranteed Progression:</strong> Pass the foundation year assignments, and you are unconditionally guaranteed a place in Year 1 of your Bachelor's degree.</li>
+                        <li><i data-lucide="check-circle"></i> <strong>Specialised Support:</strong> Benefit from smaller class sizes and intensive academic writing support before the pressure of a full degree begins.</li>
+                    </ul>
+                </div>
+                <div class="fy-image-box">
+                    <i data-lucide="award" style="width: 60px; height: 60px; color: var(--gold); margin-bottom: 1.5rem;"></i>
+                    <h4>Elite Subject Placements</h4>
+                    <p style="margin-bottom: 2rem;">We secure Foundation pathways for the most competitive degrees in the UK.</p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; text-align: left;">
+                        <div style="background: #fff; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; color: var(--fy-text); border: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between;">
+                            Medicine (MBBS) / Dentistry <i data-lucide="stethoscope" style="color: var(--gold); width: 20px;"></i>
+                        </div>
+                        <div style="background: #fff; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; color: var(--fy-text); border: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between;">
+                            LLB Law / Criminology <i data-lucide="scale" style="color: var(--gold); width: 20px;"></i>
+                        </div>
+                        <div style="background: #fff; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; color: var(--fy-text); border: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between;">
+                            Computer Science / AI <i data-lucide="monitor" style="color: var(--gold); width: 20px;"></i>
+                        </div>
+                        <div style="background: #fff; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 600; color: var(--fy-text); border: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between;">
+                            Engineering (BEng / MEng) <i data-lucide="settings" style="color: var(--gold); width: 20px;"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="pathways-section">
-    <div class="container">
-        <div class="pathways-header">
-            <h2>Our Primary Pathways</h2>
-            <p>We analyze your current academic standing and career goals to place you in the perfect bridging program.</p>
+    <!-- PATHWAYS DEEP DIVE -->
+    <section class="fy-pathways">
+        <div class="container">
+            <div class="fy-pathways-header">
+                <h2>Our Primary Pathways</h2>
+                <p style="font-size: 1.15rem; color: var(--fy-text-light); line-height: 1.8;">Our consultants analyze your exact UCAS tariff, subject mix, and career goals to assign you to one of our three core alternative entry frameworks.</p>
+            </div>
+
+            <!-- PATH 1 -->
+            <div class="fy-path-card">
+                <div class="fy-path-left">
+                    <span class="fy-path-duration">4 Year Total Duration</span>
+                    <h3>Integrated Foundation Year</h3>
+                    <p style="color: var(--fy-text-light); font-size: 1.05rem; line-height: 1.6;">The ultimate solution for students who missed their conditional offers but still desire the immediate "university experience."</p>
+                </div>
+                <div class="fy-path-right">
+                    <p>This is a 4-year undergraduate degree where 'Year 0' prepares you for the rigor of Year 1. It is taught on the main university campus by university faculty. You apply for a single 4-year student visa and student finance loan.</p>
+                    <div class="fy-path-grid">
+                        <div class="fy-req-box">
+                            <h5>Ideal Profile</h5>
+                            <p>Recent school leavers who achieved DDD to CCD at A-Level.</p>
+                        </div>
+                        <div class="fy-req-box">
+                            <h5>Key Benefit</h5>
+                            <p>No re-application needed for Year 1. Progression is automatic upon passing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PATH 2 -->
+            <div class="fy-path-card">
+                <div class="fy-path-left">
+                    <span class="fy-path-duration">1 Year Fast-Track</span>
+                    <h3>Access to HE Diploma</h3>
+                    <p style="color: var(--fy-text-light); font-size: 1.05rem; line-height: 1.6;">Designed specifically for mature students returning to education, or those seeking a rapid pivot in subject choice.</p>
+                </div>
+                <div class="fy-path-right">
+                    <p>A highly intensive 1-year course taught at partnered colleges. It is widely accepted by almost all UK universities (including the Russell Group) as a direct equivalent to 3 A-Levels, allowing you to leapfrog standard entry requirements.</p>
+                    <div class="fy-path-grid">
+                        <div class="fy-req-box">
+                            <h5>Ideal Profile</h5>
+                            <p>Mature students (19+) or those changing careers entirely.</p>
+                        </div>
+                        <div class="fy-req-box">
+                            <h5>Key Benefit</h5>
+                            <p>Fully funded via the Advanced Learner Loan (written off upon graduation).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PATH 3 -->
+            <div class="fy-path-card">
+                <div class="fy-path-left">
+                    <span class="fy-path-duration">Accelerated Entry</span>
+                    <h3>International Year One</h3>
+                    <p style="color: var(--fy-text-light); font-size: 1.05rem; line-height: 1.6;">The premier option for international students aiming to graduate on time without spending an extra year on a foundation course.</p>
+                </div>
+                <div class="fy-path-right">
+                    <p>This pathway combines intensive English language support with Year 1 academic modules. Upon successful completion of the year, you progress directly into Year 2 of your chosen Bachelor's degree.</p>
+                    <div class="fy-path-grid">
+                        <div class="fy-req-box">
+                            <h5>Ideal Profile</h5>
+                            <p>International students requiring English language improvement.</p>
+                        </div>
+                        <div class="fy-req-box">
+                            <h5>Key Benefit</h5>
+                            <p>Saves one full year of international tuition fees and living costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        
-        <div class="pathways-grid">
-            <div class="path-card">
-                <div class="path-icon"><i data-lucide="book-open"></i></div>
-                <h3>Integrated Foundation Year</h3>
-                <p>A 4-year undergraduate degree where 'Year 0' prepares you for the rigor of Year 1. Perfect for students who missed their conditional offers but still want the full university campus experience immediately.</p>
-                <ul>
-                    <li><i data-lucide="check-circle-2"></i> Guaranteed Year 1 entry</li>
-                    <li><i data-lucide="check-circle-2"></i> Taught on the main university campus</li>
-                    <li><i data-lucide="check-circle-2"></i> Full access to Student Finance</li>
-                </ul>
-            </div>
+    </section>
+
+    <!-- PROCESS TIMELINE -->
+    <section class="fy-process">
+        <div class="container">
+            <h2 style="font-family: var(--ff-head); font-size: 3.5rem; color: var(--fy-text); text-align: center; margin-bottom: 5rem;">The Placement Protocol</h2>
             
-            <div class="path-card">
-                <div class="path-icon"><i data-lucide="users"></i></div>
-                <h3>Access to HE Diploma</h3>
-                <p>Designed specifically for mature students (19+) returning to education. A 1-year intensive course taught at partnered colleges that is widely accepted by UK universities as an equivalent to 3 A-Levels.</p>
-                <ul>
-                    <li><i data-lucide="check-circle-2"></i> Fast-track 1-year duration</li>
-                    <li><i data-lucide="check-circle-2"></i> Accepted by Russell Group unis</li>
-                    <li><i data-lucide="check-circle-2"></i> Advanced Learner Loan eligible</li>
-                </ul>
-            </div>
-            
-            <div class="path-card">
-                <div class="path-icon"><i data-lucide="globe"></i></div>
-                <h3>International Year One</h3>
-                <p>For international students looking to improve academic and English language skills while simultaneously completing the first year of their degree, accelerating their graduation timeline.</p>
-                <ul>
-                    <li><i data-lucide="check-circle-2"></i> Combines English & Academics</li>
-                    <li><i data-lucide="check-circle-2"></i> Progress directly to Year 2</li>
-                    <li><i data-lucide="check-circle-2"></i> Dedicated international support</li>
-                </ul>
+            <div class="fy-process-container">
+                <div class="fy-step">
+                    <div class="fy-step-num">1</div>
+                    <div class="fy-step-content">
+                        <h4>Profile Audit</h4>
+                        <p>We conduct a forensic analysis of your current qualifications, calculating exact UCAS points and mapping them against internal entry requirements for our partner universities' foundation programs.</p>
+                    </div>
+                </div>
+                <div class="fy-step">
+                    <div class="fy-step-num">2</div>
+                    <div class="fy-step-content">
+                        <h4>Strategic Shortlisting</h4>
+                        <p>Within 48 hours, we present you with 3 to 5 tailored Foundation Year options at elite institutions, factoring in your preferred location, subject area, and career trajectory.</p>
+                    </div>
+                </div>
+                <div class="fy-step">
+                    <div class="fy-step-num">3</div>
+                    <div class="fy-step-content">
+                        <h4>Direct Liaison</h4>
+                        <p>We leverage our institutional partnerships to bypass standard admissions queues, submitting your portfolio directly to university decision-makers for priority review.</p>
+                    </div>
+                </div>
+                <div class="fy-step">
+                    <div class="fy-step-num">4</div>
+                    <div class="fy-step-content">
+                        <h4>Unconditional Offer</h4>
+                        <p>You receive your formal offer for the Foundation Year program. We assist with the final enrollment paperwork and provide guidance on securing your Student Finance funding.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="cta-clean">
-    <div class="container">
-        <h2>Secure Your Pathway Today</h2>
-        <p>Don't let missing entry grades stop you from achieving your degree. Speak to our consultants about securing a Foundation Year placement right now.</p>
-        <a href="register.html" class="btn btn-gold" style="font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 50px;">Enquire for Placement</a>
-    </div>
-</section>
+    <!-- CTA LIGHT -->
+    <section class="fy-cta">
+        <div class="container" style="position: relative; z-index: 2;">
+            <h2>Your Degree Awaits.</h2>
+            <p>Do not compromise on your academic future. Allow our senior consultants to secure your pathway into an elite UK institution today.</p>
+            <a href="register.html" class="btn btn-gold" style="padding: 1.2rem 3.5rem; font-size: 1.15rem; border-radius: 50px; box-shadow: 0 15px 40px rgba(201,162,88,0.25);">Request a Placement Review <i data-lucide="arrow-right" style="width: 20px; margin-left: 10px;"></i></a>
+        </div>
+    </section>
 
-<footer style="background: var(--navy); padding: 5rem 0 3rem 0; color: #fff;">
-    <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
-            
-            <div style="grid-column: span 1;">
-                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
-                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
-                </a>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
-                <div style="display: flex; gap: 1rem;">
-                    <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
-                    <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
-                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+    <!-- FOOTER -->
+    <footer style="background: #0d1a3a; padding: 5rem 0 3rem 0; color: #fff;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+                
+                <div style="grid-column: span 1;">
+                    <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
+                        <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
                     </a>
-                    <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
-                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
-                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <a href="../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
-                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
-                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
-                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
-                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
-                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
-                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
-                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
-                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
-                        <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
-                        <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
-                    </div>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
                     <div style="display: flex; gap: 1rem;">
-                        <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
-                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
+                        <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
+                        <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
+                        <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
                     </div>
-                    <div style="display: flex; gap: 1rem;">
-                        <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
-                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
+                </div>
+    
+                <div>
+                    <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <a href="../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
+                        <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
+                        <a href="../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
+                        <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
                     </div>
+                </div>
+    
+                <div>
+                    <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
+                        <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
+                        <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
+                    </div>
+                </div>
+    
+                <div>
+                    <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                        <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
+                            <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                            <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                            <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                            <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
+                <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
+                <div style="opacity: 0.6;">
+                    <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
+                        <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
+                    </a>
                 </div>
             </div>
         </div>
+    </footer>
 
-        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
-            <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
-            <div style="opacity: 0.6;">
-                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
-                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script>lucide.createIcons();</script>
-<script>document.querySelectorAll('.dynamic-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+    <script>lucide.createIcons();</script>
+    <script>document.querySelectorAll('.dynamic-year').forEach(el => el.textContent = new Date().getFullYear());</script>
 </body>
 </html>
