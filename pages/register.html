@@ -157,12 +157,17 @@
             border-radius: 8px; box-shadow: 0 10px 30px rgba(201,162,88,0.2);
             transition: all 0.3s ease;
         }
-        .btn-auth:disabled {
-            background: var(--gold);
-            color: #fff;
-            opacity: 0.5;
-            cursor: not-allowed;
-            box-shadow: none;
+        .btn-auth:disabled, .btn-auth:disabled:hover {
+            background: #d1d5db !important;
+            color: #9ca3af !important;
+            border-color: #d1d5db !important;
+            cursor: not-allowed !important;
+            opacity: 1 !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        .btn-auth:disabled::before {
+            display: none !important;
         }
         
         /* Success State */

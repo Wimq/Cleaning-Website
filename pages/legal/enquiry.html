@@ -48,6 +48,14 @@
             background-color: var(--gold);
             color: var(--navy);
         }
+        .btn-submit:disabled, .btn-submit:disabled:hover {
+            background-color: #d1d5db !important;
+            color: #9ca3af !important;
+            cursor: not-allowed !important;
+            opacity: 1 !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
 
         .success-state { display: none; padding: 2rem 0; }
         .success-state .icon { color: #2e7d32; margin-bottom: 1rem; }
@@ -125,10 +133,10 @@
             <h2 style="margin-bottom: 0.5rem; font-size: 1.4rem;">Submit a Formal Request</h2>
             <p style="margin-bottom: 1.2rem; line-height: 1.4; font-size: 0.85rem;">In accordance with the UK General Data Protection Regulation (UK GDPR), data subjects may exercise their statutory rights regarding their personal data. Please utilise this secure portal to formally request access, rectification, or erasure of your information.</p>
             
-            <form onsubmit="handleSubmit(event)">
+            <form id="drForm" onsubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label>Type of Request <span style="color: #d32f2f;">*</span></label>
-                    <select class="form-control" required style="cursor: pointer;">
+                    <select id="drType" class="form-control" required style="cursor: pointer;">
                         <option value="" disabled selected>Select an option...</option>
                         <option value="delete">Delete my data (Right to Erasure)</option>
                         <option value="copy">Request a copy of my data (DSAR)</option>
@@ -157,7 +165,7 @@
                     <textarea id="drDetails" class="form-control" placeholder="e.g., Please permanently delete my account and all associated data."></textarea>
                 </div>
 
-                <button type="submit" id="submitBtn" class="btn-submit">
+                <button type="submit" id="submitBtn" class="btn-submit" disabled>
                     Submit Request <i data-lucide="shield-check" style="width:18px;height:18px;"></i>
                 </button>
             </form>
@@ -288,15 +296,30 @@
                 alert('Security verification failed: ' + (data.message || 'Please try again.'));
                 btn.innerHTML = originalText;
                 btn.disabled = false;
+                checkEnquiryValidity();
             }
         })
-                .catch(err => {
-                    alert('Network error. Please try again later.');
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                });
-            });
+        .catch(err => {
+            alert('Network error. Please try again later.');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            checkEnquiryValidity();
         });
+    }
+
+    const form = document.getElementById('drForm');
+    const btn = document.getElementById('submitBtn');
+    
+    function checkEnquiryValidity() {
+        if (form && btn) {
+            btn.disabled = !form.checkValidity();
+        }
+    }
+    
+    if (form && btn) {
+        form.addEventListener('input', checkEnquiryValidity);
+        form.addEventListener('change', checkEnquiryValidity);
+        checkEnquiryValidity();
     }
 </script>
 
