@@ -163,60 +163,60 @@
         }
 
         /* ═══════════════════════════════════════════════════ */
-        /*  PATHWAYS GLASS CARDS                              */
+        /*  PATHWAYS GLASS CARDS (NAVY THEME)                 */
         /* ═══════════════════════════════════════════════════ */
         .fy-pathways {
             padding: 10rem 0;
-            background: var(--white);
+            background: linear-gradient(135deg, var(--navy) 0%, #1c2541 100%);
             border-top: 1px solid var(--border);
             position: relative;
         }
         .fy-pathways-header { text-align: center; max-width: 800px; margin: 0 auto 6rem; }
-        .fy-pathways-header h2 { font-family: var(--ff-head); font-size: 3.8rem; color: var(--navy); margin-bottom: 1.5rem; }
-        .fy-pathways-header p { font-size: 1.2rem; color: var(--muted); line-height: 1.7; }
+        .fy-pathways-header h2 { font-family: var(--ff-head); font-size: 3.8rem; color: #fff; margin-bottom: 1.5rem; }
+        .fy-pathways-header p { font-size: 1.2rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
         
         .pathway-cards { display: flex; flex-direction: column; gap: 3rem; }
         
         .path-card {
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.03);
             backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 32px;
             padding: 4rem;
             display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem;
             align-items: center;
-            box-shadow: 0 20px 50px rgba(10,17,40,0.03);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative; overflow: hidden;
         }
         .path-card::before {
             content: ''; position: absolute; inset: 0;
-            background: radial-gradient(circle at top right, rgba(201,162,88,0.1), transparent 60%);
+            background: radial-gradient(circle at top right, rgba(201,162,88,0.15), transparent 60%);
             opacity: 0; transition: opacity 0.5s ease;
         }
-        .path-card:hover { transform: translateY(-8px); border-color: rgba(201,162,88,0.4); box-shadow: 0 40px 80px rgba(10,17,40,0.08); }
+        .path-card:hover { transform: translateY(-8px); border-color: rgba(201,162,88,0.4); box-shadow: 0 40px 80px rgba(0,0,0,0.4); }
         .path-card:hover::before { opacity: 1; }
 
         .path-left { position: relative; z-index: 2; }
         .path-duration {
-            display: inline-block; padding: 0.5rem 1.5rem; background: var(--off);
-            color: var(--gold); border: 1px solid var(--border); border-radius: 50px;
+            display: inline-block; padding: 0.5rem 1.5rem; background: rgba(255,255,255,0.05);
+            color: var(--gold); border: 1px solid rgba(255,255,255,0.1); border-radius: 50px;
             font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
-            margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(201,162,88,0.1);
+            margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .path-left h3 { font-family: var(--ff-head); font-size: 2.5rem; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.1; }
-        .path-left p { font-size: 1.1rem; color: var(--muted); line-height: 1.8; }
+        .path-left h3 { font-family: var(--ff-head); font-size: 2.5rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.1; }
+        .path-left p { font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.8; }
         
         .path-right { position: relative; z-index: 2; }
-        .path-right > p { font-size: 1.15rem; color: var(--navy); line-height: 1.8; margin-bottom: 2.5rem; }
+        .path-right > p { font-size: 1.15rem; color: rgba(255,255,255,0.9); line-height: 1.8; margin-bottom: 2.5rem; }
         
         .path-req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .req-box {
-            background: var(--white); padding: 2rem; border-radius: 20px;
-            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .req-box h5 { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem; }
-        .req-box p { margin: 0; font-size: 1.05rem; color: var(--navy); font-weight: 500; line-height: 1.5;}
+        .req-box p { margin: 0; font-size: 1.05rem; color: #fff; font-weight: 500; line-height: 1.5;}
 
         /* ═══════════════════════════════════════════════════ */
         /*  ELEGANT CTA                                       */
