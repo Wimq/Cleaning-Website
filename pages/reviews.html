@@ -3,226 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Success Stories & Reviews | Kensington Ivy</title>
+    <title>Elite Success Stories | Kensington Ivy</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
 <style>
-body { background-color: #faf9f6; } /* Premium off-white */
+/* ═══════════════════════════════════════════
+   GLOBAL DARK THEME OVERRIDES
+   ═══════════════════════════════════════════ */
+body { 
+    background-color: var(--navy); 
+    color: #fff; 
+    overflow-x: hidden;
+}
+
+/* Header overrides for dark mode */
+.header { background: rgba(10,17,40,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.header a:not(.btn) { color: #fff !important; }
+.logo-text { color: #fff !important; }
 
 /* ═══════════════════════════════════════════
-   HERO SECTION (Split Layout)
+   CINEMATIC HERO SECTION
    ═══════════════════════════════════════════ */
-.hero-premium {
-    padding: 10rem 0 6rem 0;
-    position: relative;
-    overflow: hidden;
-    background: #faf9f6;
-}
-.hero-premium::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%; width: 200%; height: 200%;
-    background: radial-gradient(circle at 70% 30%, rgba(201,162,88,0.1) 0%, rgba(10,17,40,0.02) 40%, transparent 60%);
-    pointer-events: none;
-}
-.hero-split {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem;
+.hero-cinematic {
+    min-height: 90vh;
+    display: flex;
     align-items: center;
-}
-@media (max-width: 900px) {
-    .hero-split { grid-template-columns: 1fr; text-align: center; }
-}
-.hero-text h1 {
-    font-family: var(--ff-head);
-    font-size: clamp(3.5rem, 6vw, 5rem);
-    color: var(--navy);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
-}
-.hero-text h1 span { color: var(--gold); font-style: italic; }
-.hero-text p {
-    font-size: 1.25rem;
-    color: #555;
-    line-height: 1.8;
-    max-width: 600px;
-    margin-bottom: 2.5rem;
-}
-@media (max-width: 900px) { .hero-text p { margin: 0 auto 2.5rem auto; } }
-
-/* Trustpilot Floating Badge */
-.tp-float-badge {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 182, 122, 0.2);
-    border-radius: 24px;
-    padding: 3rem 2.5rem;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.5);
+    justify-content: center;
     position: relative;
+    padding: 8rem 0 4rem 0;
     text-align: center;
-    transform: translateY(0);
-    transition: transform 0.4s ease;
 }
-.tp-float-badge:hover { transform: translateY(-10px); }
-.tp-logo-container {
-    background: #00b67a;
-    width: 60px; height: 60px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1.5rem auto;
+.hero-bg-glow {
+    position: absolute;
+    top: 20%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw; height: 80vw;
+    background: radial-gradient(circle, rgba(201,162,88,0.15) 0%, rgba(10,17,40,0) 60%);
+    pointer-events: none;
+    z-index: 0;
 }
-.tp-logo-container i { color: #fff; fill: #fff; width: 32px; height: 32px; }
-.tp-stars {
-    display: flex; justify-content: center; gap: 0.4rem; margin-bottom: 1rem;
+.hero-content {
+    position: relative; z-index: 2;
+    max-width: 900px; margin: 0 auto;
 }
-.tp-stars i { color: #00b67a; fill: #00b67a; width: 28px; height: 28px; }
-.tp-float-badge h3 { font-family: var(--ff-head); font-size: 2.2rem; color: var(--navy); margin-bottom: 0.5rem; }
-.tp-float-badge p { color: #666; margin-bottom: 2rem; font-weight: 500; }
-.tp-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem;
-    background: #00b67a; color: #fff;
-    padding: 1.2rem 2.5rem; border-radius: 50px;
-    font-weight: 600; font-size: 1.05rem; text-decoration: none;
-    transition: all 0.3s ease; width: 100%;
+.hero-tag {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid rgba(201,162,88,0.3);
+    border-radius: 50px;
+    color: var(--gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    background: rgba(201,162,88,0.05);
 }
-.tp-btn:hover { background: #009966; transform: scale(1.02); }
+.hero-cinematic h1 {
+    font-family: var(--ff-head);
+    font-size: clamp(4rem, 8vw, 6.5rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+.hero-cinematic h1 span {
+    background: linear-gradient(135deg, #fff 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+}
+.hero-cinematic p {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+}
 
-/* ═══════════════════════════════════════════
-   CASE STUDIES (Before & After)
-   ═══════════════════════════════════════════ */
-.case-studies-section {
-    padding: 6rem 0;
-    background: #fff;
-    position: relative;
-}
-.section-tag {
-    text-transform: uppercase; letter-spacing: 2px; color: var(--gold);
-    font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; display: block; text-align: center;
-}
-.section-title {
-    font-family: var(--ff-head); font-size: 3rem; color: var(--navy);
-    text-align: center; margin-bottom: 4rem;
-}
-
-.case-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem;
-}
-.case-card {
-    background: #faf9f6;
-    border: 1px solid rgba(0,0,0,0.04);
+/* Floating Trustpilot Stat */
+.stat-box {
+    display: flex; align-items: center; justify-content: center; gap: 3rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
     border-radius: 24px;
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    padding: 2rem 4rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    max-width: 600px; margin: 0 auto;
 }
-.case-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    border-color: rgba(201,162,88,0.3);
-}
-.case-card::before {
-    content: '"'; position: absolute; top: 1rem; right: 2rem;
-    font-family: var(--ff-head); font-size: 8rem; color: rgba(201,162,88,0.1);
-    line-height: 1; pointer-events: none;
-}
-.case-header {
-    display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem;
-}
-.case-avatar {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--navy), #1c2541);
-    color: var(--gold); display: flex; align-items: center; justify-content: center;
-    font-family: var(--ff-head); font-size: 1.5rem; font-weight: 700;
-}
-.case-meta h4 { font-size: 1.2rem; color: var(--navy); margin-bottom: 0.2rem; }
-.case-meta p { color: #666; font-size: 0.9rem; }
-
-.journey-box {
-    background: #fff;
-    border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;
-    border: 1px solid rgba(0,0,0,0.03);
-    display: flex; align-items: center; justify-content: space-between;
-}
-.journey-stat { text-align: center; flex: 1; }
-.journey-stat span { display: block; font-size: 0.75rem; text-transform: uppercase; color: #888; letter-spacing: 1px; margin-bottom: 0.4rem; }
-.journey-stat strong { display: block; font-size: 1.1rem; color: var(--navy); font-weight: 700; }
-.journey-arrow { color: var(--gold); opacity: 0.5; padding: 0 1rem; }
-
-.case-quote {
-    font-family: var(--ff-head); font-size: 1.15rem; color: #444;
-    line-height: 1.7; font-style: italic; margin: 0;
-}
+@media (max-width: 600px) { .stat-box { flex-direction: column; gap: 1.5rem; padding: 2rem; } }
+.stat-item { text-align: center; }
+.stat-number { font-family: var(--ff-head); font-size: 3.5rem; font-weight: 700; color: #fff; line-height: 1; display: block; margin-bottom: 0.5rem; }
+.stat-label { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
 
 /* ═══════════════════════════════════════════
-   MASONRY REVIEWS (Glassmorphism)
+   MAGAZINE-STYLE JOURNEYS (Featured)
    ═══════════════════════════════════════════ */
-.masonry-section { padding: 6rem 0; background: var(--navy); color: #fff; position: relative; overflow: hidden; }
-.masonry-section::after {
-    content: ''; position: absolute; bottom: -100px; right: -100px;
-    width: 400px; height: 400px; background: rgba(201,162,88,0.1); filter: blur(80px); border-radius: 50%; pointer-events: none;
+.featured-journeys {
+    padding: 8rem 0;
+    position: relative;
+    z-index: 2;
 }
-.masonry-section .section-title { color: #fff; }
+.featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+@media (max-width: 900px) { .featured-grid { grid-template-columns: 1fr; } }
 
-.masonry-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
-}
-.glass-review {
+.journey-card {
     background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(201,162,88,0.2);
+    border-radius: 30px;
+    padding: 4rem 3rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+.journey-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(201,162,88,0.1);
+    background: rgba(255,255,255,0.05);
+}
+.journey-card.full-width { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+@media (max-width: 900px) { .journey-card.full-width { grid-template-columns: 1fr; } }
+
+.journey-metrics {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem;
+    background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);
+}
+.metric-block { flex: 1; }
+.metric-title { font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; display: block; }
+.metric-value { font-family: var(--ff-head); font-size: 1.4rem; color: #fff; font-weight: 700; }
+.metric-arrow { color: var(--gold); width: 24px; height: 24px; opacity: 0.8; }
+
+.journey-text { font-family: var(--ff-head); font-size: 1.8rem; line-height: 1.4; color: #fff; font-style: italic; margin-bottom: 3rem; }
+.journey-card.full-width .journey-text { font-size: 2.2rem; }
+
+.journey-author { display: flex; align-items: center; gap: 1rem; }
+.author-circle { width: 50px; height: 50px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--ff-head); font-size: 1.2rem; }
+.author-details h4 { color: #fff; margin-bottom: 0.2rem; font-size: 1.1rem; }
+.author-details p { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+
+/* ═══════════════════════════════════════════
+   GLASS MASONRY GRID (Standard Reviews)
+   ═══════════════════════════════════════════ */
+.masonry-section { padding: 4rem 0 8rem 0; position: relative; }
+.masonry-grid {
+    column-count: 3; column-gap: 2rem;
+}
+@media (max-width: 1000px) { .masonry-grid { column-count: 2; } }
+@media (max-width: 600px) { .masonry-grid { column-count: 1; } }
+
+.glass-item {
+    background: rgba(255,255,255,0.02);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px; padding: 2rem;
-    transition: transform 0.3s ease, background 0.3s ease;
+    border-radius: 20px; padding: 2.5rem;
+    break-inside: avoid; margin-bottom: 2rem;
+    transition: all 0.3s ease; position: relative; overflow: hidden;
 }
-.glass-review:hover {
-    transform: translateY(-5px); background: rgba(255,255,255,0.06); border-color: rgba(201,162,88,0.4);
-}
-.glass-stars { display: flex; gap: 0.2rem; margin-bottom: 1rem; }
-.glass-stars i { color: var(--gold); fill: var(--gold); width: 16px; height: 16px; }
-.glass-review p { font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
-.glass-author { display: flex; align-items: center; gap: 1rem; }
-.glass-author-initials {
-    width: 40px; height: 40px; border-radius: 50%; background: rgba(201,162,88,0.2);
-    color: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.9rem;
-}
-.glass-author-details h5 { margin: 0; font-size: 0.95rem; color: #fff; }
-.glass-author-details span { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+.glass-item:hover { background: rgba(255,255,255,0.05); border-color: rgba(201,162,88,0.5); transform: translateY(-5px); }
+.glass-item::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); opacity: 0; transition: opacity 0.3s ease; }
+.glass-item:hover::before { opacity: 1; }
+
+.tp-stars-small { display: flex; gap: 0.2rem; margin-bottom: 1.5rem; }
+.tp-stars-small i { color: #00b67a; fill: #00b67a; width: 18px; height: 18px; }
+
+.glass-item p { font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+.glass-meta h5 { color: #fff; font-size: 1rem; margin-bottom: 0.2rem; }
+.glass-meta span { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
 
 /* ═══════════════════════════════════════════
    PREMIUM SUBMIT FORM
    ═══════════════════════════════════════════ */
-.submit-section { padding: 8rem 0; background: #faf9f6; }
-.premium-form-card {
-    background: #fff;
-    border-radius: 30px;
-    padding: 5rem 4rem;
+.submit-section {
+    padding: 8rem 0;
+    background: #060a18; /* Extremely deep navy */
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.form-container {
     max-width: 800px; margin: 0 auto;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.02);
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 30px;
+    padding: 5rem;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    position: relative; overflow: hidden;
 }
-@media (max-width: 768px) { .premium-form-card { padding: 3rem 2rem; } }
-.premium-form-card h2 { font-family: var(--ff-head); font-size: 2.5rem; color: var(--navy); text-align: center; margin-bottom: 1rem; }
-.premium-form-card > p { text-align: center; color: #666; margin-bottom: 3rem; font-size: 1.1rem; }
+.form-container::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(201,162,88,0.05) 0%, transparent 100%); pointer-events: none;
+}
+@media (max-width: 768px) { .form-container { padding: 3rem 2rem; } }
+.form-header { text-align: center; margin-bottom: 4rem; position: relative; z-index: 2; }
+.form-header h2 { font-family: var(--ff-head); font-size: 2.8rem; color: #fff; margin-bottom: 1rem; }
+.form-header p { color: rgba(255,255,255,0.6); font-size: 1.1rem; }
 
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-@media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
-.input-group label { display: block; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; font-size: 0.9rem; }
-.input-group input, .input-group select, .input-group textarea {
-    width: 100%; padding: 1rem 1.2rem;
-    background: #f8f9fa; border: 1px solid #e9ecef;
-    border-radius: 12px; font-family: var(--ff-body); font-size: 1rem;
-    transition: all 0.3s ease; color: var(--navy);
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; position: relative; z-index: 2; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+.form-group label { display: block; color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; font-weight: 600; }
+.form-input {
+    width: 100%; padding: 1.2rem;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: #fff; font-size: 1rem; font-family: var(--ff-body);
+    transition: all 0.3s ease;
 }
-.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
-    outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(201,162,88,0.1);
+.form-input:focus { outline: none; border-color: var(--gold); background: rgba(0,0,0,0.6); box-shadow: 0 0 20px rgba(201,162,88,0.15); }
+.form-input::placeholder { color: rgba(255,255,255,0.3); }
+textarea.form-input { min-height: 150px; resize: vertical; }
+select.form-input { appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23c9a258" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>'); background-repeat: no-repeat; background-position: right 1.2rem center; }
+select.form-input option { background: var(--navy); color: #fff; }
+
+.btn-submit-premium {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold) 0%, #a6823c 100%);
+    color: var(--navy); font-weight: 700; font-size: 1.2rem;
+    padding: 1.5rem; border: none; border-radius: 12px; cursor: pointer;
+    transition: all 0.3s ease; position: relative; z-index: 2;
 }
-.input-group textarea { resize: vertical; min-height: 120px; }
+.btn-submit-premium:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(201,162,88,0.3); }
 
 </style>
 </head>
@@ -234,310 +241,238 @@ body { background-color: #faf9f6; } /* Premium off-white */
             <span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span>
         </a>
         <nav class="top-links" style="gap: 2rem;">
-            <a href="find-courses.html" style="color: var(--navy); font-weight: 500;">Find Courses</a>
-            <a href="registries.html" style="color: var(--navy); font-weight: 500;">University Registries</a>
-            <a href="foundation-years.html" style="color: var(--navy); font-weight: 500;">Foundation Years</a>
-            <a href="about.html?v=3" style="color: var(--navy); font-weight: 500;">About Us</a>
+            <a href="find-courses.html" style="font-weight: 500;">Find Courses</a>
+            <a href="registries.html" style="font-weight: 500;">University Registries</a>
+            <a href="foundation-years.html" style="font-weight: 500;">Foundation Years</a>
+            <a href="about.html?v=3" style="font-weight: 500;">About Us</a>
         </nav>
         <div style="display: flex; gap: 1rem; align-items: center;">
             <a href="register.html" class="btn btn-gold">Enquire Now</a>
             <button class="menu-toggle" onclick="document.querySelector('.top-links').classList.toggle('active')" aria-label="Toggle Menu">
-                <i data-lucide="menu"></i>
+                <i data-lucide="menu" style="color: #fff;"></i>
             </button>
         </div>
     </div>
 </header>
 
 <main>
-    <!-- HERO -->
-    <section class="hero-premium">
-        <div class="container hero-split">
-            <div class="hero-text">
-                <span class="section-tag">Client Success</span>
-                <h1>Don't just take <span>our word</span> for it.</h1>
-                <p>We are judged purely by the results we deliver. Discover how we've bypassed queues and secured elite university placements for our clients across the UK.</p>
-                <div style="display: flex; gap: 2rem; align-items: center;">
-                    <div>
-                        <strong style="display: block; font-family: var(--ff-head); font-size: 2rem; color: var(--navy);">100%</strong>
-                        <span style="color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Placement Rate</span>
-                    </div>
-                    <div style="width: 1px; height: 40px; background: rgba(0,0,0,0.1);"></div>
-                    <div>
-                        <strong style="display: block; font-family: var(--ff-head); font-size: 2rem; color: var(--navy);">24hr</strong>
-                        <span style="color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Avg. Clearing Offer</span>
-                    </div>
-                </div>
-            </div>
+    <!-- CINEMATIC HERO -->
+    <section class="hero-cinematic">
+        <div class="hero-bg-glow"></div>
+        <div class="container hero-content">
+            <span class="hero-tag">Client Outcomes</span>
+            <h1>Where Excellence is <span>Expected.</span></h1>
+            <p>At Kensington Ivy, we don't deal in maybes. We deliver results. Explore the unvarnished stories of clients who secured elite UK university placements through our consultancy.</p>
             
-            <div class="tp-float-badge">
-                <div class="tp-logo-container">
-                    <i data-lucide="star"></i>
+            <div class="stat-box">
+                <div class="stat-item">
+                    <span class="stat-number">5.0</span>
+                    <span class="stat-label">Trustpilot Rating</span>
                 </div>
-                <div class="tp-stars">
-                    <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                <div style="width: 1px; height: 60px; background: rgba(255,255,255,0.1);"></div>
+                <div class="stat-item" style="text-align: left;">
+                    <div style="display: flex; gap: 0.3rem; margin-bottom: 0.5rem;">
+                        <i data-lucide="star" style="color: #00b67a; fill: #00b67a; width: 28px; height: 28px;"></i>
+                        <i data-lucide="star" style="color: #00b67a; fill: #00b67a; width: 28px; height: 28px;"></i>
+                        <i data-lucide="star" style="color: #00b67a; fill: #00b67a; width: 28px; height: 28px;"></i>
+                        <i data-lucide="star" style="color: #00b67a; fill: #00b67a; width: 28px; height: 28px;"></i>
+                        <i data-lucide="star" style="color: #00b67a; fill: #00b67a; width: 28px; height: 28px;"></i>
+                    </div>
+                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" style="color: #fff; text-decoration: underline; font-size: 0.9rem;">Read Independent Reviews</a>
                 </div>
-                <h3>Excellent</h3>
-                <p>Based on independent reviews</p>
-                <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" class="tp-btn">
-                    Read on Trustpilot <i data-lucide="arrow-right" style="width: 18px;"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- CASE STUDIES -->
-    <section class="case-studies-section">
-        <div class="container">
-            <span class="section-tag">Verified Journeys</span>
-            <h2 class="section-title">From Panic to Placement</h2>
+    <!-- FEATURED JOURNEYS -->
+    <section class="featured-journeys container">
+        <h2 style="font-family: var(--ff-head); font-size: 2.5rem; color: #fff; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">Case Studies</h2>
+        
+        <div class="featured-grid">
             
-            <div class="case-grid">
-                <!-- Case 1 -->
-                <div class="case-card">
-                    <div class="case-header">
-                        <div class="case-avatar">SM</div>
-                        <div class="case-meta">
+            <!-- Case 1: Full Width -->
+            <div class="journey-card full-width">
+                <div>
+                    <div class="journey-metrics">
+                        <div class="metric-block">
+                            <span class="metric-title">Initial Hurdle</span>
+                            <span class="metric-value">Missed Firm Offer</span>
+                        </div>
+                        <i data-lucide="arrow-right" class="metric-arrow"></i>
+                        <div class="metric-block">
+                            <span class="metric-title">Final Outcome</span>
+                            <span class="metric-value">King's College London</span>
+                        </div>
+                    </div>
+                    <div class="journey-author">
+                        <div class="author-circle">SM</div>
+                        <div class="author-details">
                             <h4>Sarah M.</h4>
                             <p>Law (LLB) Applicant</p>
                         </div>
                     </div>
-                    <div class="journey-box">
-                        <div class="journey-stat">
-                            <span>Predicted</span>
-                            <strong>AAB</strong>
-                        </div>
-                        <i data-lucide="arrow-right" class="journey-arrow"></i>
-                        <div class="journey-stat">
-                            <span>Secured</span>
-                            <strong>Nottingham</strong>
-                        </div>
-                    </div>
-                    <p class="case-quote">"I missed my firm offer and panicked on results day. The Kensington Ivy team took over, bypassed the public phone queues instantly, and secured me a spot at a Russell Group university within hours. Utterly incredible."</p>
                 </div>
-
-                <!-- Case 2 -->
-                <div class="case-card">
-                    <div class="case-header">
-                        <div class="case-avatar">JT</div>
-                        <div class="case-meta">
-                            <h4>James T.</h4>
-                            <p>Mature Student</p>
-                        </div>
-                    </div>
-                    <div class="journey-box">
-                        <div class="journey-stat">
-                            <span>Status</span>
-                            <strong>No A-Levels</strong>
-                        </div>
-                        <i data-lucide="arrow-right" class="journey-arrow"></i>
-                        <div class="journey-stat">
-                            <span>Placed</span>
-                            <strong>Found. Year</strong>
-                        </div>
-                    </div>
-                    <p class="case-quote">"Returning to education in my 30s felt impossible. They completely demystified the UCAS process, mapped out an Access to HE pathway for me, and handled everything. Starting my degree next month."</p>
-                </div>
-
-                <!-- Case 3 -->
-                <div class="case-card">
-                    <div class="case-header">
-                        <div class="case-avatar">AK</div>
-                        <div class="case-meta">
-                            <h4>Aisha K.</h4>
-                            <p>Medicine (MBBS)</p>
-                        </div>
-                    </div>
-                    <div class="journey-box">
-                        <div class="journey-stat">
-                            <span>Hurdle</span>
-                            <strong>Interviews</strong>
-                        </div>
-                        <i data-lucide="arrow-right" class="journey-arrow"></i>
-                        <div class="journey-stat">
-                            <span>Outcome</span>
-                            <strong>1st Choice</strong>
-                        </div>
-                    </div>
-                    <p class="case-quote">"The bespoke interview preparation I received for my Medicine application was phenomenal. The consultants know exactly what the panels are looking for. I walked in confident and got my offer."</p>
+                <div>
+                    <p class="journey-text">"I panicked on results day when I missed my offer. The Kensington Ivy team took complete control, bypassed the massive clearing queues instantly, and secured me a spot at KCL within 4 hours. Unbelievable precision and service."</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- MASONRY GRID (Glass) -->
-    <section class="masonry-section">
-        <div class="container">
-            <span class="section-tag" style="color: #fff; opacity: 0.7;">More Stories</span>
-            <h2 class="section-title">What Our Clients Say</h2>
+            <!-- Case 2 -->
+            <div class="journey-card">
+                <div class="journey-metrics">
+                    <div class="metric-block">
+                        <span class="metric-title">Status</span>
+                        <span class="metric-value">No A-Levels</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="metric-arrow"></i>
+                    <div class="metric-block">
+                        <span class="metric-title">Placed</span>
+                        <span class="metric-value">Found. Year</span>
+                    </div>
+                </div>
+                <p class="journey-text" style="font-size: 1.4rem;">"As a mature student returning to education in my 30s, the UCAS process felt impossible. They mapped out an exact pathway and handled every detail. I start next month."</p>
+                <div class="journey-author">
+                    <div class="author-circle" style="background: rgba(255,255,255,0.1); color: #fff;">JT</div>
+                    <div class="author-details">
+                        <h4>James T.</h4>
+                        <p>Mature Applicant</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="journey-card">
+                <div class="journey-metrics">
+                    <div class="metric-block">
+                        <span class="metric-title">Hurdle</span>
+                        <span class="metric-value">MMI Interviews</span>
+                    </div>
+                    <i data-lucide="arrow-right" class="metric-arrow"></i>
+                    <div class="metric-block">
+                        <span class="metric-title">Outcome</span>
+                        <span class="metric-value">1st Choice MBBS</span>
+                    </div>
+                </div>
+                <p class="journey-text" style="font-size: 1.4rem;">"The bespoke interview preparation for Medicine was phenomenal. The consultants knew exactly what the panels demanded. I walked in perfectly confident."</p>
+                <div class="journey-author">
+                    <div class="author-circle" style="background: rgba(255,255,255,0.1); color: #fff;">AK</div>
+                    <div class="author-details">
+                        <h4>Aisha K.</h4>
+                        <p>Medicine Student</p>
+                    </div>
+                </div>
+            </div>
             
-            <div class="masonry-grid">
-                <div class="glass-review">
-                    <div class="glass-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
-                    <p>"Flawless service from start to finish. They rewrote my personal statement and it made a night and day difference to my application."</p>
-                    <div class="glass-author">
-                        <div class="glass-author-initials">DR</div>
-                        <div class="glass-author-details">
-                            <h5>David R.</h5>
-                            <span>Economics (BSc)</span>
-                        </div>
-                    </div>
-                </div>
+        </div>
+    </section>
 
-                <div class="glass-review">
-                    <div class="glass-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
-                    <p>"I had an extremely complex international visa situation combined with clearing. Kensington Ivy's legal and admissions team sorted it in 48 hours."</p>
-                    <div class="glass-author">
-                        <div class="glass-author-initials">LZ</div>
-                        <div class="glass-author-details">
-                            <h5>Li Z.</h5>
-                            <span>International Student</span>
-                        </div>
-                    </div>
+    <!-- MASONRY GRID -->
+    <section class="masonry-section container">
+        <h2 style="font-family: var(--ff-head); font-size: 2.5rem; color: #fff; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">Client Testimonials</h2>
+        
+        <div class="masonry-grid">
+            <div class="glass-item">
+                <div class="tp-stars-small">
+                    <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
                 </div>
+                <p>"Flawless execution. They completely rewrote my personal statement to emphasize my commercial awareness, turning my application into a compelling narrative. The difference was night and day."</p>
+                <div class="glass-meta">
+                    <h5>David R.</h5>
+                    <span>Placed in BSc Economics</span>
+                </div>
+            </div>
 
-                <div class="glass-review">
-                    <div class="glass-stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
-                    <p>"Worth every single penny. The stress they removed from my shoulders during A-Level results day was priceless. Highly recommend."</p>
-                    <div class="glass-author">
-                        <div class="glass-author-initials">EP</div>
-                        <div class="glass-author-details">
-                            <h5>Emma P.</h5>
-                            <span>Parent</span>
-                        </div>
-                    </div>
+            <div class="glass-item">
+                <div class="tp-stars-small">
+                    <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                </div>
+                <p>"I had an incredibly complex international visa situation colliding with clearing deadlines. The legal and admissions directors at Kensington Ivy resolved the entire issue in 48 hours."</p>
+                <div class="glass-meta">
+                    <h5>Li Z.</h5>
+                    <span>International Student</span>
+                </div>
+            </div>
+
+            <div class="glass-item">
+                <div class="tp-stars-small">
+                    <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                </div>
+                <p>"Worth every single penny. The stress they removed from our family's shoulders during A-Level results day was priceless. They simply execute what they promise."</p>
+                <div class="glass-meta">
+                    <h5>Emma P.</h5>
+                    <span>Parent of Applicant</span>
+                </div>
+            </div>
+            
+            <div class="glass-item">
+                <div class="tp-stars-small">
+                    <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                </div>
+                <p>"I was aiming for top-tier architecture schools but my portfolio was lacking narrative. Their specialists audited my work, instructed me exactly what to rebuild, and I secured my firm choice at UCL."</p>
+                <div class="glass-meta">
+                    <h5>Omar H.</h5>
+                    <span>Architecture (BSc)</span>
+                </div>
+            </div>
+
+            <div class="glass-item">
+                <div class="tp-stars-small">
+                    <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                </div>
+                <p>"Their direct connections with university registries meant my application wasn't just sitting in a pile. They advocated for me personally. Truly elite consultancy."</p>
+                <div class="glass-meta">
+                    <h5>Chloe S.</h5>
+                    <span>Postgraduate Applicant</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SUBMIT REVIEW FORM -->
+    <!-- PREMIUM SUBMISSION FORM -->
     <section class="submit-section">
         <div class="container">
-            <div class="premium-form-card">
-                <h2>Share Your Journey</h2>
-                <p>Have you successfully secured a placement with Kensington Ivy? Your story helps inspire future students.</p>
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Share Your Story</h2>
+                    <p>Have you secured an elite placement through Kensington Ivy? Your verified testimonial contributes to our legacy of success.</p>
+                </div>
                 
-                <form onsubmit="event.preventDefault(); alert('Thank you! Your verified review has been submitted for moderation.'); this.reset();">
-                    <div class="form-grid">
-                        <div class="input-group">
+                <form onsubmit="event.preventDefault(); alert('Your verified testimonial has been securely submitted for moderation.'); this.reset();">
+                    <div class="form-row">
+                        <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" placeholder="John Doe" required>
+                            <input type="text" class="form-input" placeholder="Enter your full name" required>
                         </div>
-                        <div class="input-group">
+                        <div class="form-group">
                             <label>Course / Placement</label>
-                            <input type="text" placeholder="e.g. BSc Computer Science" required>
+                            <input type="text" class="form-input" placeholder="e.g. LLB Law at UCL" required>
                         </div>
                     </div>
                     
-                    <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <div class="form-group" style="margin-bottom: 2rem; position: relative; z-index: 2;">
                         <label>Experience Rating</label>
-                        <select required>
-                            <option value="5">⭐⭐⭐⭐⭐ Exceptional Service</option>
-                            <option value="4">⭐⭐⭐⭐ Very Good</option>
-                            <option value="3">⭐⭐⭐ Met Expectations</option>
+                        <select class="form-input" required>
+                            <option value="5">⭐⭐⭐⭐⭐ Exceptional - Exceeded Expectations</option>
+                            <option value="4">⭐⭐⭐⭐ Very Good - Highly Recommend</option>
+                            <option value="3">⭐⭐⭐ Good - Met Expectations</option>
                         </select>
                     </div>
                     
-                    <div class="input-group" style="margin-bottom: 2rem;">
+                    <div class="form-group" style="margin-bottom: 3rem; position: relative; z-index: 2;">
                         <label>Your Testimonial</label>
-                        <textarea placeholder="Detail your experience with our consultants..." required></textarea>
+                        <textarea class="form-input" placeholder="Detail the specific challenges you faced and how our consultants resolved them..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-gold" style="width: 100%; font-size: 1.1rem; padding: 1.2rem; border-radius: 12px; justify-content: center; box-shadow: 0 10px 20px rgba(201,162,88,0.2);">Submit Verification</button>
+                    <button type="submit" class="btn-submit-premium">Submit Verification</button>
                 </form>
             </div>
         </div>
     </section>
 </main>
 
-<footer style="background: linear-gradient(to bottom, #111827, var(--navy)); padding: 6rem 0 3rem 0; color: #fff; border-top: 4px solid var(--gold); position: relative; overflow: hidden;">
-    <!-- Background subtle glow -->
-    <div style="position: absolute; top: 0; right: 10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,162,88,0.05) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none;"></div>
-
-    <div class="container" style="position: relative; z-index: 2;">
-        <!-- Pre-footer CTA -->
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 3rem; margin-bottom: 5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
-            <div>
-                <h3 style="font-family: var(--ff-head); font-size: 2rem; color: #fff; margin-bottom: 0.5rem;">Ready to secure your future?</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; margin: 0;">Speak to our admissions experts today for a free consultation.</p>
-            </div>
-            <a href="../pages/register.html" class="btn btn-gold" style="font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 50px;">Start Your Journey</a>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
-            
-            <div style="grid-column: span 1;">
-                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem; text-decoration: none;">
-                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2.2rem; color: #fff; letter-spacing: -0.5px;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2.2rem; color: var(--gold);">Ivy</span>
-                </a>
-                <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.8; max-width: 320px; margin-bottom: 2.5rem;">The UK's premier university placement and admissions partner. Built on absolute academic excellence.</p>
-                <div style="display: flex; gap: 1rem;">
-                    <a href="#" aria-label="Instagram" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-                        <i data-lucide="instagram" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
-                    </a>
-                    <a href="#" aria-label="TikTok" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 22px; height: 22px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-                        <i data-lucide="linkedin" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
-                    </a>
-                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='#00b67a'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-                        <i data-lucide="star" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.2rem; margin-bottom: 2rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Navigation</h4>
-                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
-                    <a href="../index.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Home</a>
-                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">About Us</a>
-                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">University Registries</a>
-                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Foundation Years</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.2rem; margin-bottom: 2rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Legal</h4>
-                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
-                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Privacy Policy</a>
-                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Website Terms</a>
-                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Cookie Policy</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.2rem; margin-bottom: 2rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Contact</h4>
-                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.6); align-items: flex-start;">
-                        <i data-lucide="map-pin" style="width: 20px; height: 20px; flex-shrink: 0; color: var(--gold); margin-top: 2px;"></i>
-                        <p style="font-size: 0.95rem; margin: 0; line-height: 1.5;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
-                    </div>
-                    <div style="display: flex; gap: 1rem; align-items: center;">
-                        <i data-lucide="mail" style="width: 20px; height: 20px; flex-shrink: 0; color: var(--gold);"></i>
-                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">enquiries@kensingtonivy.co.uk</a>
-                    </div>
-                    <div style="display: flex; gap: 1rem; align-items: center;">
-                        <i data-lucide="phone" style="width: 20px; height: 20px; flex-shrink: 0; color: var(--gold);"></i>
-                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">020 7444 0009</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.4); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
-            <p style="margin: 0;">&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
-            <div style="opacity: 0.8;">
-                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge" style="display: block;"> 
-                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block; border-radius: 4px;" />
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
+<!-- Footer will be auto-injected by script -->
 
 <script>lucide.createIcons();</script>
-<script>document.querySelectorAll('.dynamic-year').forEach(el => el.textContent = new Date().getFullYear());</script>
 
 <!-- Floating Cookie Button -->
 <button id="floatingCookieBtn" onclick="document.getElementById('cookieBanner').classList.add('visible');" style="position: fixed; bottom: 20px; left: 20px; z-index: 9998; background: var(--navy); color: #fff; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;">
