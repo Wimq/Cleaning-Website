@@ -509,6 +509,7 @@
 
 
 
+
 <!-- Floating Cookie Button -->
 <button id="floatingCookieBtn" onclick="document.getElementById('cookieBanner').classList.add('visible');" style="position: fixed; bottom: 20px; left: 20px; z-index: 9998; background: var(--navy); color: #fff; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;">
     <i data-lucide="cookie" style="width: 24px; height: 24px;"></i>
@@ -520,66 +521,124 @@
 </button>
 
 <!-- Full Height Accessibility Side Panel -->
-<div id="accSidePanelOverlay" onclick="toggleAccessibilityPanel()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(4px);"></div>
-<div id="accSidePanel" style="position: fixed; top: 0; right: -450px; width: 400px; max-width: 100vw; height: 100vh; background: #fff; box-shadow: -10px 0 30px rgba(0,0,0,0.2); z-index: 10000; transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column;">
-    <div style="padding: 1.5rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; background: var(--navy); color: #fff;">
-        <h3 style="margin: 0; font-size: 1.3rem; display: flex; align-items: center; gap: 0.75rem; font-family: var(--ff-head);"><i data-lucide="accessibility" style="color: var(--gold);"></i> Accessibility Suite</h3>
-        <button onclick="toggleAccessibilityPanel()" style="background: rgba(255,255,255,0.1); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: none; color: #fff; cursor: pointer; transition: background 0.3s ease;"><i data-lucide="x" style="width: 18px;"></i></button>
+<div id="accSidePanelOverlay" onclick="toggleAccessibilityPanel()" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; backdrop-filter: blur(4px);"></div>
+<div id="accSidePanel" style="position: fixed; top: 0; right: -450px; width: 400px; max-width: 100vw; height: 100vh; background: #fff; box-shadow: -10px 0 30px rgba(0,0,0,0.1); z-index: 10000; transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; overflow: hidden;">
+    <div style="padding: 1.5rem 2rem; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; background: #fff;">
+        <h3 style="margin: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 0.75rem; font-family: var(--ff-head); color: var(--navy);"><i data-lucide="accessibility" style="color: var(--gold);"></i> Accessibility Suite</h3>
+        <button onclick="toggleAccessibilityPanel()" style="background: rgba(10,17,40,0.05); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: none; color: var(--navy); cursor: pointer; transition: background 0.3s ease;"><i data-lucide="x" style="width: 18px;"></i></button>
     </div>
     
-    <div style="flex: 1; overflow-y: auto; padding: 2rem; background: #faf9f6;" class="acc-panel-scrollable">
+    <div style="flex: 1; overflow-y: auto; padding: 2rem; background: #fdfbf7;" class="acc-panel-scrollable">
         
         <!-- Translate -->
-        <div class="acc-section" style="margin-bottom: 2rem; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border: 1px solid #eee;">
-            <label style="display: block; font-weight: 600; color: var(--navy); margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;"><i data-lucide="globe-2" style="width: 16px; display: inline-block; vertical-align: middle; margin-right: 6px; color: var(--gold);"></i> Translate Page</label>
-            <!-- Custom Styled Wrapper for GTranslate -->
-            <div class="gtranslate_styled_container">
+        <div class="acc-section" style="margin-bottom: 2rem;">
+            <label style="display: block; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Translate Page</label>
+            <div class="custom-select-wrapper">
                 <div class="gtranslate_wrapper"></div>
             </div>
         </div>
         
         <!-- Color Scheme -->
-        <div class="acc-section" style="margin-bottom: 2rem; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border: 1px solid #eee;">
-            <label style="display: block; font-weight: 600; color: var(--navy); margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;"><i data-lucide="palette" style="width: 16px; display: inline-block; vertical-align: middle; margin-right: 6px; color: var(--gold);"></i> Color Scheme</label>
-            <div style="display: flex; gap: 0.5rem;">
-                <button class="scheme-btn active" onclick="setColorScheme('light', this)" style="flex: 1; padding: 0.75rem 0.5rem; border-radius: 8px; border: 1px solid var(--navy); background: rgba(10,17,40,0.05); cursor: pointer; font-size: 0.9rem; color: var(--navy); font-weight: 600; transition: all 0.2s;"><i data-lucide="sun" style="width: 18px; margin-bottom: 4px; display: block; margin: 0 auto 4px auto;"></i> Light</button>
-                <button class="scheme-btn" onclick="setColorScheme('dark', this)" style="flex: 1; padding: 0.75rem 0.5rem; border-radius: 8px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 0.9rem; color: var(--navy); font-weight: 600; transition: all 0.2s;"><i data-lucide="moon" style="width: 18px; margin-bottom: 4px; display: block; margin: 0 auto 4px auto;"></i> Dark</button>
-                <button class="scheme-btn" onclick="setColorScheme('contrast', this)" style="flex: 1; padding: 0.75rem 0.5rem; border-radius: 8px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 0.9rem; color: var(--navy); font-weight: 600; transition: all 0.2s;"><i data-lucide="contrast" style="width: 18px; margin-bottom: 4px; display: block; margin: 0 auto 4px auto;"></i> Contrast</button>
+        <div class="acc-section" style="margin-bottom: 2rem;">
+            <label style="display: block; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Color Scheme</label>
+            <div style="display: flex; gap: 0.5rem; background: #fff; padding: 0.5rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                <button class="scheme-btn active" onclick="setColorScheme('light', this)" style="flex: 1; padding: 0.75rem 0.5rem; border-radius: 8px; border: none; background: rgba(10,17,40,0.05); cursor: pointer; font-size: 0.85rem; color: var(--navy); font-weight: 600; transition: all 0.2s;"><i data-lucide="sun" style="width: 16px; margin-bottom: 4px; display: block; margin: 0 auto 4px auto;"></i> Light</button>
+                <button class="scheme-btn" onclick="setColorScheme('dark', this)" style="flex: 1; padding: 0.75rem 0.5rem; border-radius: 8px; border: none; background: transparent; cursor: pointer; font-size: 0.85rem; color: #666; font-weight: 500; transition: all 0.2s;"><i data-lucide="moon" style="width: 16px; margin-bottom: 4px; display: block; margin: 0 auto 4px auto;"></i> Dark</button>
+                <button class="scheme-btn" onclick="setColorScheme('contrast', this)" style="flex: 1; padding: 0.75rem 0.5rem; border-radius: 8px; border: none; background: transparent; cursor: pointer; font-size: 0.85rem; color: #666; font-weight: 500; transition: all 0.2s;"><i data-lucide="contrast" style="width: 16px; margin-bottom: 4px; display: block; margin: 0 auto 4px auto;"></i> Contrast</button>
             </div>
         </div>
 
         <!-- Text Size -->
-        <div class="acc-section" style="margin-bottom: 2rem; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); border: 1px solid #eee;">
-            <label style="display: block; font-weight: 600; color: var(--navy); margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;"><i data-lucide="type" style="width: 16px; display: inline-block; vertical-align: middle; margin-right: 6px; color: var(--gold);"></i> Text Size</label>
-            <div style="display: flex; gap: 1rem;">
-                <button onclick="changeFontSize(-1)" style="flex: 1; padding: 0.75rem; border-radius: 8px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 1rem; color: var(--navy); font-weight: 600; transition: all 0.2s;">A-</button>
-                <button onclick="changeFontSize(0)" style="flex: 1; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--navy); background: rgba(10,17,40,0.05); cursor: pointer; font-size: 1rem; color: var(--navy); font-weight: 600; transition: all 0.2s;">Default</button>
-                <button onclick="changeFontSize(1)" style="flex: 1; padding: 0.75rem; border-radius: 8px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 1.2rem; color: var(--navy); font-weight: 600; transition: all 0.2s;">A+</button>
+        <div class="acc-section" style="margin-bottom: 2rem;">
+            <label style="display: block; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Text Size</label>
+            <div style="display: flex; gap: 0.5rem; background: #fff; padding: 0.5rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                <button onclick="changeFontSize(-1)" style="flex: 1; padding: 0.75rem; border-radius: 8px; border: none; background: transparent; cursor: pointer; font-size: 1rem; color: #666; font-weight: 600; transition: all 0.2s;">A-</button>
+                <button onclick="changeFontSize(0)" style="flex: 1; padding: 0.75rem; border-radius: 8px; border: none; background: rgba(10,17,40,0.05); cursor: pointer; font-size: 0.9rem; color: var(--navy); font-weight: 600; transition: all 0.2s;">Default</button>
+                <button onclick="changeFontSize(1)" style="flex: 1; padding: 0.75rem; border-radius: 8px; border: none; background: transparent; cursor: pointer; font-size: 1.2rem; color: #666; font-weight: 600; transition: all 0.2s;">A+</button>
             </div>
         </div>
         
-        <label style="display: block; font-weight: 600; color: var(--navy); margin-bottom: 1rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;"><i data-lucide="settings" style="width: 16px; display: inline-block; vertical-align: middle; margin-right: 6px; color: var(--gold);"></i> Viewing Tools</label>
+        <label style="display: block; font-weight: 600; color: var(--navy); margin-bottom: 1rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 3rem;">Reading Tools</label>
         
-        <!-- Toggles Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
-            <button class="acc-toggle" onclick="toggleAccClass('dyslexia-font', this)">
-                <i data-lucide="book-open"></i> Dyslexia Font
-            </button>
-            <button class="acc-toggle" onclick="toggleAccClass('big-cursor', this)">
-                <i data-lucide="mouse-pointer-2"></i> Big Cursor
-            </button>
-            <button class="acc-toggle" onclick="toggleAccClass('highlight-links', this)">
-                <i data-lucide="link-2"></i> Highlight Links
-            </button>
-            <button class="acc-toggle" onclick="toggleAccClass('high-spacing', this)">
-                <i data-lucide="space"></i> Letter Spacing
-            </button>
-            <button class="acc-toggle" onclick="toggleAccClass('no-animations', this)">
-                <i data-lucide="play-circle"></i> Stop Animations
-            </button>
+        <!-- Toggles List -->
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+            <!-- Dyslexia Font -->
+            <div class="acc-toggle-row">
+                <div class="acc-toggle-info">
+                    <i data-lucide="book-open"></i>
+                    <div>
+                        <span class="acc-toggle-title">Dyslexia Font</span>
+                        <span class="acc-toggle-desc">Switches to a highly readable font</span>
+                    </div>
+                </div>
+                <label class="ios-toggle">
+                    <input type="checkbox" onchange="toggleAccClass('dyslexia-font', this)">
+                    <span class="ios-slider"></span>
+                </label>
+            </div>
+
+            <!-- Big Cursor -->
+            <div class="acc-toggle-row">
+                <div class="acc-toggle-info">
+                    <i data-lucide="mouse-pointer-2"></i>
+                    <div>
+                        <span class="acc-toggle-title">Big Cursor</span>
+                        <span class="acc-toggle-desc">Increases mouse pointer size</span>
+                    </div>
+                </div>
+                <label class="ios-toggle">
+                    <input type="checkbox" onchange="toggleAccClass('big-cursor', this)">
+                    <span class="ios-slider"></span>
+                </label>
+            </div>
+
+            <!-- Highlight Links -->
+            <div class="acc-toggle-row">
+                <div class="acc-toggle-info">
+                    <i data-lucide="link-2"></i>
+                    <div>
+                        <span class="acc-toggle-title">Highlight Links</span>
+                        <span class="acc-toggle-desc">Makes clickable items stand out</span>
+                    </div>
+                </div>
+                <label class="ios-toggle">
+                    <input type="checkbox" onchange="toggleAccClass('highlight-links', this)">
+                    <span class="ios-slider"></span>
+                </label>
+            </div>
+
+            <!-- Letter Spacing -->
+            <div class="acc-toggle-row">
+                <div class="acc-toggle-info">
+                    <i data-lucide="space"></i>
+                    <div>
+                        <span class="acc-toggle-title">Letter Spacing</span>
+                        <span class="acc-toggle-desc">Increases space between words</span>
+                    </div>
+                </div>
+                <label class="ios-toggle">
+                    <input type="checkbox" onchange="toggleAccClass('high-spacing', this)">
+                    <span class="ios-slider"></span>
+                </label>
+            </div>
+
+            <!-- Stop Animations -->
+            <div class="acc-toggle-row">
+                <div class="acc-toggle-info">
+                    <i data-lucide="play-circle"></i>
+                    <div>
+                        <span class="acc-toggle-title">Stop Animations</span>
+                        <span class="acc-toggle-desc">Disables flashing and transitions</span>
+                    </div>
+                </div>
+                <label class="ios-toggle">
+                    <input type="checkbox" onchange="toggleAccClass('no-animations', this)">
+                    <span class="ios-slider"></span>
+                </label>
+            </div>
         </div>
         
-        <button onclick="resetAllAccessibility()" style="width: 100%; padding: 1rem; background: none; border: 1px dashed #ccc; color: #666; font-weight: 600; border-radius: 8px; cursor: pointer; margin-top: 1rem;"><i data-lucide="rotate-ccw" style="width: 16px; vertical-align: middle; margin-right: 6px;"></i> Reset All Settings</button>
+        <button onclick="resetAllAccessibility()" style="width: 100%; padding: 1rem; background: #fff; border: 1px solid rgba(0,0,0,0.1); color: #d9534f; font-weight: 600; border-radius: 12px; cursor: pointer; margin-top: 1rem; transition: all 0.2s;"><i data-lucide="rotate-ccw" style="width: 16px; vertical-align: middle; margin-right: 6px;"></i> Reset All Settings</button>
     </div>
 </div>
 
@@ -587,33 +646,111 @@
     window.gtranslateSettings = {
         "default_language": "en",
         "native_language_names": true,
-        "wrapper_selector": ".gtranslate_wrapper",
-        "flag_style": "2d" // simplified flags
+        "wrapper_selector": ".gtranslate_wrapper"
     };
 </script>
-<!-- Using the modern flags style from GTranslate -->
-<script src="https://cdn.gtranslate.net/widgets/latest/flags.js" defer></script>
+<!-- Using the default dropdown style to allow custom CSS wrappers -->
+<script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
 
 <style>
-    /* Premium Styling for GTranslate Flags */
-    .gtranslate_styled_container {
+    /* Premium Styled Dropdown for GTranslate */
+    .custom-select-wrapper {
+        position: relative;
+    }
+    .custom-select-wrapper select {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.1) !important;
+        background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%230a1128" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>') no-repeat right 1rem center !important;
+        font-family: var(--ff-body) !important;
+        font-size: 1rem !important;
+        color: var(--navy) !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02) !important;
+        font-weight: 500;
+    }
+    .custom-select-wrapper select:focus {
+        outline: none;
+        border-color: var(--gold) !important;
+        box-shadow: 0 0 0 3px rgba(201,162,88,0.2) !important;
+    }
+
+    /* iOS Style Toggle Switch */
+    .acc-toggle-row {
         display: flex;
-        justify-content: center;
-        background: #fdfbf7;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
         padding: 1rem;
-        border-radius: 8px;
-        border: 1px solid #ddd;
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.02);
     }
-    .gtranslate_wrapper a {
+    .acc-toggle-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .acc-toggle-info i {
+        color: var(--gold);
+        width: 20px;
+        height: 20px;
+    }
+    .acc-toggle-title {
+        display: block;
+        font-weight: 600;
+        color: var(--navy);
+        font-size: 0.95rem;
+    }
+    .acc-toggle-desc {
+        display: block;
+        font-size: 0.75rem;
+        color: #777;
+        margin-top: 2px;
+    }
+    .ios-toggle {
+        position: relative;
         display: inline-block;
-        margin: 4px;
-        border-radius: 4px;
-        overflow: hidden;
-        transition: transform 0.2s;
+        width: 50px;
+        height: 28px;
+        flex-shrink: 0;
     }
-    .gtranslate_wrapper a:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .ios-toggle input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    .ios-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #e4e4e4;
+        transition: .4s;
+        border-radius: 34px;
+    }
+    .ios-slider:before {
+        position: absolute;
+        content: "";
+        height: 24px;
+        width: 24px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .ios-toggle input:checked + .ios-slider {
+        background-color: var(--gold);
+    }
+    .ios-toggle input:checked + .ios-slider:before {
+        transform: translateX(22px);
     }
 </style>
 
@@ -649,13 +786,13 @@
         document.body.classList.remove('dark-mode', 'high-contrast');
         document.querySelectorAll('.scheme-btn').forEach(b => {
             b.classList.remove('active');
-            b.style.background = '#fff';
-            b.style.border = '1px solid #ddd';
+            b.style.background = 'transparent';
+            b.style.color = '#666';
         });
         
         btnElement.classList.add('active');
         btnElement.style.background = 'rgba(10,17,40,0.05)';
-        btnElement.style.border = '1px solid var(--navy)';
+        btnElement.style.color = 'var(--navy)';
 
         if (scheme === 'dark') {
             document.body.classList.add('dark-mode');
@@ -665,14 +802,17 @@
         localStorage.setItem('ki_acc_scheme', scheme);
     }
 
-    function toggleAccClass(className, btnElement) {
-        document.body.classList.toggle(className);
-        btnElement.classList.toggle('active');
+    function toggleAccClass(className, inputElement) {
+        if (inputElement.checked) {
+            document.body.classList.add(className);
+        } else {
+            document.body.classList.remove(className);
+        }
         
         // Save preferences
         const activeClasses = [];
-        document.querySelectorAll('.acc-toggle.active').forEach(b => {
-            const attr = b.getAttribute('onclick');
+        document.querySelectorAll('.ios-toggle input:checked').forEach(inp => {
+            const attr = inp.getAttribute('onchange');
             const match = attr.match(/'([^']+)'/);
             if(match) activeClasses.push(match[1]);
         });
@@ -682,9 +822,9 @@
     function resetAllAccessibility() {
         changeFontSize(0);
         document.body.classList.remove('dyslexia-font', 'big-cursor', 'highlight-links', 'high-spacing', 'dark-mode', 'high-contrast', 'no-animations');
-        document.querySelectorAll('.acc-toggle').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.ios-toggle input').forEach(inp => inp.checked = false);
         
-        const lightBtn = document.querySelector('.scheme-btn');
+        const lightBtn = document.querySelector('.scheme-btn[onclick*="light"]');
         if(lightBtn) setColorScheme('light', lightBtn);
 
         localStorage.removeItem('ki_acc_prefs');
@@ -699,8 +839,8 @@
                 const classes = JSON.parse(saved);
                 classes.forEach(c => {
                     document.body.classList.add(c);
-                    const btn = document.querySelector(`.acc-toggle[onclick*="${c}"]`);
-                    if(btn) btn.classList.add('active');
+                    const inp = document.querySelector(`.ios-toggle input[onchange*="${c}"]`);
+                    if(inp) inp.checked = true;
                 });
             } catch(e){}
         }
@@ -713,41 +853,6 @@
     });
 </script>
 <style>
-    .acc-toggle {
-        background: #fff;
-        border: 1px solid #eee;
-        padding: 1rem;
-        border-radius: 12px;
-        color: var(--navy);
-        font-weight: 500;
-        font-size: 0.9rem;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    }
-    .acc-toggle i {
-        color: var(--gold);
-        width: 24px;
-        height: 24px;
-        transition: transform 0.2s ease;
-    }
-    .acc-toggle:hover {
-        border-color: var(--gold);
-        transform: translateY(-2px);
-    }
-    .acc-toggle.active {
-        background: var(--navy);
-        border-color: var(--navy);
-        color: #fff;
-    }
-    .acc-toggle.active i {
-        color: #fff;
-    }
-
     /* Accessibility Classes applied to Body */
     body.dyslexia-font, body.dyslexia-font * {
         font-family: 'Comic Sans MS', 'OpenDyslexic', sans-serif !important;
@@ -790,25 +895,27 @@
     body.dark-mode a {
         color: var(--gold) !important;
     }
-    body.dark-mode #accSidePanel {
+    body.dark-mode #accSidePanel, body.dark-mode .acc-panel-scrollable, body.dark-mode .acc-side-header {
         background: #1e1e1e !important;
         color: #fff !important;
     }
-    body.dark-mode .acc-panel-scrollable {
-        background: #121212 !important;
+    body.dark-mode .acc-section label {
+        color: #e0e0e0 !important;
     }
-    body.dark-mode .acc-section, body.dark-mode .acc-toggle {
+    body.dark-mode .acc-toggle-row, body.dark-mode .custom-select-wrapper select {
         background: #2a2a2a !important;
         border-color: #444 !important;
+        color: #fff !important;
+    }
+    body.dark-mode .acc-toggle-title {
+        color: #fff !important;
     }
     body.dark-mode .scheme-btn {
-        background: #2a2a2a !important;
-        border-color: #444 !important;
         color: #fff !important;
     }
     body.dark-mode .scheme-btn.active {
         background: rgba(201,162,88,0.2) !important;
-        border-color: var(--gold) !important;
+        color: var(--gold) !important;
     }
     
     /* High Contrast Mode (Maximum Legibility) */
@@ -830,20 +937,13 @@
         background: #000 !important;
         border-left: 2px solid #fff !important;
     }
-    body.high-contrast .acc-section, body.high-contrast .acc-panel-scrollable {
+    body.high-contrast .acc-section label, body.high-contrast .acc-toggle-title {
+        color: #fff !important;
+    }
+    body.high-contrast .acc-toggle-row, body.high-contrast .custom-select-wrapper select, body.high-contrast .acc-panel-scrollable {
         background: #000 !important;
         border-color: #fff !important;
-    }
-    body.high-contrast .acc-toggle, body.high-contrast .scheme-btn {
-        background: #000 !important;
-        border-color: #fff !important;
-    }
-    body.high-contrast .acc-toggle.active, body.high-contrast .scheme-btn.active {
-        background: #fff !important;
-        color: #000 !important;
-    }
-    body.high-contrast .acc-toggle.active i, body.high-contrast .scheme-btn.active i {
-        color: #000 !important;
+        color: #fff !important;
     }
     
     body.no-animations * {
@@ -861,6 +961,7 @@
     }
 </script>
 </body>
+
 
 
 

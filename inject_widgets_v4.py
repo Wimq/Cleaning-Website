@@ -1,296 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Value &amp; Academic Mobility | KensingtonIvy</title>
-    <meta name="description" content="Kensington Ivy's commitment to social value, widening access, and social mobility in the UK higher education sector.">
-    <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <link rel="stylesheet" href="../../css/legal.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        .impact-card {
-            background: var(--off);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(10,17,40,0.03);
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease;
-        }
-        .impact-card:hover {
-            transform: translateY(-5px);
-        }
-        .impact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(201, 162, 88, 0.1);
-            color: var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-        }
-        .impact-card h3 {
-            color: var(--navy);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-        .impact-card p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-    </style>
-</head>
-<body>
+import os
+import glob
 
-<!-- Header -->
-<header class="header">
-    <div class="container header-inner">
-        <a href="../../index.html" class="logo"><span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span></a>
-        <div class="header-cta">
-            <a href="enquiry.html" class="btn btn-outline">Data Enquiry</a>
-        </div>
-    </div>
-</header>
+workspace = "/Users/sharifafzal/untitled folder 10"
+html_files = glob.glob(os.path.join(workspace, "**", "*.html"), recursive=True)
 
-<!-- Page Header -->
-<div class="legal-hub-header">
-    <div class="container">
-        <a href="../../index.html" style="color: var(--gold); text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem; display: inline-block;">&larr; Back to Home</a>
-        <h1>Social Value &amp; Academic Mobility</h1>
-        <p style="color: #fff; opacity: 0.8; max-width: 600px; margin: 1rem auto 0; line-height: 1.6;">Our commitment to social mobility, widening access to higher education, and environmental sustainability.</p>
-    </div>
-</div>
-
-<div class="legal-container">
-    <aside class="legal-sidebar">
-        <h3>Institutional Trust</h3>
-        <nav class="legal-nav-list">
-            <a href="privacy.html">Privacy Policy</a>
-        </nav>
-    </aside>
-
-    <main class="legal-document">
-        <h2>Driving Positive Change in Higher Education</h2>
-        <p>At Kensington Ivy, we believe that education is the single most powerful driver of social mobility. As a specialist placement partner, we recognize our responsibility to help UK students from all backgrounds—especially non-traditional and underrepresented settings—access decent higher education institutions.</p>
-
-        <div class="impact-grid">
-            <div class="impact-card">
-                <div class="impact-icon"><i data-lucide="graduation-cap"></i></div>
-                <h3>Academic Empowerment</h3>
-                <p>We provide free personal statement tutoring, UCAS application mapping, and admissions guidance to students from low-participation neighborhoods (LPN).</p>
-            </div>
-            <div class="impact-card">
-                <div class="impact-icon"><i data-lucide="leaf"></i></div>
-                <h3>Environmental Stewardship</h3>
-                <p>We run a completely paperless student portal, digitizing qualification uploads, enrollment files, and compliance agreements to eliminate waste.</p>
-            </div>
-            <div class="impact-card">
-                <div class="impact-icon"><i data-lucide="heart"></i></div>
-                <h3>Social Mobility &amp; Access</h3>
-                <p>We actively match students with non-traditional qualifications (like BTECs and Access to HE) to partner universities that value potential and diverse skills.</p>
-            </div>
-        </div>
-
-        <h2>Our Sustainability and Outreach Goals</h2>
-        <p>While we are a boutique consultancy, our ambitions for widening access are significant. We have committed to the following targets for 2026-2027:</p>
-        <ul>
-            <li><strong>Net Zero Operations:</strong> Offsetting 100% of our business-related carbon emissions through verified UK woodland carbon units.</li>
-            <li><strong>Widening Access Pools:</strong> Actively increasing the percentage of underrepresented and mature student referrals placed into university courses.</li>
-            <li><strong>Paperless Admissions Matrix:</strong> Digitizing all student vetting and enrollment records, saving thousands of printed pages per admissions cycle.</li>
-        </ul>
-
-        <div class="highlight-box" style="background: rgba(201, 162, 88, 0.05); border-left: 4px solid var(--gold); padding: 2rem; margin: 3rem 0;">
-            <h3 style="margin-top:0; color: var(--navy);">Access &amp; Participation Support</h3>
-            <p style="margin-bottom:0;">For partner universities and higher education regulators, we provide detailed Access and Participation reports highlighting the specific demographic and widening participation impact of our placement referrals.</p>
-        </div>
-    </main>
-</div>
-
-<!-- FOOTER -->
-<!-- FOOTER -->
-<footer style="background: var(--navy); padding: 5rem 0 3rem 0; color: #fff;">
-    <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
-            
-            <div style="grid-column: span 1;">
-                <a href="../../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
-                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
-                </a>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
-                <div style="display: flex; gap: 1rem;">
-                    <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
-                    <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
-                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
-                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
-                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <a href="../../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
-                    <a href="../../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
-                    <a href="../../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
-                    <a href="../../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
-                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <a href="../../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
-                    <a href="../../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
-                    <a href="../../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
-                </div>
-            </div>
-
-            <div>
-                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
-                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
-                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
-                        <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
-                        <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
-                    </div>
-                    <div style="display: flex; gap: 1rem;">
-                        <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
-                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
-                    </div>
-                    <div style="display: flex; gap: 1rem;">
-                        <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
-                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
-            <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
-            <div style="opacity: 0.6;">
-                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
-                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script>lucide.createIcons();</script>
-
-<script>
-    document.querySelectorAll('.dynamic-year').forEach(el => el.textContent = new Date().getFullYear());
-</script>
-
-<!-- Detailed Cookie Banner -->
-<div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-banner-inner">
-        <div class="cookie-banner-text">
-            <strong>Cookies on the Kensington Ivy website</strong>
-            <p>We use some essential cookies to make this site work.</p>
-            <p>We'd like to set analytics cookies to understand how you use this site. We may use services from YouTube that may also use cookies.</p>
-            <p>For more detailed information, see our <a href="/pages/legal/cookies.html">Cookies page</a>.</p>
-        </div>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn-accept" id="cookieAcceptAll">Accept all cookies</button>
-            <button class="cookie-btn-necessary" id="cookieNecessary">Reject non-essential cookies</button>
-            <button class="cookie-btn-settings" id="cookieSettingsBtn" onclick="document.getElementById('cookieDetails').classList.toggle('expanded');">Manage preferences</button>
-        </div>
-
-        <div class="cookie-banner-details" id="cookieDetails">
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Essential cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" checked disabled>
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>These cookies are necessary for core functionality, such as security and network management. They always need to be on.</p>
-            </div>
-            
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Analytics cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="toggleAnalytics">
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>We use analytics cookies to measure how you use our website to help us improve the experience.</p>
-            </div>
-
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Video player cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="toggleVideo">
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>Pages that include videos hosted on YouTube may result in video platforms collecting information.</p>
-            </div>
-
-            <button class="cookie-btn-save" id="cookieSaveBtn">Save and close</button>
-        </div>
-    </div>
-</div>
-<script>
-(function(){
-    if(!localStorage.getItem("ki_cookie_consent")){
-        setTimeout(function(){document.getElementById("cookieBanner").classList.add("visible");},800);
-    }
-    function logConsent(consentData){
-        localStorage.setItem("ki_cookie_consent", typeof consentData === 'string' ? consentData : "custom");
-        document.getElementById("cookieBanner").classList.remove("visible");
-        fetch("/api/log-consent", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({consent: consentData})
-        }).catch(function(){});
-    }
-
-    document.getElementById("cookieAcceptAll").addEventListener("click",function(){
-        document.getElementById("toggleAnalytics").checked = true;
-        document.getElementById("toggleVideo").checked = true;
-        logConsent("all");
-    });
-    
-    document.getElementById("cookieNecessary").addEventListener("click",function(){
-        document.getElementById("toggleAnalytics").checked = false;
-        document.getElementById("toggleVideo").checked = false;
-        logConsent("necessary");
-    });
-    
-    document.getElementById("cookieSaveBtn").addEventListener("click", function(){
-        const analytics = document.getElementById("toggleAnalytics").checked;
-        const video = document.getElementById("toggleVideo").checked;
-        if(analytics && video) {
-            logConsent("all");
-        } else if (!analytics && !video) {
-            logConsent("necessary");
-        } else {
-            logConsent("custom_analytics:" + analytics + "_video:" + video);
-        }
-    });
-})();
-</script>
-
-
-
-
+injection_code = """
 <!-- Floating Cookie Button -->
 <button id="floatingCookieBtn" onclick="document.getElementById('cookieBanner').classList.add('visible');" style="position: fixed; bottom: 20px; left: 20px; z-index: 9998; background: var(--navy); color: #fff; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;">
     <i data-lucide="cookie" style="width: 24px; height: 24px;"></i>
@@ -742,8 +456,22 @@
     }
 </script>
 </body>
+"""
 
+for file in html_files:
+    with open(file, 'r', encoding='utf-8') as f:
+        content = f.read()
 
+    # Skip if already injected v4
+    if '<div class="ios-slider">' in content:
+        continue
 
+    # Only inject into files that have a closing body tag
+    if '</body>' in content:
+        # Before we inject, make sure we only inject once
+        content = content.replace('</body>', injection_code)
+        
+        with open(file, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"Injected v4 widgets into {file}")
 
-</html>
