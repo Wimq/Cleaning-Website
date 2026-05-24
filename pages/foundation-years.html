@@ -30,24 +30,11 @@
         /* ═══════════════════════════════════════════════════ */
         .fy-hero {
             position: relative;
-            min-height: 90vh;
+            min-height: 80vh;
             display: flex; align-items: center; justify-content: center;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
-        }
-        /* Background image with a soft creme overlay to blend perfectly */
-        .fy-hero-bg {
-            position: absolute; inset: 0;
-            background: url('../assets/images/hero_illustration.png') center/cover no-repeat;
-            opacity: 0.15;
-            filter: grayscale(100%) contrast(1.2);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .fy-hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(245, 238, 220, 0.4) 0%, rgba(245, 238, 220, 1) 100%);
-            z-index: 1;
+            background: linear-gradient(180deg, var(--white) 0%, var(--off) 100%);
         }
         
         .fy-hero-content {
@@ -161,19 +148,14 @@
 
         .reality-image-wrapper {
             position: relative; border-radius: 32px; overflow: hidden;
-            box-shadow: 0 40px 80px rgba(10,17,40,0.1);
-        }
-        .reality-image-wrapper img { width: 100%; display: block; background: #fff; padding: 2rem;}
-        
-        .subject-overlay {
-            position: absolute; bottom: 2rem; right: 2rem; left: 2rem;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(15px);
-            padding: 2rem; border-radius: 20px;
+            background: var(--white);
             border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 40px 80px rgba(10,17,40,0.05);
+            padding: 4rem;
+            display: flex; flex-direction: column; justify-content: center;
         }
-        .subject-overlay h4 { font-family: var(--ff-head); font-size: 1.5rem; color: var(--navy); margin-bottom: 1rem; }
+        
+        .subject-overlay h4 { font-family: var(--ff-head); font-size: 2rem; color: var(--navy); margin-bottom: 1.5rem; }
         .subject-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
         .s-tag {
             background: var(--off); padding: 0.5rem 1rem; border-radius: 50px;
@@ -281,8 +263,6 @@
 
     <!-- IMMERSIVE HERO -->
     <header class="fy-hero">
-        <div class="fy-hero-bg"></div>
-        <div class="fy-hero-overlay"></div>
         <div class="container">
             <div class="fy-hero-content reveal">
                 <span class="fy-badge"><i data-lucide="shield-check" style="width: 16px;"></i> Guaranteed Progression</span>
@@ -344,7 +324,6 @@
                     </ul>
                 </div>
                 <div class="reality-image-wrapper reveal">
-                    <img src="../assets/images/collaboration_vector.png" alt="University Campus Support">
                     <div class="subject-overlay">
                         <h4>Elite Subject Placements</h4>
                         <div class="subject-tags">
