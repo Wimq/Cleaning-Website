@@ -10,20 +10,29 @@ for file in html_files:
 
     original = content
     
-    # Replace the duplicate University Registries pill with About Us
+    # Replace the duplicate About Us pill with Free Assessment
     content = content.replace(
-        '<a href="pages/registries.html" class="sec-nav-pill"><i data-lucide="building-2" style="width: 16px;"></i> University Registries</a>',
-        '<a href="pages/about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>'
+        '<a href="pages/about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
+        '<a href="pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
     )
     content = content.replace(
-        '<a href="registries.html" class="sec-nav-pill"><i data-lucide="building-2" style="width: 16px;"></i> University Registries</a>',
-        '<a href="about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>'
+        '<a href="about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
+        '<a href="register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
     )
     content = content.replace(
-        '<a href="../pages/registries.html" class="sec-nav-pill"><i data-lucide="building-2" style="width: 16px;"></i> University Registries</a>',
-        '<a href="../pages/about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>'
+        '<a href="../pages/about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
+        '<a href="../pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
     )
-    # The one with ?v=3 in index.html is already updated
+    
+    # Also handle the ?v=3 version just in case
+    content = content.replace(
+        '<a href="pages/about.html?v=3" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
+        '<a href="pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
+    )
+    content = content.replace(
+        '<a href="../pages/about.html?v=3" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
+        '<a href="../pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
+    )
 
     if content != original:
         with open(file, 'w', encoding='utf-8') as f:
