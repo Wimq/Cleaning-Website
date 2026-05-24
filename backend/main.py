@@ -1,6 +1,6 @@
 import os
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -28,8 +28,10 @@ app.include_router(api_router, prefix="/api")
 # Static File Mounting
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 app.mount("/css", StaticFiles(directory=os.path.join(base_dir, "css")), name="css")
+app.mount("/js", StaticFiles(directory=os.path.join(base_dir, "js")), name="js")
 app.mount("/assets", StaticFiles(directory=os.path.join(base_dir, "assets")), name="assets")
 app.mount("/pages", StaticFiles(directory=os.path.join(base_dir, "pages"), html=True), name="pages")
+app.mount("/responsive", StaticFiles(directory=os.path.join(base_dir, "responsive")), name="responsive")
 
 @app.get("/")
 async def read_index():
@@ -43,6 +45,8 @@ async def catch_all(file_path: str):
         if file_path.endswith('.html'):
             with open(full_path, "r") as f:
                 return HTMLResponse(content=f.read(), status_code=200)
+        else:
+            return FileResponse(full_path)
     return HTMLResponse(content="<h1>404 - Not Found</h1>", status_code=404)
 
 if __name__ == "__main__":
