@@ -12,21 +12,21 @@
     
 <style>
 /* ═══════════════════════════════════════════
-   GLOBAL DARK THEME OVERRIDES
+   HYBRID PREMIUM THEME
    ═══════════════════════════════════════════ */
 body { 
-    background-color: var(--navy); 
-    color: #fff; 
+    background-color: var(--off); /* Warm cream base instead of all blue */
+    color: var(--navy); 
     overflow-x: hidden;
 }
 
-/* Header overrides for dark mode */
-.header { background: rgba(10,17,40,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+/* Header stays light/transparent on dark hero, then flips */
+.header { position: absolute; width: 100%; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .header a:not(.btn) { color: #fff !important; }
 .logo-text { color: #fff !important; }
 
 /* ═══════════════════════════════════════════
-   CINEMATIC HERO SECTION
+   CINEMATIC DARK HERO
    ═══════════════════════════════════════════ */
 .hero-cinematic {
     min-height: 90vh;
@@ -34,8 +34,9 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 8rem 0 4rem 0;
+    padding: 10rem 0 6rem 0;
     text-align: center;
+    background: var(--navy); /* Dark hero only */
 }
 .hero-bg-glow {
     position: absolute;
@@ -65,8 +66,8 @@ body {
 }
 .hero-cinematic h1 {
     font-family: var(--ff-head);
-    font-size: clamp(4rem, 8vw, 6.5rem);
-    line-height: 1;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    line-height: 1.1;
     margin-bottom: 1.5rem;
     color: #fff;
 }
@@ -94,142 +95,145 @@ body {
     backdrop-filter: blur(20px);
     box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     max-width: 600px; margin: 0 auto;
+    transform: translateY(3rem); /* Overlaps into the next section */
 }
-@media (max-width: 600px) { .stat-box { flex-direction: column; gap: 1.5rem; padding: 2rem; } }
+@media (max-width: 600px) { .stat-box { flex-direction: column; gap: 1.5rem; padding: 2rem; transform: translateY(0); margin-top: 3rem; } }
 .stat-item { text-align: center; }
 .stat-number { font-family: var(--ff-head); font-size: 3.5rem; font-weight: 700; color: #fff; line-height: 1; display: block; margin-bottom: 0.5rem; }
 .stat-label { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
 
 /* ═══════════════════════════════════════════
-   MAGAZINE-STYLE JOURNEYS (Featured)
+   LIGHT THEME CONTENT (Case Studies)
    ═══════════════════════════════════════════ */
 .featured-journeys {
-    padding: 8rem 0;
+    padding: 10rem 0 6rem 0; /* Extra top padding for overlapping stat box */
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
+.section-header {
+    text-align: center; margin-bottom: 4rem;
+}
+.section-header h2 {
+    font-family: var(--ff-head); font-size: 3rem; color: var(--navy); margin-bottom: 1rem;
+}
+.section-header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
 .featured-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 2.5rem;
 }
 @media (max-width: 900px) { .featured-grid { grid-template-columns: 1fr; } }
 
 .journey-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(201,162,88,0.2);
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.05);
     border-radius: 30px;
     padding: 4rem 3rem;
     position: relative;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex; flex-direction: column; justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 .journey-card:hover {
     transform: translateY(-10px);
-    border-color: var(--gold);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(201,162,88,0.1);
-    background: rgba(255,255,255,0.05);
+    border-color: rgba(201,162,88,0.3);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
 }
-.journey-card.full-width { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.journey-card.full-width { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
 @media (max-width: 900px) { .journey-card.full-width { grid-template-columns: 1fr; } }
 
 .journey-metrics {
     display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem;
-    background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);
+    background: var(--off); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.03);
 }
-.metric-block { flex: 1; }
-.metric-title { font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; display: block; }
-.metric-value { font-family: var(--ff-head); font-size: 1.4rem; color: #fff; font-weight: 700; }
-.metric-arrow { color: var(--gold); width: 24px; height: 24px; opacity: 0.8; }
+.metric-block { flex: 1; text-align: center; }
+.metric-title { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; display: block; font-weight: 600;}
+.metric-value { font-family: var(--ff-head); font-size: 1.4rem; color: var(--navy); font-weight: 700; }
+.metric-arrow { color: var(--gold); width: 24px; height: 24px; }
 
-.journey-text { font-family: var(--ff-head); font-size: 1.8rem; line-height: 1.4; color: #fff; font-style: italic; margin-bottom: 3rem; }
-.journey-card.full-width .journey-text { font-size: 2.2rem; }
+.journey-text { font-family: var(--ff-head); font-size: 1.6rem; line-height: 1.5; color: var(--navy); font-style: italic; margin-bottom: 3rem; }
+.journey-card.full-width .journey-text { font-size: 2rem; }
 
-.journey-author { display: flex; align-items: center; gap: 1rem; }
-.author-circle { width: 50px; height: 50px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--ff-head); font-size: 1.2rem; }
-.author-details h4 { color: #fff; margin-bottom: 0.2rem; font-size: 1.1rem; }
-.author-details p { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+.journey-author { display: flex; align-items: center; gap: 1.5rem; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 2rem; }
+.author-circle { width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: var(--gold); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--ff-head); font-size: 1.2rem; }
+.author-details h4 { color: var(--navy); margin-bottom: 0.2rem; font-size: 1.1rem; font-weight: 700; }
+.author-details p { color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 500; }
 
 /* ═══════════════════════════════════════════
-   GLASS MASONRY GRID (Standard Reviews)
+   CLEAN MASONRY GRID (Standard Reviews)
    ═══════════════════════════════════════════ */
-.masonry-section { padding: 4rem 0 8rem 0; position: relative; }
+.masonry-section { padding: 4rem 0 8rem 0; }
 .masonry-grid {
-    column-count: 3; column-gap: 2rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;
 }
-@media (max-width: 1000px) { .masonry-grid { column-count: 2; } }
-@media (max-width: 600px) { .masonry-grid { column-count: 1; } }
 
 .glass-item {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.05);
     border-radius: 20px; padding: 2.5rem;
-    break-inside: avoid; margin-bottom: 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
     transition: all 0.3s ease; position: relative; overflow: hidden;
 }
-.glass-item:hover { background: rgba(255,255,255,0.05); border-color: rgba(201,162,88,0.5); transform: translateY(-5px); }
+.glass-item:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: rgba(201,162,88,0.2); }
 .glass-item::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); opacity: 0; transition: opacity 0.3s ease; }
 .glass-item:hover::before { opacity: 1; }
 
 .tp-stars-small { display: flex; gap: 0.2rem; margin-bottom: 1.5rem; }
-.tp-stars-small i { color: #00b67a; fill: #00b67a; width: 18px; height: 18px; }
+.tp-stars-small i { color: #00b67a; fill: #00b67a; width: 20px; height: 20px; }
 
-.glass-item p { font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
-.glass-meta h5 { color: #fff; font-size: 1rem; margin-bottom: 0.2rem; }
-.glass-meta span { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+.glass-item p { font-size: 1.05rem; line-height: 1.7; color: #444; margin-bottom: 2rem; }
+.glass-meta h5 { color: var(--navy); font-size: 1.1rem; margin-bottom: 0.2rem; font-weight: 700; }
+.glass-meta span { color: #888; font-size: 0.85rem; font-weight: 500;}
 
 /* ═══════════════════════════════════════════
-   PREMIUM SUBMIT FORM
+   PREMIUM SUBMIT FORM (Dark Contrast Section)
    ═══════════════════════════════════════════ */
 .submit-section {
     padding: 8rem 0;
-    background: #060a18; /* Extremely deep navy */
-    border-top: 1px solid rgba(255,255,255,0.05);
+    background: var(--navy);
+    position: relative;
+}
+.submit-section::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
 }
 .form-container {
     max-width: 800px; margin: 0 auto;
-    background: rgba(255,255,255,0.01);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: #fff;
     border-radius: 30px;
     padding: 5rem;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-    position: relative; overflow: hidden;
-}
-.form-container::after {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(201,162,88,0.05) 0%, transparent 100%); pointer-events: none;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+    position: relative; z-index: 2;
 }
 @media (max-width: 768px) { .form-container { padding: 3rem 2rem; } }
-.form-header { text-align: center; margin-bottom: 4rem; position: relative; z-index: 2; }
-.form-header h2 { font-family: var(--ff-head); font-size: 2.8rem; color: #fff; margin-bottom: 1rem; }
-.form-header p { color: rgba(255,255,255,0.6); font-size: 1.1rem; }
+.form-header { text-align: center; margin-bottom: 3rem; }
+.form-header h2 { font-family: var(--ff-head); font-size: 2.8rem; color: var(--navy); margin-bottom: 1rem; }
+.form-header p { color: #666; font-size: 1.1rem; }
 
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; position: relative; z-index: 2; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
 @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
-.form-group label { display: block; color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; font-weight: 600; }
+.form-group label { display: block; color: var(--navy); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.8rem; }
 .form-input {
     width: 100%; padding: 1.2rem;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--off);
+    border: 1px solid rgba(0,0,0,0.05);
     border-radius: 12px;
-    color: #fff; font-size: 1rem; font-family: var(--ff-body);
+    color: var(--navy); font-size: 1rem; font-family: var(--ff-body);
     transition: all 0.3s ease;
 }
-.form-input:focus { outline: none; border-color: var(--gold); background: rgba(0,0,0,0.6); box-shadow: 0 0 20px rgba(201,162,88,0.15); }
-.form-input::placeholder { color: rgba(255,255,255,0.3); }
+.form-input:focus { outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(201,162,88,0.1); }
 textarea.form-input { min-height: 150px; resize: vertical; }
-select.form-input { appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23c9a258" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>'); background-repeat: no-repeat; background-position: right 1.2rem center; }
-select.form-input option { background: var(--navy); color: #fff; }
+select.form-input { appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%230a1128" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>'); background-repeat: no-repeat; background-position: right 1.2rem center; }
 
 .btn-submit-premium {
     width: 100%;
-    background: linear-gradient(135deg, var(--gold) 0%, #a6823c 100%);
-    color: var(--navy); font-weight: 700; font-size: 1.2rem;
+    background: var(--navy);
+    color: var(--gold); font-weight: 700; font-size: 1.2rem;
     padding: 1.5rem; border: none; border-radius: 12px; cursor: pointer;
-    transition: all 0.3s ease; position: relative; z-index: 2;
+    transition: all 0.3s ease;
 }
-.btn-submit-premium:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(201,162,88,0.3); }
+.btn-submit-premium:hover { background: #1a2542; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 
 </style>
 </head>
@@ -256,7 +260,7 @@ select.form-input option { background: var(--navy); color: #fff; }
 </header>
 
 <main>
-    <!-- CINEMATIC HERO -->
+    <!-- CINEMATIC HERO (Dark Mode) -->
     <section class="hero-cinematic">
         <div class="hero-bg-glow"></div>
         <div class="container hero-content">
@@ -284,9 +288,12 @@ select.form-input option { background: var(--navy); color: #fff; }
         </div>
     </section>
 
-    <!-- FEATURED JOURNEYS -->
+    <!-- FEATURED JOURNEYS (Light/Cream Mode) -->
     <section class="featured-journeys container">
-        <h2 style="font-family: var(--ff-head); font-size: 2.5rem; color: #fff; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">Case Studies</h2>
+        <div class="section-header">
+            <h2>Case Studies</h2>
+            <p>Real scenarios showing how we navigate complex admissions hurdles.</p>
+        </div>
         
         <div class="featured-grid">
             
@@ -332,7 +339,7 @@ select.form-input option { background: var(--navy); color: #fff; }
                 </div>
                 <p class="journey-text" style="font-size: 1.4rem;">"As a mature student returning to education in my 30s, the UCAS process felt impossible. They mapped out an exact pathway and handled every detail. I start next month."</p>
                 <div class="journey-author">
-                    <div class="author-circle" style="background: rgba(255,255,255,0.1); color: #fff;">JT</div>
+                    <div class="author-circle">JT</div>
                     <div class="author-details">
                         <h4>James T.</h4>
                         <p>Mature Applicant</p>
@@ -355,7 +362,7 @@ select.form-input option { background: var(--navy); color: #fff; }
                 </div>
                 <p class="journey-text" style="font-size: 1.4rem;">"The bespoke interview preparation for Medicine was phenomenal. The consultants knew exactly what the panels demanded. I walked in perfectly confident."</p>
                 <div class="journey-author">
-                    <div class="author-circle" style="background: rgba(255,255,255,0.1); color: #fff;">AK</div>
+                    <div class="author-circle">AK</div>
                     <div class="author-details">
                         <h4>Aisha K.</h4>
                         <p>Medicine Student</p>
@@ -366,9 +373,12 @@ select.form-input option { background: var(--navy); color: #fff; }
         </div>
     </section>
 
-    <!-- MASONRY GRID -->
+    <!-- MASONRY GRID (Added 6th Review to balance the layout perfectly) -->
     <section class="masonry-section container">
-        <h2 style="font-family: var(--ff-head); font-size: 2.5rem; color: #fff; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">Client Testimonials</h2>
+        <div class="section-header">
+            <h2>Client Testimonials</h2>
+            <p>Verified feedback from families and students across the globe.</p>
+        </div>
         
         <div class="masonry-grid">
             <div class="glass-item">
@@ -397,7 +407,7 @@ select.form-input option { background: var(--navy); color: #fff; }
                 <div class="tp-stars-small">
                     <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
                 </div>
-                <p>"Worth every single penny. The stress they removed from our family's shoulders during A-Level results day was priceless. They simply execute what they promise."</p>
+                <p>"Worth every single penny. The stress they removed from our family's shoulders during A-Level results day was priceless. They simply execute what they promise without hesitation."</p>
                 <div class="glass-meta">
                     <h5>Emma P.</h5>
                     <span>Parent of Applicant</span>
@@ -419,10 +429,22 @@ select.form-input option { background: var(--navy); color: #fff; }
                 <div class="tp-stars-small">
                     <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
                 </div>
-                <p>"Their direct connections with university registries meant my application wasn't just sitting in a pile. They advocated for me personally. Truly elite consultancy."</p>
+                <p>"Their direct connections with university registries meant my application wasn't just sitting in a pile. They advocated for me personally. Truly elite consultancy that opens doors."</p>
                 <div class="glass-meta">
                     <h5>Chloe S.</h5>
                     <span>Postgraduate Applicant</span>
+                </div>
+            </div>
+
+            <!-- Added 6th Review to fix the missing spot -->
+            <div class="glass-item">
+                <div class="tp-stars-small">
+                    <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+                </div>
+                <p>"We engaged Kensington Ivy after two rejections from Russell Group universities. Their strategy overhaul changed everything. My daughter is now thriving at Durham University."</p>
+                <div class="glass-meta">
+                    <h5>Richard W.</h5>
+                    <span>Parent</span>
                 </div>
             </div>
         </div>
@@ -449,7 +471,7 @@ select.form-input option { background: var(--navy); color: #fff; }
                         </div>
                     </div>
                     
-                    <div class="form-group" style="margin-bottom: 2rem; position: relative; z-index: 2;">
+                    <div class="form-group" style="margin-bottom: 2rem;">
                         <label>Experience Rating</label>
                         <select class="form-input" required>
                             <option value="5">⭐⭐⭐⭐⭐ Exceptional - Exceeded Expectations</option>
@@ -458,7 +480,7 @@ select.form-input option { background: var(--navy); color: #fff; }
                         </select>
                     </div>
                     
-                    <div class="form-group" style="margin-bottom: 3rem; position: relative; z-index: 2;">
+                    <div class="form-group" style="margin-bottom: 3rem;">
                         <label>Your Testimonial</label>
                         <textarea class="form-input" placeholder="Detail the specific challenges you faced and how our consultants resolved them..." required></textarea>
                     </div>
@@ -470,7 +492,91 @@ select.form-input option { background: var(--navy); color: #fff; }
     </section>
 </main>
 
-<!-- Footer will be auto-injected by script -->
+<footer style="background: linear-gradient(to bottom, #111827, var(--navy)); padding: 6rem 0 3rem 0; color: #fff; border-top: 4px solid var(--gold); position: relative; overflow: hidden;">
+    <!-- Background subtle glow -->
+    <div style="position: absolute; top: 0; right: 10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,162,88,0.05) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none;"></div>
+
+    <div class="container" style="position: relative; z-index: 2;">
+        <!-- Pre-footer CTA -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 3rem; margin-bottom: 5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
+            <div>
+                <h3 style="font-family: var(--ff-head); font-size: 2rem; color: #fff; margin-bottom: 0.5rem;">Ready to secure your future?</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; margin: 0;">Speak to our admissions experts today for a free consultation.</p>
+            </div>
+            <a href="../pages/register.html" class="btn btn-gold" style="font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 50px;">Start Your Journey</a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+            
+            <div style="grid-column: span 1;">
+                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem; text-decoration: none;">
+                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2.2rem; color: #fff; letter-spacing: -0.5px;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2.2rem; color: var(--gold);">Ivy</span>
+                </a>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.8; max-width: 320px; margin-bottom: 2.5rem;">The UK's premier university placement and admissions partner. Built on absolute academic excellence.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" aria-label="Instagram" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+                        <i data-lucide="instagram" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
+                    </a>
+                    <a href="#" aria-label="TikTok" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 22px; height: 22px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+                        <i data-lucide="linkedin" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
+                    </a>
+                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="color: rgba(255,255,255,0.5); transition: color 0.3s ease; display: inline-flex; align-items: center; justify-content: center;" onmouseover="this.style.color='#00b67a'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+                        <i data-lucide="star" style="width: 24px; height: 24px; stroke-width: 1.5px;"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.2rem; margin-bottom: 2rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Navigation</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <a href="../index.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Home</a>
+                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">About Us</a>
+                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">University Registries</a>
+                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Foundation Years</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.2rem; margin-bottom: 2rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Legal</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Privacy Policy</a>
+                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Website Terms</a>
+                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">Cookie Policy</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.2rem; margin-bottom: 2rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Contact</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.6); align-items: flex-start;">
+                        <i data-lucide="map-pin" style="width: 20px; height: 20px; flex-shrink: 0; color: var(--gold); margin-top: 2px;"></i>
+                        <p style="font-size: 0.95rem; margin: 0; line-height: 1.5;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <i data-lucide="mail" style="width: 20px; height: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">enquiries@kensingtonivy.co.uk</a>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <i data-lucide="phone" style="width: 20px; height: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.6); font-size: 0.95rem; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">020 7444 0009</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.4); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
+            <p style="margin: 0;">&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
+            <div style="opacity: 0.8;">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge" style="display: block;"> 
+                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block; border-radius: 4px;" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script>lucide.createIcons();</script>
 
