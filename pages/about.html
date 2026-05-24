@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Kensington Ivy</title>
+    <meta name="description" content="Discover the story behind Kensington Ivy — the UK's premier educational placement consultancy built on trust, integrity, and student success.">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { overflow-x: hidden; background: #faf9f6; }
+
+        /* ═══════════════════════════════════════════════════ */
+        /*  HERO                                              */
+        /* ═══════════════════════════════════════════════════ */
+        .about-hero {
+            min-height: 100vh;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(201,162,88,0.12) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59,82,132,0.3) 0%, transparent 50%);
+        }
+        /* Animated floating orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .orb-1 { width: 500px; height: 500px; background: rgba(201,162,88,0.08); top: -10%; left: -5%; animation-delay: 0s; }
+        .orb-2 { width: 400px; height: 400px; background: rgba(59,82,132,0.15); bottom: -10%; right: -5%; animation-delay: 4s; }
+        .orb-3 { width: 300px; height: 300px; background: rgba(201,162,88,0.05); top: 50%; left: 50%; animation-delay: 2s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            padding: 0.6rem 1.5rem;
+            background: rgba(201,162,88,0.1);
+            border: 1px solid rgba(201,162,88,0.3);
+            border-radius: 50px;
+            color: var(--gold);
+            font-weight: 700; font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+        .hero-title {
+            font-family: var(--ff-head);
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 1.05;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 60px rgba(255,255,255,0.08);
+        }
+        .hero-title em {
+            font-style: italic; font-weight: 400;
+            color: rgba(255,255,255,0.85);
+        }
+        .hero-sub {
+            max-width: 700px; margin: 0 auto 3rem auto;
+            font-size: 1.3rem; color: rgba(255,255,255,0.55);
+            line-height: 1.8; font-weight: 300;
+        }
+        .scroll-indicator {
+            position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Trust bar */
+        .trust-bar {
+            display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+            padding-top: 3rem; margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .trust-icon {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(201,162,88,0.4); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .trust-label {
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: rgba(255,255,255,0.7);
+        }
+
+        /* ═══════════════════════════════════════════════════ */
+        /*  MISSION + IMAGE SECTION                           */
+        /* ═══════════════════════════════════════════════════ */
+        .mission-section {
+            padding: 10rem 0;
+            background: #fff;
+            position: relative;
+        }
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            align-items: center;
+        }
+        .mission-image-wrapper {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+        }
+        .mission-image-wrapper img {
+            width: 100%; display: block;
+            transition: transform 0.8s ease;
+        }
+        .mission-image-wrapper:hover img { transform: scale(1.04); }
+        .mission-image-badge {
+            position: absolute; bottom: 2rem; left: 2rem;
+            background: rgba(14,23,38,0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 1.5rem 2rem;
+            display: flex; align-items: center; gap: 1rem;
+            color: #fff;
+        }
+        .mission-image-badge .badge-num {
+            font-family: var(--ff-head); font-size: 2.5rem;
+            font-weight: 800; color: var(--gold); line-height: 1;
+        }
+        .mission-image-badge .badge-text {
+            font-size: 0.8rem; text-transform: uppercase;
+            letter-spacing: 0.1em; color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+        .mission-tag {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(201,162,88,0.1);
+            color: var(--gold);
+            border-radius: 50px;
+            font-size: 0.8rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            margin-bottom: 2rem;
+        }
+
+        /* Stats Banner */
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 5rem; padding-top: 4rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        .stat-item h4 {
+            font-family: var(--ff-head); font-size: 3.5rem;
+            font-weight: 800; color: var(--gold); line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-item p {
+            font-size: 0.8rem; text-transform: uppercase;
+            letter-spacing: 0.15em; font-weight: 700; color: #999;
+        }
+
+        /* ═══════════════════════════════════════════════════ */
+        /*  DARK NAVY "VALUES" SECTION                        */
+        /* ═══════════════════════════════════════════════════ */
+        .values-section {
+            background: var(--navy);
+            padding: 10rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .values-section::before {
+            content: '';
+            position: absolute; top: 0; right: 0;
+            width: 50%; height: 100%;
+            background: radial-gradient(circle at 100% 50%, rgba(201,162,88,0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+        .value-card {
+            background: rgba(255,255,255,0.025);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255,255,255,0.12);
+            border-radius: 24px;
+            padding: 3rem;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .value-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at top right, rgba(201,162,88,0.08), transparent 70%);
+            opacity: 0; transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .value-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201,162,88,0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        .value-card:hover::before { opacity: 1; }
+        .value-icon {
+            width: 56px; height: 56px;
+            background: rgba(201,162,88,0.12);
+            border: 1px solid rgba(201,162,88,0.25);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .value-card h3 {
+            font-family: var(--ff-head); font-size: 1.5rem;
+            color: #fff; margin-bottom: 1rem; font-weight: 600;
+        }
+        .value-card p {
+            color: rgba(255,255,255,0.5); line-height: 1.7; font-size: 1rem;
+        }
+
+        /* ═══════════════════════════════════════════════════ */
+        /*  TIMELINE                                          */
+        /* ═══════════════════════════════════════════════════ */
+        .timeline-section {
+            padding: 10rem 0;
+            background: #fff;
+        }
+        .timeline-track {
+            position: relative;
+            max-width: 900px;
+            margin: 5rem auto 0 auto;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 40px; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.08) 10%, rgba(0,0,0,0.08) 90%, transparent);
+        }
+        .tl-item {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        .tl-dot-col {
+            width: 80px;
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .tl-dot {
+            width: 20px; height: 20px;
+            background: #fff;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            position: relative; z-index: 2;
+            transition: all 0.4s ease;
+        }
+        .tl-item:hover .tl-dot {
+            background: var(--gold);
+            border-color: #fff;
+            box-shadow: 0 0 0 6px rgba(201,162,88,0.2);
+            transform: scale(1.3);
+        }
+        .tl-content {
+            flex: 1;
+            background: #fdfbf7;
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+        .tl-item:hover .tl-content {
+            border-color: rgba(201,162,88,0.3);
+            box-shadow: 0 15px 40px rgba(201,162,88,0.06);
+            transform: translateX(5px);
+        }
+        .tl-year {
+            font-family: var(--ff-head); font-size: 2.5rem;
+            font-weight: 800; color: var(--gold); line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .tl-title {
+            font-family: var(--ff-head); font-size: 1.3rem;
+            color: var(--navy); font-weight: 700; margin-bottom: 0.75rem;
+        }
+        .tl-desc {
+            color: #777; line-height: 1.7; font-size: 0.95rem;
+        }
+
+        /* ═══════════════════════════════════════════════════ */
+        /*  ADVANTAGE SECTION                                 */
+        /* ═══════════════════════════════════════════════════ */
+        .advantage-section {
+            padding: 10rem 0;
+            background: #faf9f6;
+            position: relative;
+        }
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 8rem;
+            align-items: center;
+        }
+        .advantage-feature {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
+            background: #fff;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .advantage-feature:hover {
+            border-color: rgba(201,162,88,0.3);
+            box-shadow: 0 10px 30px rgba(201,162,88,0.05);
+            transform: translateX(5px);
+        }
+        .adv-icon {
+            width: 48px; height: 48px;
+            background: rgba(201,162,88,0.1); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .advantage-feature h3 {
+            font-family: var(--ff-head); font-size: 1.2rem;
+            color: var(--navy); margin-bottom: 0.5rem; font-weight: 700;
+        }
+        .advantage-feature p {
+            color: #777; line-height: 1.6; font-size: 0.95rem;
+        }
+
+        /* ═══════════════════════════════════════════════════ */
+        /*  CTA                                               */
+        /* ═══════════════════════════════════════════════════ */
+        .cta-section {
+            background: var(--navy);
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(201,162,88,0.08) 0%, transparent 60%);
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+    <!-- SEO & Open Graph -->
+    <link rel="canonical" href="https://www.kensingtonivy.co.uk/">
+    <meta property="og:title" content="Kensington Ivy | Elite University Placement">
+    <meta property="og:description" content="UK's premier university admissions consultancy. We match students with their courses of choice and secure placements at leading institutions.">
+    <meta property="og:url" content="https://www.kensingtonivy.co.uk/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.kensingtonivy.co.uk/assets/og-image.jpg">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(14,23,38,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0;">
+            <a href="../index.html" style="text-decoration: none;">
+                <span style="font-family: var(--ff-head); font-weight: 800; font-size: 1.6rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 1.6rem; color: var(--gold);">Ivy</span>
+            </a>
+            <div style="display: flex; gap: 2.5rem; align-items: center;">
+                <a href="../index.html" style="color: rgba(255,255,255,0.7); font-weight: 500; font-size: 0.95rem; text-decoration: none;">Home</a>
+                <a href="find-courses.html" style="color: rgba(255,255,255,0.7); font-weight: 500; font-size: 0.95rem; text-decoration: none;">Find Courses</a>
+                <a href="about.html" style="color: var(--gold); font-weight: 600; font-size: 0.95rem; text-decoration: none;">About Us</a>
+                <a href="register.html" class="btn btn-gold" style="padding: 0.75rem 1.75rem; font-size: 0.9rem;">Enquire Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════ HERO ═══════ -->
+    <header class="about-hero">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="hero-badge"><i data-lucide="sparkles" style="width: 14px; color: var(--gold);"></i> The Kensington Ivy Standard</div>
+            <h1 class="hero-title">Founded on Trust.<br><em>Driven by Excellence.</em></h1>
+            <p class="hero-sub">Kensington Ivy is a boutique educational consultancy built to redefine the university admissions journey for UK students, ensuring every candidate finds their optimal course of study.</p>
+            <a href="register.html" class="btn btn-gold" style="padding: 1.1rem 3rem; font-size: 1.05rem; box-shadow: 0 10px 40px rgba(201,162,88,0.25);">Begin Your Journey <i data-lucide="arrow-right" style="width: 18px;"></i></a>
+
+            <div class="trust-bar">
+                <div class="trust-item">
+                    <div class="trust-icon"><i data-lucide="shield-check" style="width: 16px; color: var(--gold);"></i></div>
+                    <span class="trust-label">UCAS Registered</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i data-lucide="award" style="width: 16px; color: var(--gold);"></i></div>
+                    <span class="trust-label">Quality Assured</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i data-lucide="lock" style="width: 16px; color: var(--gold);"></i></div>
+                    <span class="trust-label">UK GDPR Protected</span>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i data-lucide="check-circle" style="width: 16px; color: var(--gold);"></i></div>
+                    <span class="trust-label">ICO Registered</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <i data-lucide="chevron-down" style="width: 16px;"></i>
+        </div>
+    </header>
+
+    <!-- ═══════ MISSION + IMAGE ═══════ -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid reveal">
+                <div>
+                    <span class="mission-tag">Our Mission</span>
+                    <h2 style="font-family: var(--ff-head); font-size: 3.5rem; color: var(--navy); margin-bottom: 2rem; font-weight: 700; line-height: 1.1;">Our Journey<br>in the UK.</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.9; color: #777; margin-bottom: 2rem;">Kensington Ivy was founded to bridge the gap between student aspirations and university entry requirements. We refused the 'cookie-cutter' approach, opting instead for a boutique placement model that prioritizes long-term academic success over simple enrollment volume.</p>
+                    <p style="font-size: 1.15rem; line-height: 1.9; color: #777;">Every student who partners with us receives a dedicated senior consultant who maps their entire academic profile, identifies optimal pathways, and negotiates directly with university admissions boards.</p>
+                </div>
+                <div class="mission-image-wrapper">
+                    <img src="../assets/images/collaboration_vector.png" alt="Collaborative academic advising at Kensington Ivy" style="background: #f0ede6; padding: 2rem;">
+                    <div class="mission-image-badge">
+                        <div class="badge-num">100%</div>
+                        <div class="badge-text">Placement<br>Success Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-strip reveal">
+                <div class="stat-item">
+                    <h4>100%</h4>
+                    <p>Placement Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h4>48h</h4>
+                    <p>Response Time</p>
+                </div>
+                <div class="stat-item">
+                    <h4>130+</h4>
+                    <p>University Partners</p>
+                </div>
+                <div class="stat-item">
+                    <h4>24/7</h4>
+                    <p>Advisory Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ VALUES (GLASS CARDS) ═══════ -->
+    <section class="values-section">
+        <div class="container">
+            <div class="reveal" style="text-align: center;">
+                <span style="color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 1.5rem; font-size: 0.85rem;">Why Partner With Us?</span>
+                <h2 style="font-family: var(--ff-head); font-size: 3.5rem; color: #fff; margin-bottom: 1rem;">The Kensington Ivy Advantage.</h2>
+                <p style="color: rgba(255,255,255,0.5); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">We operate with the precision of a consultancy and the care of an educator.</p>
+            </div>
+
+            <div class="values-grid reveal">
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="target" style="color: var(--gold); width: 24px;"></i></div>
+                    <h3>Academic Precision</h3>
+                    <p>Exhaustive profiling including UCAS tariff point calculation, qualification equivalency mapping, and contextual admissions analysis for every applicant.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="users" style="color: var(--gold); width: 24px;"></i></div>
+                    <h3>Dedicated Advocacy</h3>
+                    <p>Every student is assigned a senior consultant who acts as their direct admissions representative, negotiating with university boards on their behalf.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="clock" style="color: var(--gold); width: 24px;"></i></div>
+                    <h3>Rapid Turnaround</h3>
+                    <p>From initial profile assessment to university shortlisting, we guarantee a strategic action plan within 48 hours of registration.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="shield-check" style="color: var(--gold); width: 24px;"></i></div>
+                    <h3>Zero-Risk Process</h3>
+                    <p>Our internal team reviews 100% of admission portfolios and entry documents before submission, ensuring flawless, error-free applications.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="book-open" style="color: var(--gold); width: 24px;"></i></div>
+                    <h3>Academic-Led Insights</h3>
+                    <p>Our advisors have backgrounds in higher education admissions, evaluating personal statements and portfolios with institutional-grade expertise.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i data-lucide="zap" style="color: var(--gold); width: 24px;"></i></div>
+                    <h3>Responsive Partnership</h3>
+                    <p>From late-entry clearing support to year-round consultations, we provide a single, reliable point of contact for your entire university journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ TIMELINE ═══════ -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="reveal" style="text-align: center;">
+                <span style="color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; display: block; margin-bottom: 1.5rem; font-size: 0.85rem;">Our Evolution</span>
+                <h2 style="font-family: var(--ff-head); font-size: 3.5rem; color: var(--navy);">Milestone Roadmap</h2>
+            </div>
+
+            <div class="timeline-track reveal">
+                <div class="timeline-line"></div>
+
+                <div class="tl-item">
+                    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+                    <div class="tl-content">
+                        <div class="tl-year">2024</div>
+                        <div class="tl-title">Foundation</div>
+                        <div class="tl-desc">Establishment of our core university placement framework. Built initial partnerships with 20+ UK higher education institutions and launched our academic mapping engine.</div>
+                    </div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+                    <div class="tl-content">
+                        <div class="tl-year">2025</div>
+                        <div class="tl-title">Scaling & Growth</div>
+                        <div class="tl-desc">Expanded our university network to 130+ institutions. Launched specialised divisions for Medicine, Law, and Engineering placements. Introduced our 48-hour rapid assessment protocol.</div>
+                    </div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+                    <div class="tl-content">
+                        <div class="tl-year">2026</div>
+                        <div class="tl-title">The Future</div>
+                        <div class="tl-desc">Expansion into international student visa support, Tier 4 sponsorship guidance, and the launch of our dedicated Oxbridge and Elite Institutions advisory division.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ ADVANTAGE SECTION ═══════ -->
+    <section class="advantage-section">
+        <div class="container">
+            <div class="advantage-grid reveal">
+                <div>
+                    <span class="mission-tag">Our Approach</span>
+                    <h2 style="font-family: var(--ff-head); font-size: 3.5rem; color: var(--navy); margin-bottom: 2rem; font-weight: 700; line-height: 1.1;">A Student-First Methodology.</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: #777;">We don't operate like a traditional recruitment firm. Every decision, every recommendation, and every negotiation is driven by a single objective — your long-term academic success.</p>
+                </div>
+                <div>
+                    <div class="advantage-feature">
+                        <div class="adv-icon"><i data-lucide="search" style="color: var(--gold); width: 22px;"></i></div>
+                        <div>
+                            <h3>Comprehensive Profiling</h3>
+                            <p>Full UCAS tariff calculation, qualification assessment, and contextual admissions analysis before any university submission.</p>
+                        </div>
+                    </div>
+                    <div class="advantage-feature">
+                        <div class="adv-icon"><i data-lucide="message-square" style="color: var(--gold); width: 22px;"></i></div>
+                        <div>
+                            <h3>Direct University Liaison</h3>
+                            <p>We speak directly to admissions boards, presenting your case with the strength and professionalism of a formal representative.</p>
+                        </div>
+                    </div>
+                    <div class="advantage-feature">
+                        <div class="adv-icon"><i data-lucide="trending-up" style="color: var(--gold); width: 22px;"></i></div>
+                        <div>
+                            <h3>Pathway Optimisation</h3>
+                            <p>Whether A-Levels, BTECs, T-Levels, or IB, we identify the strongest pathway to your chosen degree programme.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FINAL CTA ═══════ -->
+    <section class="cta-section">
+        <div class="container" style="position: relative; z-index: 2;">
+            <h2 style="font-family: var(--ff-head); font-size: 3.5rem; color: #fff; margin-bottom: 1.5rem; font-weight: 700;" class="reveal">Ready to Secure Your Future?</h2>
+            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto 3rem auto; line-height: 1.7;" class="reveal">Join the students who've trusted Kensington Ivy to navigate their university admissions journey with precision and care.</p>
+            <a href="register.html" class="btn btn-gold reveal" style="padding: 1.1rem 3rem; font-size: 1.05rem; box-shadow: 0 10px 40px rgba(201,162,88,0.3);">Start Your Application <i data-lucide="arrow-right" style="width: 18px;"></i></a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: var(--navy); padding: 5rem 0 3rem 0; color: #fff;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+            
+            <div style="grid-column: span 1;">
+                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
+                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
+                </a>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
+                    <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
+                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
+                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
+                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
+                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
+                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
+                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
+                        <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
+            <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
+            <div style="opacity: 0.6;">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
+                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // Dynamic year
+        document.querySelectorAll('.dynamic-year').forEach(el => el.textContent = new Date().getFullYear());
+    </script>
+
+
+<!-- Detailed Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-inner">
+        <div class="cookie-banner-text">
+            <strong>Cookies on the Kensington Ivy website</strong>
+            <p>We use some essential cookies to make this site work.</p>
+            <p>We'd like to set analytics cookies to understand how you use this site. We may use services from YouTube that may also use cookies.</p>
+            <p>For more detailed information, see our <a href="/pages/legal/cookies.html">Cookies page</a>.</p>
+        </div>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn-accept" id="cookieAcceptAll">Accept all cookies</button>
+            <button class="cookie-btn-necessary" id="cookieNecessary">Reject non-essential cookies</button>
+            <button class="cookie-btn-settings" id="cookieSettingsBtn" onclick="document.getElementById('cookieDetails').classList.toggle('expanded');">Manage preferences</button>
+        </div>
+
+        <div class="cookie-banner-details" id="cookieDetails">
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Essential cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>These cookies are necessary for core functionality, such as security and network management. They always need to be on.</p>
+            </div>
+            
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Analytics cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="toggleAnalytics">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>We use analytics cookies to measure how you use our website to help us improve the experience.</p>
+            </div>
+
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Video player cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="toggleVideo">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>Pages that include videos hosted on YouTube may result in video platforms collecting information.</p>
+            </div>
+
+            <button class="cookie-btn-save" id="cookieSaveBtn">Save and close</button>
+        </div>
+    </div>
+</div>
+<script>
+(function(){
+    if(!localStorage.getItem("ki_cookie_consent")){
+        setTimeout(function(){document.getElementById("cookieBanner").classList.add("visible");},800);
+    }
+    function logConsent(consentData){
+        localStorage.setItem("ki_cookie_consent", typeof consentData === 'string' ? consentData : "custom");
+        document.getElementById("cookieBanner").classList.remove("visible");
+        fetch("/api/log-consent", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({consent: consentData})
+        }).catch(function(){});
+    }
+
+    document.getElementById("cookieAcceptAll").addEventListener("click",function(){
+        document.getElementById("toggleAnalytics").checked = true;
+        document.getElementById("toggleVideo").checked = true;
+        logConsent("all");
+    });
+    
+    document.getElementById("cookieNecessary").addEventListener("click",function(){
+        document.getElementById("toggleAnalytics").checked = false;
+        document.getElementById("toggleVideo").checked = false;
+        logConsent("necessary");
+    });
+    
+    document.getElementById("cookieSaveBtn").addEventListener("click", function(){
+        const analytics = document.getElementById("toggleAnalytics").checked;
+        const video = document.getElementById("toggleVideo").checked;
+        if(analytics && video) {
+            logConsent("all");
+        } else if (!analytics && !video) {
+            logConsent("necessary");
+        } else {
+            logConsent("custom_analytics:" + analytics + "_video:" + video);
+        }
+    });
+})();
+</script>
+</body>
+</html>

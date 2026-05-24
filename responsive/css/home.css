@@ -1,0 +1,197 @@
+/* ══════════════════════════════════════
+   KENSINGTON IVY — HOME
+   Hero section, search bar, homepage
+   sections (roles, compliance, etc.)
+   ══════════════════════════════════════ */
+
+/* ── HERO ────────────────────────────── */
+.hero {
+    background-color: var(--off);
+    background-image: var(--paper-texture);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    right: -10%; top: -20%;
+    width: 60%; height: 140%;
+    background: rgba(201, 162, 88, 0.08);
+    border-radius: 50% 40% 60% 40% / 40% 50% 60% 50%;
+    z-index: 0;
+}
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.hero-content h1 {
+    font-family: var(--ff-head);
+    font-size: 4rem;
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+}
+.hero-content p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+}
+
+/* ── SEARCH BAR ──────────────────────── */
+.hero-search {
+    background: var(--white);
+    background-image: var(--paper-texture);
+    padding: 0.5rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 15px 40px rgba(10, 17, 40, 0.08);
+    margin-bottom: 3rem;
+    max-width: 650px;
+}
+.hero-search i {
+    color: var(--muted);
+    margin-left: 1.5rem;
+    margin-right: 0;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+.hero-search input {
+    flex: 1;
+    border: none;
+    padding: 1.2rem 0 1.2rem 2rem;
+    font-family: var(--ff-body);
+    font-size: 1.15rem;
+    outline: none;
+    background: transparent;
+}
+.search-submit {
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    transition: var(--ease);
+}
+.search-submit:hover { background: var(--gold); transform: scale(1.05); }
+.search-submit i { margin: 0 !important; width: 20px; height: 20px; color: #fff !important; }
+
+.popular-searches {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: -1.5rem;
+    margin-bottom: 3rem;
+    padding-left: 1rem;
+}
+.popular-searches a { color: var(--navy); font-weight: 600; margin-left: 0.3rem; }
+.popular-searches a:hover { color: var(--gold); text-decoration: underline; }
+
+/* ── TRUST BADGE ─────────────────────── */
+.trust-badge { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--navy); }
+.trust-badge i { color: var(--gold); }
+
+/* ── HERO IMAGE ──────────────────────── */
+.hero-image {
+    background: var(--white);
+    background-image: var(--paper-texture);
+    padding: 1.5rem;
+    border-radius: 30px;
+    box-shadow: 0 24px 48px rgba(10,17,40,0.06);
+    position: relative; z-index: 2;
+    max-width: 680px;
+    margin: 0 auto;
+    transform: translateX(40px);
+}
+.hero-image img {
+    width: 100%; height: auto; display: block;
+    mix-blend-mode: multiply;
+    filter: brightness(1.05) contrast(1.1);
+}
+
+/* ── RESPONSIVE MEDIA QUERIES ──────────────── */
+@media (max-width: 991px) {
+    .hero {
+        padding: 4rem 0;
+        min-height: auto;
+    }
+    .hero::before {
+        display: none;
+    }
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content p {
+        max-width: 100%;
+        margin: 0 auto 2rem;
+        font-size: 1.05rem;
+    }
+    .hero-search {
+        margin: 0 auto 2.5rem;
+        padding: 0.4rem;
+        max-width: 100%;
+    }
+    .hero-search input {
+        font-size: 1rem;
+        padding: 1rem 0 1rem 1.5rem;
+    }
+    .popular-searches {
+        margin-top: -1.5rem;
+        margin-bottom: 2.5rem;
+        padding-left: 0;
+        text-align: center;
+    }
+    .trust-badge {
+        justify-content: center;
+    }
+    .hero-image {
+        transform: none;
+        max-width: 100%;
+        padding: 1rem;
+        border-radius: 20px;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-search {
+        flex-direction: column;
+        border-radius: 16px;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .hero-search i {
+        display: none;
+    }
+    .hero-search input {
+        padding: 0;
+        text-align: center;
+        width: 100%;
+    }
+    .search-submit {
+        width: 100%;
+        border-radius: 8px;
+        height: 48px;
+        margin-right: 0;
+    }
+}

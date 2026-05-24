@@ -8,16 +8,9 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/home.css?v=2">
+    <link rel="stylesheet" href="css/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- SEO & Open Graph -->
-    <link rel="canonical" href="https://www.kensingtonivy.co.uk/">
-    <meta property="og:title" content="Kensington Ivy | Elite University Placement">
-    <meta property="og:description" content="UK's premier university admissions consultancy. We match students with their courses of choice and secure placements at leading institutions.">
-    <meta property="og:url" content="https://www.kensingtonivy.co.uk/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.kensingtonivy.co.uk/assets/og-image.jpg">
 </head>
 <body>
 
@@ -25,17 +18,17 @@
 <!-- MAIN HEADER -->
 <header class="header">
     <div class="container header-inner">
-        <a href="index.html" class="logo">
+        <a href="../index.html" class="logo">
             <span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span>
         </a>
         <nav class="top-links" style="gap: 2rem;">
-            <a href="pages/find-courses.html" style="color: var(--navy); font-weight: 500;">Find Courses</a>
-            <a href="pages/registries.html" style="color: var(--navy); font-weight: 500;">University Registries</a>
-            <a href="pages/foundation-years.html" style="color: var(--navy); font-weight: 500;">Foundation Years</a>
-            <a href="pages/about.html?v=3" style="color: var(--navy); font-weight: 500;">About Us</a>
+            <a href="../pages/find-courses.html" style="color: var(--navy); font-weight: 500;">Find Courses</a>
+            <a href="../pages/registries.html" style="color: var(--navy); font-weight: 500;">University Registries</a>
+            <a href="../pages/hire-staff.html" style="color: var(--navy); font-weight: 500;">Request Placement</a>
+            <a href="../pages/about.html" style="color: var(--navy); font-weight: 500;">About Us</a>
         </nav>
         <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="pages/register.html" class="btn btn-gold">Enquire Now</a>
+            <a href="../pages/register.html" class="btn btn-gold">Enquire Now</a>
             <button class="menu-toggle" onclick="document.querySelector('.top-links').classList.toggle('active')" aria-label="Toggle Menu">
                 <i data-lucide="menu"></i>
             </button>
@@ -45,11 +38,11 @@
 
 <nav class="secondary-nav">
     <div class="container secondary-nav-inner">
-        <a href="pages/find-courses.html" class="sec-nav-pill"><i data-lucide="search" style="width: 16px;"></i> Find Courses</a>
-        <a href="pages/clearing-support.html" class="sec-nav-pill"><i data-lucide="clock" style="width: 16px;"></i> Clearing Support</a>
-        <a href="pages/foundation-years.html" class="sec-nav-pill"><i data-lucide="calendar-check" style="width: 16px;"></i> Foundation Years</a>
-        <a href="pages/faq/faq.html" class="sec-nav-pill"><i data-lucide="help-circle" style="width: 16px;"></i> Admissions FAQs</a>
-        <a href="pages/reviews.html" class="sec-nav-pill"><i data-lucide="star" style="width: 16px;"></i> Reviews</a>
+        <a href="../pages/find-courses.html" class="sec-nav-pill"><i data-lucide="search" style="width: 16px;"></i> Find Courses</a>
+        <a href="../pages/clearing-support.html" class="sec-nav-pill"><i data-lucide="clock" style="width: 16px;"></i> Clearing Support</a>
+        <a href="../pages/foundation-years.html" class="sec-nav-pill"><i data-lucide="calendar-check" style="width: 16px;"></i> Foundation Years</a>
+        <a href="../pages/faq/faq.html" class="sec-nav-pill"><i data-lucide="help-circle" style="width: 16px;"></i> Admissions FAQs</a>
+        <a href="../pages/oxbridge-elite.html" class="sec-nav-pill"><i data-lucide="award" style="width: 16px;"></i> Oxbridge & Elite</a>
     </div>
 </nav>
 
@@ -63,12 +56,12 @@
             
             <div class="hero-search">
                 <i data-lucide="search"></i>
-                <input type="text" id="heroSearchInput" placeholder="Search for a course or university (e.g. Law)..." onkeypress="if(event.key === 'Enter') document.getElementById('heroSearchBtn').click()">
-                <button class="search-submit" id="heroSearchBtn" aria-label="Search" onclick="const q = document.getElementById('heroSearchInput').value; if(q) window.location.href='pages/find-courses.html?q=' + encodeURIComponent(q)"><i data-lucide="arrow-right"></i></button>
+                <input type="text" placeholder="Search for a course or university (e.g. Law)...">
+                <button class="search-submit" aria-label="Search"><i data-lucide="arrow-right"></i></button>
             </div>
             
             <div class="popular-searches">
-                <span>Popular:</span> <a href="pages/course-details.html?course=Computer%20Science">Computer Science</a>, <a href="pages/course-details.html?course=Medicine%20(MBBS)">Medicine</a>, <a href="pages/course-details.html?course=Business%20Management">Business Management</a>
+                <span>Popular:</span> <a href="../pages/course-details.html?course=Computer%20Science">Computer Science</a>, <a href="../pages/course-details.html?course=Medicine%20(MBBS)">Medicine</a>, <a href="../pages/course-details.html?course=Business%20Management">Business Management</a>
             </div>
 
             <div class="trust-badge">
@@ -77,7 +70,7 @@
             </div>
         </div>
         <div class="hero-image">
-            <img src="assets/images/hero_illustration.png?v=2" alt="University students celebrating their academic success on campus">
+            <img src="../assets/images/hero_illustration.png" alt="University students celebrating their academic success on campus">
         </div>
     </div>
 </section>
@@ -86,7 +79,7 @@
 <section class="network-section reveal">
     <div class="container network-inner">
         <div class="network-image">
-            <img src="assets/images/network_illustration.png" alt="Students collaborating and learning together">
+            <img src="../assets/images/network_illustration.png" alt="Students collaborating and learning together">
         </div>
         <div class="network-content">
             <span class="badge-pill">The Kensington Ivy Standard</span>
@@ -150,7 +143,7 @@
                     <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--muted); font-size: 0.9rem;"><i data-lucide="calendar" style="width: 16px; color: var(--gold);"></i> September & January Intakes</div>
                 </div>
                 <p style="color: var(--text); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">We help students secure places in standard undergraduate degrees. Whether you are coming from school or returning to education, we guide you to a highly respected university that maximizes your qualifications.</p>
-                <a href="pages/register.html" class="btn" style="background: var(--navy); color: #fff; width: 100%; justify-content: center; font-size: 0.9rem; border-radius: 8px;">Register Interest</a>
+                <a href="../pages/register.html" class="btn" style="background: var(--navy); color: #fff; width: 100%; justify-content: center; font-size: 0.9rem; border-radius: 8px;">Register Interest</a>
             </div>
 
             <!-- Role Card 2 -->
@@ -166,7 +159,7 @@
                     <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--muted); font-size: 0.9rem;"><i data-lucide="calendar" style="width: 16px; color: var(--gold);"></i> Alternative Entry Requirements</div>
                 </div>
                 <p style="color: var(--text); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">Missed out on standard entry grades? We specialize in matching students with Access to HE and Foundation courses that offer guaranteed pathways to full degree programs in their course of choice.</p>
-                <a href="pages/register.html" class="btn" style="background: var(--navy); color: #fff; width: 100%; justify-content: center; font-size: 0.9rem; border-radius: 8px;">Register Interest</a>
+                <a href="../pages/register.html" class="btn" style="background: var(--navy); color: #fff; width: 100%; justify-content: center; font-size: 0.9rem; border-radius: 8px;">Register Interest</a>
             </div>
 
             <!-- Role Card 3 -->
@@ -182,7 +175,7 @@
                     <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--muted); font-size: 0.9rem;"><i data-lucide="calendar" style="width: 16px; color: var(--gold);"></i> Bespoke 1-on-1 Advisory</div>
                 </div>
                 <p style="color: var(--text); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">One-to-one mentoring for highly competitive academic programs. We provide rigorous preparation for interviews, personal statements, and admissions assessments to secure elite placements.</p>
-                <a href="pages/register.html" class="btn" style="background: var(--navy); color: #fff; width: 100%; justify-content: center; font-size: 0.9rem; border-radius: 8px;">Register Interest</a>
+                <a href="../pages/register.html" class="btn" style="background: var(--navy); color: #fff; width: 100%; justify-content: center; font-size: 0.9rem; border-radius: 8px;">Register Interest</a>
             </div>
             
         </div>
@@ -195,7 +188,7 @@
         <div style="text-align: center; margin-bottom: 5rem;">
             <h2 style="font-family: var(--ff-head); font-size: 3.2rem; margin-bottom: 1.5rem; color: var(--navy); display: inline-block; position: relative;">
                 100% Admission Alignment.
-                <img src="assets/images/magnifying_person.png" alt="Investigating Compliance" style="position: absolute; right: -130px; bottom: 0; width: 150px; mix-blend-mode: darken; pointer-events: none; transform: scaleX(-1);">
+                <img src="../assets/images/magnifying_person.png" alt="Investigating Compliance" style="position: absolute; right: -130px; bottom: 0; width: 150px; mix-blend-mode: darken; pointer-events: none; transform: scaleX(-1);">
             </h2>
             <p style="color: var(--muted); font-size: 1.1rem; line-height: 1.6; max-width: 750px; margin: 0 auto;">We leave nothing to chance. Every applicant is guided through our exhaustive 6-point admissions matrix, ensuring your application stands out and complies with university entry standards.</p>
         </div>
@@ -266,7 +259,7 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
             
             <div style="grid-column: span 1;">
-                <a href="index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
+                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
                     <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
                 </a>
                 <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
@@ -283,19 +276,19 @@
             <div>
                 <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
                 <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <a href="index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
-                    <a href="pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
-                    <a href="pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
-                    <a href="pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
+                    <a href="../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
+                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
+                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
+                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
                 </div>
             </div>
 
             <div>
                 <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
                 <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <a href="pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
-                    <a href="pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
-                    <a href="pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
+                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
+                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
+                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
                 </div>
             </div>
 
@@ -331,99 +324,6 @@
 
 <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
 
-<!-- Detailed Cookie Banner -->
-<div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-banner-inner">
-        <div class="cookie-banner-text">
-            <strong>Cookies on the Kensington Ivy website</strong>
-            <p>We use some essential cookies to make this site work.</p>
-            <p>We'd like to set analytics cookies to understand how you use this site. We may use services from YouTube that may also use cookies.</p>
-            <p>For more detailed information, see our <a href="pages/legal/cookies.html">Cookies page</a>.</p>
-        </div>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn-accept" id="cookieAcceptAll">Accept all cookies</button>
-            <button class="cookie-btn-necessary" id="cookieNecessary">Reject non-essential cookies</button>
-            <button class="cookie-btn-settings" id="cookieSettingsBtn" onclick="document.getElementById('cookieDetails').classList.toggle('expanded');">Manage preferences</button>
-        </div>
-
-        <div class="cookie-banner-details" id="cookieDetails">
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Essential cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" checked disabled>
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>These cookies are necessary for core functionality, such as security and network management. They always need to be on.</p>
-            </div>
-            
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Analytics cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="toggleAnalytics">
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>We use analytics cookies to measure how you use our website to help us improve the experience.</p>
-            </div>
-
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Video player cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="toggleVideo">
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>Pages that include videos hosted on YouTube may result in video platforms collecting information.</p>
-            </div>
-
-            <button class="cookie-btn-save" id="cookieSaveBtn">Save and close</button>
-        </div>
-    </div>
-</div>
-<script>
-(function(){
-    if(!localStorage.getItem("ki_cookie_consent")){
-        setTimeout(function(){document.getElementById("cookieBanner").classList.add("visible");},800);
-    }
-    function logConsent(consentData){
-        localStorage.setItem("ki_cookie_consent", typeof consentData === 'string' ? consentData : "custom");
-        document.getElementById("cookieBanner").classList.remove("visible");
-        fetch("/api/log-consent", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({consent: consentData})
-        }).catch(function(){});
-    }
-
-    document.getElementById("cookieAcceptAll").addEventListener("click",function(){
-        document.getElementById("toggleAnalytics").checked = true;
-        document.getElementById("toggleVideo").checked = true;
-        logConsent("all");
-    });
-    
-    document.getElementById("cookieNecessary").addEventListener("click",function(){
-        document.getElementById("toggleAnalytics").checked = false;
-        document.getElementById("toggleVideo").checked = false;
-        logConsent("necessary");
-    });
-    
-    document.getElementById("cookieSaveBtn").addEventListener("click", function(){
-        const analytics = document.getElementById("toggleAnalytics").checked;
-        const video = document.getElementById("toggleVideo").checked;
-        if(analytics && video) {
-            logConsent("all");
-        } else if (!analytics && !video) {
-            logConsent("necessary");
-        } else {
-            logConsent("custom_analytics:" + analytics + "_video:" + video);
-        }
-    });
-})();
-</script>
 <script>
     lucide.createIcons();
 

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details | KensingtonIvy</title>
+    <meta name="description" content="View details for elite university placement options across the UK.">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* ── HERO ────────────────────────────── */
+        .course-hero {
+            background: linear-gradient(170deg, var(--navy) 0%, #0d1a3a 60%, #162550 100%);
+            color: #fff;
+            padding: 10rem 0 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(201, 162, 88, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .course-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 162, 88, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+        }
+        .hero-breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        .hero-breadcrumb a:hover { opacity: 0.8; }
+        .hero-breadcrumb span { color: rgba(255,255,255,0.3); }
+        .course-hero h1 {
+            font-family: var(--ff-head);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.08;
+            margin-bottom: 1.5rem;
+            max-width: 750px;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 0.7rem 1.3rem;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+        }
+        .hero-badge i { color: var(--gold); }
+
+        /* ── BODY ────────────────────────────── */
+        .course-body {
+            padding: 5rem 0 6rem 0;
+            background: var(--off, #faf9f6);
+        }
+        .course-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 3.5rem;
+            align-items: start;
+        }
+        @media (max-width: 1000px) {
+            .course-layout { grid-template-columns: 1fr; }
+        }
+
+        /* ── CONTENT CARDS ───────────────────── */
+        .info-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .info-card h2 {
+            font-family: var(--ff-head);
+            font-size: 1.75rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .info-card h2 i { color: var(--gold); width: 24px; height: 24px; flex-shrink: 0; }
+        .info-card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+        .info-card p:last-child { margin-bottom: 0; }
+
+        /* ── MODULE LIST ─────────────────────── */
+        .module-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        @media (max-width: 600px) { .module-grid { grid-template-columns: 1fr; } }
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 1.1rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            color: #444;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .module-item i { color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* ── GRADES CTA ──────────────────────── */
+        .grades-cta {
+            background: linear-gradient(135deg, rgba(201, 162, 88, 0.08) 0%, rgba(201, 162, 88, 0.03) 100%);
+            border: 1px solid rgba(201, 162, 88, 0.2);
+            border-left: 5px solid var(--gold);
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        .grades-cta h4 {
+            color: var(--navy);
+            font-family: var(--ff-head);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .grades-cta p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .grades-cta a {
+            color: var(--gold);
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* ── SIDEBAR ─────────────────────────── */
+        .sidebar-sticky {
+            position: sticky;
+            top: 2rem;
+        }
+        .apply-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+            border-top: 5px solid var(--gold);
+            margin-bottom: 2rem;
+        }
+        .apply-card h3 {
+            font-family: var(--ff-head);
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+        .apply-card > p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .detail-row:last-of-type { border-bottom: none; margin-bottom: 1.5rem; }
+        .detail-label {
+            color: #888;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .detail-label i { width: 16px; height: 16px; color: var(--gold); }
+        .detail-val {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 0.9rem;
+            text-align: right;
+        }
+        .apply-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 1.1rem 2rem;
+            background: var(--navy);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: var(--ff-body);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .apply-btn:hover {
+            background: #0d1a3a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10,17,40,0.2);
+        }
+        .why-card {
+            background: var(--navy);
+            color: #fff;
+            padding: 2.5rem;
+            border-radius: 16px;
+        }
+        .why-card h4 {
+            font-family: var(--ff-head);
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+            color: #fff;
+        }
+        .why-item {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.5;
+        }
+        .why-item i { color: var(--gold); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
+
+        /* ── 404 ──────────────────────────────── */
+        #courseNotFound {
+            display: none;
+            text-align: center;
+            padding: 12rem 0 8rem;
+        }
+        #courseNotFound h1 {
+            font-family: var(--ff-head);
+            color: var(--navy);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        #courseNotFound p {
+            color: #666;
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="container header-inner">
+        <a href="../index.html" class="logo"><span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span></a>
+        <nav class="top-links" style="gap: 2rem;">
+            <a href="find-courses.html" style="color: var(--navy); font-weight: 500;">Find Courses</a>
+            <a href="faq/faq.html" style="color: var(--navy); font-weight: 500;">University Registries</a>
+            <a href="foundation-years.html" style="color: var(--navy); font-weight: 500;">Foundation Years</a>
+            <a href="about.html?v=3" style="color: var(--navy); font-weight: 500;">About Us</a>
+        </nav>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="register.html" id="navRegisterBtn" class="btn btn-gold" style="gap: 0.5rem;">Get My Place <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a>
+            <button class="menu-toggle" onclick="document.querySelector('.top-links').classList.toggle('active')" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- NOT FOUND STATE -->
+<div id="courseNotFound">
+    <div class="container">
+        <i data-lucide="search-x" style="width: 64px; height: 64px; color: rgba(0,0,0,0.1); margin-bottom: 2rem;"></i>
+        <h1>Course Not Found</h1>
+        <p>We couldn't find the course you're looking for. It may have been moved or the link may be incorrect.</p>
+        <a href="find-courses.html" class="btn btn-navy" style="background: var(--navy); color: #fff;">Back to Course Search</a>
+    </div>
+</div>
+
+<!-- MAIN CONTENT (hidden until JS populates) -->
+<div id="courseContent" style="display: none;">
+
+    <section class="course-hero">
+        <div class="container">
+            <div class="hero-breadcrumb">
+                <a href="find-courses.html">Find Courses</a>
+                <span>/</span>
+                <span id="breadCat">Category</span>
+                <span>/</span>
+                <span id="breadTitle" style="color: rgba(255,255,255,0.7);">Course</span>
+            </div>
+            <h1 id="dynTitle">Course Title</h1>
+            <p class="hero-subtitle" id="dynHeroSub">A brief overview of this course and what it offers.</p>
+            <div class="hero-badges">
+                <div class="hero-badge"><i data-lucide="clock" style="width:16px;height:16px;"></i> <span id="dynDuration">3 Years</span></div>
+                <div class="hero-badge"><i data-lucide="award" style="width:16px;height:16px;"></i> <span id="dynOffer">AAB</span></div>
+                <div class="hero-badge"><i data-lucide="graduation-cap" style="width:16px;height:16px;"></i> <span id="dynLevel">Undergraduate</span></div>
+                <div class="hero-badge"><i data-lucide="folder" style="width:16px;height:16px;"></i> <span id="dynCat">Category</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-body">
+        <div class="container">
+            <div class="course-layout">
+
+                <!-- LEFT: Main Content -->
+                <div>
+                    <div class="info-card">
+                        <h2><i data-lucide="book-open"></i> Course Overview</h2>
+                        <p id="dynOverview1"></p>
+                        <p id="dynOverview2"></p>
+                        <p id="dynOverview3"></p>
+                    </div>
+
+                    <div class="grades-cta">
+                        <h4>Not Meeting the Entry Requirements?</h4>
+                        <p>Kensington Ivy holds exclusive partnerships with several UK institutions. We can often secure placements for students who may not meet standard entry thresholds through foundation pathways, portfolio assessments, or experience-based admissions. <a href="register.html" id="dynNoGradesLink">Contact us</a> to see if you are eligible with your current qualifications.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h2><i data-lucide="layout-list"></i> Core Modules & Structure</h2>
+                        <p id="dynModulesIntro">While exact structures vary between universities, a rigorous degree in this discipline typically covers the following areas:</p>
+                        <div class="module-grid" id="dynModules"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h2><i data-lucide="briefcase"></i> Graduate Prospects & Careers</h2>
+                        <p id="dynCareer1"></p>
+                        <p id="dynCareer2"></p>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Sidebar -->
+                <div class="sidebar-sticky">
+                    <div class="apply-card">
+                        <h3>Ready to Apply?</h3>
+                        <p>Secure your place at a top-tier UK university. Our specialist admissions consultants are ready to review your academic profile.</p>
+
+                        <div class="detail-row">
+                            <span class="detail-label"><i data-lucide="calendar"></i> Intake</span>
+                            <span class="detail-val">September 2026</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label"><i data-lucide="clock"></i> Study Mode</span>
+                            <span class="detail-val">Full-Time</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label"><i data-lucide="map-pin"></i> Location</span>
+                            <span class="detail-val">UK Nationwide</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label"><i data-lucide="award"></i> Typical Offer</span>
+                            <span class="detail-val" id="sidebarOffer">AAB</span>
+                        </div>
+
+                        <a href="register.html" id="dynApplyBtn" class="apply-btn">
+                            Enquire Now <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                        </a>
+                    </div>
+
+                    <div class="why-card">
+                        <h4>Why Choose Kensington Ivy?</h4>
+                        <div class="why-item"><i data-lucide="check-circle"></i> <span>Dedicated admissions consultant assigned to your application</span></div>
+                        <div class="why-item"><i data-lucide="check-circle"></i> <span>Personal statement and interview coaching included</span></div>
+                        <div class="why-item"><i data-lucide="check-circle"></i> <span>Exclusive partnerships with leading UK universities</span></div>
+                        <div class="why-item"><i data-lucide="check-circle"></i> <span>Support for students who don't meet standard entry grades</span></div>
+                        <div class="why-item"><i data-lucide="check-circle"></i> <span>End-to-end UCAS application management</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- FOOTER -->
+<footer style="background: var(--navy); padding: 5rem 0 3rem 0; color: #fff;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+            
+            <div style="grid-column: span 1;">
+                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
+                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
+                </a>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
+                    <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
+                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
+                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
+                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
+                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
+                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
+                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
+                        <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
+            <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
+            <div style="opacity: 0.6;">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
+                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../js/courses.js"></script>
+<script>
+lucide.createIcons();
+
+// ── Rich content generation based on category ─────────────
+const categoryContent = {
+    "Business": {
+        overview2: "This programme combines rigorous academic theory with practical, industry-focused learning. You will engage with real-world case studies, business simulations, and group projects that mirror the challenges faced by today's global enterprises. Many programmes include the opportunity for professional placements, giving you direct exposure to corporate environments and building your professional network before graduation.",
+        overview3: "Upon completion, graduates are equipped with a strategic mindset, strong analytical capabilities, and the interpersonal skills necessary to lead teams and drive organizational growth. Whether you aspire to work in a multinational corporation, launch your own venture, or enter the public sector, this degree provides the versatile foundation to succeed.",
+        modules: ["Strategic Management & Leadership", "Financial Reporting & Analysis", "Marketing Strategy & Consumer Behaviour", "Organisational Behaviour & HRM", "Business Law & Ethics", "International Trade & Economics", "Data Analytics for Business", "Entrepreneurship & Innovation"],
+        career1: "Graduates in this field are among the most versatile in the job market. Typical career paths include management consulting at firms like McKinsey, Bain, and BCG, graduate schemes at the Big Four accounting firms (Deloitte, PwC, EY, KPMG), investment banking, brand management in FMCG companies, and operational leadership roles across industries.",
+        career2: "Many graduates also pursue further qualifications such as the MBA, CFA, or ACCA to specialize further. The average graduate salary for business-related disciplines from Russell Group universities ranges from £28,000 to £45,000, with significant growth potential within the first five years of employment."
+    },
+    "STEM": {
+        overview2: "The curriculum is designed to develop both your theoretical knowledge and your practical engineering or technical skills. You will have access to cutting-edge laboratory facilities, industry-standard software, and collaborative project-based learning environments. Many programmes are accredited by professional bodies (such as the IET, IMechE, or BCS), ensuring your qualification is recognised globally by employers.",
+        overview3: "Students are encouraged to undertake industrial placements and participate in research projects, often in partnership with leading technology companies and engineering firms. This hands-on experience is invaluable for building technical competence and professional confidence in your chosen specialism.",
+        modules: ["Advanced Mathematics & Computational Methods", "Systems Design & Architecture", "Programming & Software Development", "Data Structures & Algorithms", "Project Management & Professional Practice", "Research Methods & Technical Writing", "Emerging Technologies Seminar", "Final Year Capstone Project"],
+        career1: "STEM graduates are in exceptionally high demand across the UK and globally. Career destinations include technology companies (Google, Microsoft, Amazon), aerospace firms (Rolls-Royce, BAE Systems, Airbus), financial technology, telecommunications, and civil infrastructure. Starting salaries for engineering and computing graduates typically range from £30,000 to £50,000.",
+        career2: "Many graduates also pursue chartered status through professional institutions, which significantly enhances career progression and earning potential. The skills acquired—problem-solving, analytical thinking, and technical fluency—are transferable across virtually every industry."
+    },
+    "Healthcare": {
+        overview2: "This programme integrates theoretical learning with extensive clinical placements in NHS hospitals, GP surgeries, community health centres, and specialist clinics. You will develop the clinical competencies, communication skills, and ethical awareness required to deliver safe, compassionate, and evidence-based care to patients across diverse settings.",
+        overview3: "All healthcare programmes at UK universities are designed in partnership with NHS trusts and are regulated by the relevant professional body (such as the NMC, HCPC, or GDC). Upon successful completion, graduates are eligible to register as qualified practitioners and begin their professional careers immediately.",
+        modules: ["Human Anatomy & Physiology", "Clinical Assessment & Diagnostics", "Evidence-Based Practice", "Professional Ethics & Governance", "Pharmacology & Therapeutics", "Patient Communication & Psychology", "Public Health & Epidemiology", "Clinical Placement (Supervised)"],
+        career1: "Healthcare graduates enter one of the most stable and rewarding career sectors. Opportunities exist across the NHS, private healthcare providers, research institutions, and international health organisations. Many roles offer structured career progression pathways, with opportunities for specialisation, advanced practice, and leadership.",
+        career2: "The UK faces a significant shortage of qualified healthcare professionals, making employment prospects exceptionally strong. Starting salaries for NHS-registered practitioners typically range from £27,000 to £35,000 (Band 5-6), with rapid progression for those who pursue further training and specialisation."
+    },
+    "Sciences": {
+        overview2: "This degree emphasises both theoretical depth and practical laboratory skills. You will conduct experiments, analyse data using advanced statistical methods, and develop the critical thinking abilities that are the hallmark of scientific inquiry. Research-led teaching ensures you are learning from academics at the forefront of their fields.",
+        overview3: "Many programmes offer the opportunity to undertake a professional placement year or study abroad, providing invaluable experience in industrial or international research environments. Final-year dissertation projects allow you to pursue original research under the supervision of leading academics.",
+        modules: ["Core Scientific Principles & Theory", "Laboratory Techniques & Safety", "Statistical Analysis & Data Interpretation", "Research Design & Methodology", "Advanced Specialist Topics", "Scientific Communication & Writing", "Field Studies & Practical Application", "Independent Research Dissertation"],
+        career1: "Science graduates pursue diverse careers in research, industry, education, and the public sector. Common destinations include pharmaceutical companies, environmental consultancies, government scientific agencies (such as DEFRA and Public Health England), biotech startups, and academic research institutions.",
+        career2: "Many graduates also progress to postgraduate research (MSc or PhD) to specialise further, which can lead to careers in academia, industrial R&D, or senior scientific advisory roles. Starting salaries typically range from £24,000 to £35,000, with significant increases for those with postgraduate qualifications."
+    },
+    "Humanities": {
+        overview2: "This programme develops exceptional critical thinking, analytical writing, and communication skills—competencies that are valued across every sector of the economy. You will engage with primary sources, theoretical frameworks, and scholarly debate, learning to construct rigorous, evidence-based arguments.",
+        overview3: "Many humanities programmes offer study abroad opportunities, language training, and interdisciplinary modules that broaden your intellectual perspective. The transferable skills acquired—research, analysis, persuasive communication—make humanities graduates highly adaptable and sought after by employers.",
+        modules: ["Critical Theory & Analysis", "Research Methodologies", "Historical & Cultural Contexts", "Textual & Discourse Analysis", "Ethics, Philosophy & Argumentation", "Independent Research Project", "Contemporary Issues & Debates", "Professional Skills & Career Development"],
+        career1: "Humanities graduates enjoy remarkably diverse career paths. Common destinations include law (via the GDL/SQE conversion), journalism, publishing, civil service, diplomacy, NGOs, education, and the creative industries. The analytical and communication skills developed are particularly valued in management consulting and policy roles.",
+        career2: "Research shows that humanities graduates' earning potential increases significantly over their careers, often matching or exceeding graduates from vocational disciplines within 10 years. Many also pursue postgraduate study to specialise in areas such as law, international relations, or museum curation."
+    },
+    "Social Sciences": {
+        overview2: "This programme combines quantitative research methods with qualitative analysis, providing you with a comprehensive toolkit for understanding complex social phenomena. You will study theories of human behaviour, institutional structures, and policy frameworks while developing practical skills in data collection, statistical analysis, and ethnographic research.",
+        overview3: "Many programmes incorporate community-based learning, professional placements, and collaborative research projects with external organisations. These experiences ensure graduates are not only academically rigorous but also practically prepared for careers that directly impact society.",
+        modules: ["Social Research Methods (Quantitative & Qualitative)", "Social Theory & Contemporary Debates", "Policy Analysis & Evaluation", "Statistics for Social Sciences", "Identity, Culture & Globalisation", "Applied Project & Fieldwork", "Ethics in Social Research", "Dissertation / Independent Study"],
+        career1: "Social science graduates are in demand across the public sector, NGOs, market research, human resources, social policy, and community development. Employers value the research skills, critical analysis, and understanding of human behaviour that these disciplines develop.",
+        career2: "Many graduates progress to professional training in social work, counselling, teaching, or law. Others pursue careers in data analysis, market research, or policy advisory roles in government departments and think tanks. Starting salaries typically range from £24,000 to £32,000."
+    },
+    "Arts & Design": {
+        overview2: "This programme balances creative exploration with professional practice. You will develop your creative portfolio through studio-based work, industry-standard tools, and collaborative projects, while also studying the theoretical and historical contexts that inform contemporary creative practice.",
+        overview3: "Industry connections are a key feature of arts and design programmes, with opportunities for live briefs, internships, exhibitions, and networking with practising professionals. Final-year showcases and degree shows provide a platform to present your work to potential employers and clients.",
+        modules: ["Creative Practice & Studio Work", "Design Theory & Cultural History", "Digital Tools & Technology", "Professional Practice & Portfolio Development", "Collaborative & Live Brief Projects", "Material Exploration & Experimentation", "Critical & Contextual Studies", "Final Major Project / Exhibition"],
+        career1: "Creative graduates work across advertising, fashion, film, gaming, architecture, publishing, and the broader cultural industries. The UK's creative sector is worth over £115 billion annually and employs more than 2 million people, making it one of the fastest-growing sectors of the economy.",
+        career2: "Many graduates establish freelance practices or launch creative businesses, while others join established studios, agencies, or in-house creative teams at global brands. Further study (MA, MFA) can deepen specialisation and is common in fields such as fine art, fashion, and film."
+    },
+    "Media": {
+        overview2: "This programme provides practical, hands-on training in industry-standard production techniques alongside critical study of media theory, audience analysis, and cultural representation. You will gain experience with professional equipment, editing suites, and digital platforms used across the media industry.",
+        overview3: "Many programmes include industry placements, enabling you to build professional contacts and gain real-world experience in newsrooms, production companies, PR agencies, or digital media organisations. Student-led publications, radio stations, and film festivals provide additional opportunities to develop your portfolio.",
+        modules: ["Media Theory & Cultural Studies", "Digital Content Production", "Audience Research & Analytics", "Journalism & News Writing", "Film & Video Production", "Social Media Strategy & Management", "Media Law & Ethics", "Final Production Project / Portfolio"],
+        career1: "Media graduates pursue careers in broadcasting, journalism, public relations, advertising, digital marketing, film production, and social media management. The media industry is rapidly evolving with digital transformation, creating new roles in content strategy, podcast production, and data-driven audience engagement.",
+        career2: "Freelancing and portfolio careers are common in the media industry. Many graduates combine multiple roles—such as writing, producing, and consulting—to build diverse and fulfilling careers. Postgraduate qualifications in journalism, filmmaking, or communications can accelerate career progression."
+    },
+    "Education": {
+        overview2: "This programme combines academic study of educational theory and child development with extensive school-based placements. You will observe, plan, and deliver lessons under the mentorship of experienced practitioners, gaining the confidence and competence to manage your own classroom.",
+        overview3: "All teacher training programmes in England are designed to meet the Teachers' Standards set by the Department for Education. Upon successful completion, you will be recommended for Qualified Teacher Status (QTS), enabling you to teach in state-maintained schools across England and Wales.",
+        modules: ["Child Development & Learning Theory", "Curriculum Design & Pedagogy", "Inclusive Education & SEND", "Assessment & Feedback Strategies", "Classroom Management & Behaviour", "Safeguarding & Pastoral Care", "Professional Development & Reflective Practice", "Extended School Placement"],
+        career1: "Education graduates primarily enter teaching careers in primary, secondary, or special education settings. The UK faces an ongoing shortage of qualified teachers, particularly in STEM subjects, making employment prospects very strong. Starting salaries begin at £30,000 (£36,745 in Inner London).",
+        career2: "Beyond classroom teaching, career progression pathways include senior leadership (Head of Department, Deputy Head, Headteacher), educational consultancy, curriculum development, educational technology, and roles within Ofsted, Multi-Academy Trusts, and Local Authorities."
+    },
+    "Public Sector": {
+        overview2: "This programme provides a strong foundation in policy analysis, governance, and community engagement. You will study the structures and challenges of public services while developing practical skills in research, project management, and stakeholder communication. Many programmes include placements with local authorities, NGOs, or government agencies.",
+        overview3: "Graduates from public sector programmes are uniquely positioned to drive positive social change. The interdisciplinary nature of these degrees—drawing on sociology, politics, law, and management—produces professionals who can navigate complex institutional environments and advocate effectively for communities.",
+        modules: ["Public Policy & Governance", "Community Development & Engagement", "Law & Human Rights", "Research Methods for Social Impact", "Leadership in Public Services", "Ethics & Professional Practice", "Placement / Fieldwork Experience", "Dissertation / Applied Research Project"],
+        career1: "Graduates pursue careers across local and central government, the NHS, police forces, charities, international development organisations, and housing associations. Roles include policy analyst, social worker, probation officer, urban planner, community development officer, and programme manager.",
+        career2: "The public sector offers structured career progression, excellent pension schemes, and the opportunity to make a tangible difference to people's lives. Many graduates also pursue further professional qualifications in social work, planning, or public administration to advance their careers."
+    }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseQuery = urlParams.get('course');
+
+    if (!courseQuery) {
+        document.getElementById('courseNotFound').style.display = 'block';
+        lucide.createIcons();
+        return;
+    }
+
+    const course = courseDatabase.find(c => c.title === courseQuery);
+    if (!course) {
+        document.getElementById('courseNotFound').style.display = 'block';
+        lucide.createIcons();
+        return;
+    }
+
+    // Show content
+    document.getElementById('courseContent').style.display = 'block';
+    document.title = course.title + " | KensingtonIvy";
+
+    // Populate hero
+    document.getElementById('dynTitle').textContent = course.title;
+    document.getElementById('dynCat').textContent = course.category;
+    document.getElementById('breadCat').textContent = course.category;
+    document.getElementById('breadTitle').textContent = course.title;
+    document.getElementById('dynHeroSub').textContent = course.desc;
+
+    // Smart level & duration detection
+    const t = course.title;
+    let duration = "3 Years";
+    let offer = "ABB — AAB";
+    let level = "Undergraduate";
+
+    if (t.includes("(MSc)") || t.includes("(MA)") || t.includes("(MRes)")) {
+        duration = "1 — 2 Years";
+        offer = "2:1 Undergraduate Degree";
+        level = "Postgraduate (Masters)";
+    } else if (t.includes("Integrated Masters")) {
+        duration = "4 Years";
+        offer = "AAA — A*AA";
+        level = "Integrated Masters";
+    } else if (t.includes("Foundation Year")) {
+        duration = "4 Years (incl. Foundation)";
+        offer = "CCC — BBC";
+        level = "Undergraduate with Foundation";
+    } else if (t.includes("Graduate Diploma")) {
+        duration = "1 Year";
+        offer = "2:2 Undergraduate Degree";
+        level = "Postgraduate (Conversion)";
+    } else if (t.includes("Sandwich Year") || t.includes("Year in Industry") || t.includes("Professional Placement")) {
+        duration = "4 Years (incl. Placement)";
+        offer = "ABB — AAA";
+        level = "Undergraduate with Placement";
+    } else if (t.includes("Study Abroad")) {
+        duration = "4 Years (incl. Year Abroad)";
+        offer = "ABB — AAA";
+        level = "With Study Abroad";
+    } else if (course.category === "STEM") {
+        offer = "AAB — A*AA (incl. Maths/Science)";
+    } else if (course.category === "Healthcare") {
+        offer = "AAA — A*AA (specific subjects required)";
+    }
+
+    document.getElementById('dynDuration').textContent = duration;
+    document.getElementById('dynOffer').textContent = "Typical: " + offer;
+    document.getElementById('dynLevel').textContent = level;
+    document.getElementById('sidebarOffer').textContent = offer;
+
+    // Rich content injection
+    const content = categoryContent[course.category] || categoryContent["Humanities"];
+
+    document.getElementById('dynOverview1').textContent = course.desc;
+    document.getElementById('dynOverview2').textContent = content.overview2;
+    document.getElementById('dynOverview3').textContent = content.overview3;
+
+    document.getElementById('dynModulesIntro').textContent = 
+        `While exact module structures vary between leading UK universities, a rigorous ${level.toLowerCase()} degree in ${course.title.split(' (')[0].split(' with')[0].split(' and')[0]} typically covers the following core areas:`;
+
+    const modGrid = document.getElementById('dynModules');
+    content.modules.forEach(m => {
+        modGrid.innerHTML += `<div class="module-item"><i data-lucide="check-circle"></i> ${m}</div>`;
+    });
+
+    document.getElementById('dynCareer1').textContent = content.career1;
+    document.getElementById('dynCareer2').textContent = content.career2;
+
+    // Links
+    const regUrl = "register.html?course=" + encodeURIComponent(course.title);
+    document.getElementById('navRegisterBtn').href = regUrl;
+    document.getElementById('dynApplyBtn').href = regUrl;
+    document.getElementById('dynNoGradesLink').href = regUrl;
+
+    // Re-render icons
+    lucide.createIcons();
+});
+</script>
+<script>document.querySelectorAll('.dynamic-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+
+<!-- Detailed Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-inner">
+        <div class="cookie-banner-text">
+            <strong>Cookies on the Kensington Ivy website</strong>
+            <p>We use some essential cookies to make this site work.</p>
+            <p>We'd like to set analytics cookies to understand how you use this site. We may use services from YouTube that may also use cookies.</p>
+            <p>For more detailed information, see our <a href="/pages/legal/cookies.html">Cookies page</a>.</p>
+        </div>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn-accept" id="cookieAcceptAll">Accept all cookies</button>
+            <button class="cookie-btn-necessary" id="cookieNecessary">Reject non-essential cookies</button>
+            <button class="cookie-btn-settings" id="cookieSettingsBtn" onclick="document.getElementById('cookieDetails').classList.toggle('expanded');">Manage preferences</button>
+        </div>
+
+        <div class="cookie-banner-details" id="cookieDetails">
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Essential cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>These cookies are necessary for core functionality, such as security and network management. They always need to be on.</p>
+            </div>
+            
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Analytics cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="toggleAnalytics">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>We use analytics cookies to measure how you use our website to help us improve the experience.</p>
+            </div>
+
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Video player cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="toggleVideo">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>Pages that include videos hosted on YouTube may result in video platforms collecting information.</p>
+            </div>
+
+            <button class="cookie-btn-save" id="cookieSaveBtn">Save and close</button>
+        </div>
+    </div>
+</div>
+<script>
+(function(){
+    if(!localStorage.getItem("ki_cookie_consent")){
+        setTimeout(function(){document.getElementById("cookieBanner").classList.add("visible");},800);
+    }
+    function logConsent(consentData){
+        localStorage.setItem("ki_cookie_consent", typeof consentData === 'string' ? consentData : "custom");
+        document.getElementById("cookieBanner").classList.remove("visible");
+        fetch("/api/log-consent", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({consent: consentData})
+        }).catch(function(){});
+    }
+
+    document.getElementById("cookieAcceptAll").addEventListener("click",function(){
+        document.getElementById("toggleAnalytics").checked = true;
+        document.getElementById("toggleVideo").checked = true;
+        logConsent("all");
+    });
+    
+    document.getElementById("cookieNecessary").addEventListener("click",function(){
+        document.getElementById("toggleAnalytics").checked = false;
+        document.getElementById("toggleVideo").checked = false;
+        logConsent("necessary");
+    });
+    
+    document.getElementById("cookieSaveBtn").addEventListener("click", function(){
+        const analytics = document.getElementById("toggleAnalytics").checked;
+        const video = document.getElementById("toggleVideo").checked;
+        if(analytics && video) {
+            logConsent("all");
+        } else if (!analytics && !video) {
+            logConsent("necessary");
+        } else {
+            logConsent("custom_analytics:" + analytics + "_video:" + video);
+        }
+    });
+})();
+</script>
+</body>
+</html>

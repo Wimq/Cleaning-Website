@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Rights Request | KensingtonIvy</title>
+    <meta name="description" content="Submit a formal Data Rights Request to Kensington Ivy Ltd under the UK GDPR.">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/legal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.25rem; font-weight: 500; color: var(--navy); font-size: 0.85rem; }
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+            background: #fff;
+            color: var(--navy);
+            font-size: 0.9rem;
+        }
+        .form-control:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 3px rgba(201,162,88,0.1); }
+        textarea.form-control { resize: vertical; min-height: 60px; }
+
+        .btn-submit {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            background-color: var(--navy);
+            color: #ffffff;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-submit:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+
+        .success-state { display: none; padding: 2rem 0; }
+        .success-state .icon { color: #2e7d32; margin-bottom: 1rem; }
+        .success-state h2 { color: var(--navy); margin-bottom: 1rem; font-family: var(--font-heading); font-size: 2rem; }
+        .success-state p { color: #555; line-height: 1.6; margin-bottom: 2rem; }
+        
+        .clean-sidebar-info {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(201,162,88,0.5); /* Matching the gold line color */
+        }
+        .clean-sidebar-info h4 {
+            font-family: var(--font-heading);
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+        .clean-sidebar-info p {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="container header-inner">
+        <a href="../../index.html" class="logo"><span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span></a>
+    </div>
+</header>
+
+<!-- Page Header -->
+<div class="legal-hub-header">
+    <div class="container">
+        <a href="../../index.html" style="color: var(--gold); text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem; display: inline-block;">&larr; Back to Home</a>
+        <h1>Data Rights Request</h1>
+        <div class="legal-meta">
+            <span><i data-lucide="shield-check" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> UK GDPR Compliant</span>
+            <span><i data-lucide="clock" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> 30-Day Statutory Processing</span>
+        </div>
+    </div>
+</div>
+
+<div class="legal-container">
+
+    <!-- Sidebar -->
+    <aside class="legal-sidebar">
+        <h3>Legal Hub</h3>
+        <nav class="legal-nav-list">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Website Terms</a>
+            <a href="cookies.html">Cookie Policy</a>
+            <a href="enquiry.html" class="active">Data Rights Request</a>
+            <a href="../misc/kid.html">KID (Direct Services)</a>
+            <a href="../misc/kid-umbrella.html">KID (Finance Model)</a>
+        </nav>
+        
+        <div class="clean-sidebar-info">
+            <h4>Data Controller</h4>
+            <p>Registered with the Information Commissioner's Office (ICO).<br><strong style="color:var(--navy);">Registration No: ZC148985</strong></p>
+
+            <h4>Compliance Team</h4>
+            <p>For formal enquiries, contact our compliance officer directly.</p>
+            <a href="mailto:compliance@kensingtonivy.co.uk" style="color: var(--gold); font-weight: 600; text-decoration: none; font-size: 0.85rem; display: block; margin-left: 0; padding-left: 0; white-space: nowrap; letter-spacing: -0.2px;">compliance@kensingtonivy.co.uk</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="legal-content">
+        
+        <div id="enquiryFormWrapper">
+            <h2 style="margin-bottom: 0.5rem; font-size: 1.4rem;">Submit a Formal Request</h2>
+            <p style="margin-bottom: 1.2rem; line-height: 1.4; font-size: 0.85rem;">In accordance with the UK General Data Protection Regulation (UK GDPR), data subjects may exercise their statutory rights regarding their personal data. Please utilise this secure portal to formally request access, rectification, or erasure of your information.</p>
+            
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Type of Request <span style="color: #d32f2f;">*</span></label>
+                    <select class="form-control" required style="cursor: pointer;">
+                        <option value="" disabled selected>Select an option...</option>
+                        <option value="delete">Delete my data (Right to Erasure)</option>
+                        <option value="copy">Request a copy of my data (DSAR)</option>
+                        <option value="update">Update my data (Right to Rectification)</option>
+                        <option value="other">Other privacy request</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Full Legal Name <span style="color: #d32f2f;">*</span></label>
+                    <input type="text" id="drName" class="form-control" required placeholder="As it appears on your identity documents">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address <span style="color: #d32f2f;">*</span></label>
+                    <input type="email" id="drEmail" class="form-control" required placeholder="The email associated with your account">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number (Optional)</label>
+                    <input type="tel" id="drPhone" class="form-control" placeholder="Contact number for verification">
+                </div>
+
+                <div class="form-group">
+                    <label>Specific Details (Optional)</label>
+                    <textarea id="drDetails" class="form-control" placeholder="e.g., Please permanently delete my account and all associated data."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    Submit Request <i data-lucide="shield-check" style="width:18px;height:18px;"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Success State (Hidden initially) -->
+        <div id="successState" class="success-state">
+            <i data-lucide="check-circle" class="icon" style="width:48px;height:48px;"></i>
+            <h2>Request Securely Submitted</h2>
+            <p>Your Data Rights request has been transmitted to our Data Protection Officer. We will review your submission and contact you via email within 30 statutory days in accordance with UK GDPR requirements. We may require proof of identity before processing your request.</p>
+            <button onclick="location.reload()" class="btn-submit" style="margin-top: 1rem;">Submit Another Request</button>
+        </div>
+
+    </main>
+
+</div>
+
+<!-- FOOTER -->
+<!-- FOOTER -->
+<footer style="background: var(--navy); padding: 5rem 0 3rem 0; color: #fff;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+            
+            <div style="grid-column: span 1;">
+                <a href="../../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
+                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
+                </a>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
+                    <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
+                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
+                    <a href="../../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
+                    <a href="../../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
+                    <a href="../../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
+                    <a href="../../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
+                    <a href="../../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
+                        <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
+            <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
+            <div style="opacity: 0.6;">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
+                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        const btn = document.getElementById('submitBtn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Verifying...';
+        btn.disabled = true;
+
+        const payload = {
+            form_type: 'data_rights',
+            name: document.getElementById('drName').value,
+            email: document.getElementById('drEmail').value,
+            phone: document.getElementById('drPhone').value,
+            course: "Data Rights Request"
+        };
+
+        fetch('/api/submit-enquiry', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('enquiryFormWrapper').style.display = 'none';
+                document.getElementById('successState').style.display = 'block';
+            } else {
+                alert('Security verification failed: ' + (data.message || 'Please try again.'));
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        })
+                .catch(err => {
+                    alert('Network error. Please try again later.');
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+            });
+        });
+    }
+</script>
+
+<script>
+    document.querySelectorAll('.dynamic-year').forEach(el => el.textContent = new Date().getFullYear());
+</script>
+
+<!-- Detailed Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-inner">
+        <div class="cookie-banner-text">
+            <strong>Cookies on the Kensington Ivy website</strong>
+            <p>We use some essential cookies to make this site work.</p>
+            <p>We'd like to set analytics cookies to understand how you use this site. We may use services from YouTube that may also use cookies.</p>
+            <p>For more detailed information, see our <a href="/pages/legal/cookies.html">Cookies page</a>.</p>
+        </div>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn-accept" id="cookieAcceptAll">Accept all cookies</button>
+            <button class="cookie-btn-necessary" id="cookieNecessary">Reject non-essential cookies</button>
+            <button class="cookie-btn-settings" id="cookieSettingsBtn" onclick="document.getElementById('cookieDetails').classList.toggle('expanded');">Manage preferences</button>
+        </div>
+
+        <div class="cookie-banner-details" id="cookieDetails">
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Essential cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>These cookies are necessary for core functionality, such as security and network management. They always need to be on.</p>
+            </div>
+            
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Analytics cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="toggleAnalytics">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>We use analytics cookies to measure how you use our website to help us improve the experience.</p>
+            </div>
+
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Video player cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="toggleVideo">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>Pages that include videos hosted on YouTube may result in video platforms collecting information.</p>
+            </div>
+
+            <button class="cookie-btn-save" id="cookieSaveBtn">Save and close</button>
+        </div>
+    </div>
+</div>
+<script>
+(function(){
+    if(!localStorage.getItem("ki_cookie_consent")){
+        setTimeout(function(){document.getElementById("cookieBanner").classList.add("visible");},800);
+    }
+    function logConsent(consentData){
+        localStorage.setItem("ki_cookie_consent", typeof consentData === 'string' ? consentData : "custom");
+        document.getElementById("cookieBanner").classList.remove("visible");
+        fetch("/api/log-consent", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({consent: consentData})
+        }).catch(function(){});
+    }
+
+    document.getElementById("cookieAcceptAll").addEventListener("click",function(){
+        document.getElementById("toggleAnalytics").checked = true;
+        document.getElementById("toggleVideo").checked = true;
+        logConsent("all");
+    });
+    
+    document.getElementById("cookieNecessary").addEventListener("click",function(){
+        document.getElementById("toggleAnalytics").checked = false;
+        document.getElementById("toggleVideo").checked = false;
+        logConsent("necessary");
+    });
+    
+    document.getElementById("cookieSaveBtn").addEventListener("click", function(){
+        const analytics = document.getElementById("toggleAnalytics").checked;
+        const video = document.getElementById("toggleVideo").checked;
+        if(analytics && video) {
+            logConsent("all");
+        } else if (!analytics && !video) {
+            logConsent("necessary");
+        } else {
+            logConsent("custom_analytics:" + analytics + "_video:" + video);
+        }
+    });
+})();
+</script>
+</body>
+</html>

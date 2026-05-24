@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Courses | KensingtonIvy</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .search-hub {
+            background: var(--navy);
+            color: #fff;
+            padding: 8rem 0 5rem 0;
+            text-align: center;
+        }
+        .search-hub h1 {
+            font-family: var(--ff-head);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        .search-hub p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+        }
+        .big-search-box {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .big-search-box input {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            font-size: 1.25rem;
+            border: none;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            font-family: var(--ff-body);
+            color: var(--navy);
+            outline: none;
+            transition: box-shadow 0.3s ease;
+        }
+        .big-search-box input:focus {
+            box-shadow: 0 20px 50px rgba(201, 162, 88, 0.4);
+        }
+        .cat-pill {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--ff-body);
+        }
+        .cat-pill:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .cat-pill.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+            font-weight: 600;
+        }
+        .big-search-box i {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            width: 24px;
+            height: 24px;
+        }
+        
+        .results-section {
+            padding: 6rem 0;
+            background: var(--off, #faf9f6);
+            min-height: 50vh;
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: var(--navy);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(10,17,40,0.08);
+            border-color: rgba(201,162,88,0.2);
+        }
+        .course-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .course-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .course-cat {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .course-title {
+            font-family: var(--ff-head);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .course-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .course-action {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--gold);
+        }
+        
+        .course-card:hover .course-action i {
+            transform: translateX(4px);
+        }
+        .course-action i {
+            transition: transform 0.3s ease;
+            width: 18px; height: 18px;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 4rem;
+            color: var(--muted);
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
+            display: none;
+        }
+
+    </style>
+    <!-- SEO & Open Graph -->
+    <link rel="canonical" href="https://www.kensingtonivy.co.uk/">
+    <meta property="og:title" content="Kensington Ivy | Elite University Placement">
+    <meta property="og:description" content="UK's premier university admissions consultancy. We match students with their courses of choice and secure placements at leading institutions.">
+    <meta property="og:url" content="https://www.kensingtonivy.co.uk/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.kensingtonivy.co.uk/assets/og-image.jpg">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <a href="../index.html" class="logo">
+            <span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span>
+        </a>
+        <nav class="top-links" style="gap: 2rem;">
+            <a href="find-courses.html" style="color: var(--navy); font-weight: 500;">Find Courses</a>
+            <a href="faq/faq.html" style="color: var(--navy); font-weight: 500;">University Registries</a>
+            <a href="foundation-years.html" style="color: var(--navy); font-weight: 500;">Foundation Years</a>
+            <a href="about.html?v=3" style="color: var(--navy); font-weight: 500;">About Us</a>
+        </nav>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="register.html" class="btn btn-gold">Enquire Now</a>
+            <button class="menu-toggle" onclick="document.querySelector('.top-links').classList.toggle('active')" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<section class="search-hub">
+    <div class="container">
+        <h1>Find Your Course</h1>
+        <p>Explore elite undergraduate courses across the UK. Search by title, category, or industry to find the perfect pathway for your future.</p>
+        <div class="big-search-box">
+            <input type="text" id="courseSearch" placeholder="Search for courses (e.g. Medicine, Business, Architecture)...">
+        </div>
+        <div style="margin-top: 1.5rem;">
+            <a href="register.html?course=Custom%20Course%20Request" style="color: var(--gold); font-size: 0.95rem; font-weight: 500; text-decoration: underline; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Can't find your course? Request it here &rarr;</a>
+        </div>
+        
+        <div class="category-filters" style="margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;">
+            <button class="cat-pill active" onclick="setCategory('All')">All Categories</button>
+            <button class="cat-pill" onclick="setCategory('Business')">Business</button>
+            <button class="cat-pill" onclick="setCategory('STEM')">STEM</button>
+            <button class="cat-pill" onclick="setCategory('Healthcare')">Healthcare</button>
+            <button class="cat-pill" onclick="setCategory('Sciences')">Sciences</button>
+            <button class="cat-pill" onclick="setCategory('Humanities')">Humanities</button>
+            <button class="cat-pill" onclick="setCategory('Social Sciences')">Social Sciences</button>
+            <button class="cat-pill" onclick="setCategory('Arts & Design')">Arts & Design</button>
+            <button class="cat-pill" onclick="setCategory('Media')">Media</button>
+            <button class="cat-pill" onclick="setCategory('Education')">Education</button>
+            <button class="cat-pill" onclick="setCategory('Public Sector')">Public Sector</button>
+        </div>
+    </div>
+</section>
+
+<section class="results-section">
+    <div class="container">
+        <div class="course-grid" id="courseGrid">
+            <!-- Populated by JS -->
+        </div>
+        <div class="no-results" id="noResults">
+            <i data-lucide="search-x" style="width: 48px; height: 48px; color: rgba(0,0,0,0.1); margin-bottom: 1rem;"></i>
+            <p>No courses found matching your query. Please try different keywords.</p>
+        </div>
+        
+        <!-- Request a Course CTA -->
+        <div style="margin-top: 6rem; position: relative; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, var(--navy) 0%, #162550 100%); color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 4rem 5rem; box-shadow: 0 20px 50px rgba(10,17,40,0.15);">
+            <!-- Background Accents -->
+            <div style="position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(201, 162, 88, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+            <div style="position: absolute; bottom: -30%; left: -5%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+            
+            <div style="max-width: 600px; position: relative; z-index: 1;">
+                <div style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; margin-bottom: 1rem;">
+                    <i data-lucide="compass" style="width: 16px; height: 16px;"></i> Bespoke Placement Sourcing
+                </div>
+                <h3 style="font-family: var(--ff-head); font-size: 2.5rem; margin-bottom: 1rem; line-height: 1.2;">Can't find the exact course you're looking for?</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.6; margin-bottom: 0;">We hold partnerships across the entire UK university network. Our elite admissions team can source and secure placements for thousands of specialised and niche degree programmes not listed in our public directory.</p>
+            </div>
+            
+            <div style="position: relative; z-index: 1; flex-shrink: 0; padding-left: 3rem;">
+                <a href="register.html?course=Custom%20Course%20Request" class="btn btn-gold" style="font-size: 1.05rem; padding: 1.2rem 2.5rem; box-shadow: 0 10px 30px rgba(201,162,88,0.25);">Submit Custom Request</a>
+            </div>
+        </div>
+        
+        <style>
+            @media (max-width: 900px) {
+                .results-section > .container > div:last-child {
+                    flex-direction: column !important;
+                    text-align: center;
+                    padding: 3rem 2rem !important;
+                }
+                .results-section > .container > div:last-child > div:last-child {
+                    padding-left: 0 !important;
+                    margin-top: 2rem;
+                }
+            }
+        </style>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: var(--navy); padding: 5rem 0 3rem 0; color: #fff;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+            
+            <div style="grid-column: span 1;">
+                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
+                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
+                </a>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
+                    <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
+                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
+                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
+                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
+                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
+                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
+                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
+                        <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
+            <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
+            <div style="opacity: 0.6;">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
+                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="../js/courses.js"></script>
+<script>
+    lucide.createIcons();
+    
+    const grid = document.getElementById('courseGrid');
+    const searchInput = document.getElementById('courseSearch');
+    const noResults = document.getElementById('noResults');
+    
+    function renderCourses(courses) {
+        grid.innerHTML = '';
+        if (courses.length === 0) {
+            noResults.style.display = 'block';
+            return;
+        }
+        noResults.style.display = 'none';
+        
+        courses.forEach(c => {
+            const el = document.createElement('a');
+            const isGeneric = c.url.startsWith('register');
+            // Both are inside pages/, so relative paths from find-courses.html work directly
+            const href = c.url;
+            el.href = href;
+            el.className = 'course-card reveal';
+            
+            const actionText = isGeneric ? `Enquire for ${c.title}` : `Explore ${c.title}`;
+            
+            el.innerHTML = `
+                <div class="course-cat">${c.category}</div>
+                <h2 class="course-title">${c.title}</h2>
+                <p class="course-desc">${c.desc}</p>
+                <div class="course-action">
+                    ${actionText} <i data-lucide="arrow-right"></i>
+                </div>
+            `;
+            grid.appendChild(el);
+        });
+        
+        lucide.createIcons();
+        
+        // Trigger reveal manually for dynamically added content
+        setTimeout(() => {
+            document.querySelectorAll('.course-card.reveal').forEach(el => el.classList.add('active'));
+        }, 50);
+    }
+    
+    // Initial Render
+    renderCourses(courseDatabase);
+    
+    // Simple Levenshtein distance for fuzzy matching
+    function getEditDistance(a, b) {
+        if(a.length === 0) return b.length;
+        if(b.length === 0) return a.length;
+        var matrix = [];
+        for(var i = 0; i <= b.length; i++){ matrix[i] = [i]; }
+        for(var j = 0; j <= a.length; j++){ matrix[0][j] = j; }
+        for(var i = 1; i <= b.length; i++){
+            for(var j = 1; j <= a.length; j++){
+                if(b.charAt(i-1) == a.charAt(j-1)){
+                    matrix[i][j] = matrix[i-1][j-1];
+                } else {
+                    matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, Math.min(matrix[i][j-1] + 1, matrix[i-1][j] + 1));
+                }
+            }
+        }
+        return matrix[b.length][a.length];
+    }
+
+    // State
+    let currentCategory = 'All';
+    let currentQuery = '';
+
+    // Category Filtering Logic
+    window.setCategory = function(cat) {
+        currentCategory = cat;
+        // Update UI Pills
+        document.querySelectorAll('.cat-pill').forEach(btn => {
+            if(btn.textContent.trim() === cat || (cat === 'All' && btn.textContent.trim() === 'All Categories')) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        applyFilters();
+    };
+
+    function applyFilters() {
+        let filtered = courseDatabase;
+        
+        // 1. Filter by Category
+        if (currentCategory !== 'All') {
+            filtered = filtered.filter(c => c.category === currentCategory);
+        }
+        
+        // 2. Filter by Search Query
+        if (currentQuery) {
+            filtered = filtered.filter(c => {
+                const title = c.title.toLowerCase();
+                const cat = c.category.toLowerCase();
+                const desc = c.desc.toLowerCase();
+                
+                if (title.includes(currentQuery) || cat.includes(currentQuery) || desc.includes(currentQuery)) return true;
+                
+                const queryWords = currentQuery.split(' ').filter(w => w.length > 3);
+                const titleWords = title.split(' ').filter(w => w.length > 3);
+                
+                for (let qw of queryWords) {
+                    for (let tw of titleWords) {
+                        if (getEditDistance(qw, tw) <= 2) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            });
+        }
+        
+        renderCourses(filtered);
+    }
+
+    // Search Filtering
+    searchInput.addEventListener('input', (e) => {
+        currentQuery = e.target.value.toLowerCase().trim();
+        applyFilters();
+    });
+    
+    // Handle query params on load (if redirected from homepage)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialQuery = urlParams.get('q');
+    if (initialQuery) {
+        searchInput.value = initialQuery;
+        searchInput.dispatchEvent(new Event('input'));
+    }
+
+</script>
+
+<!-- Detailed Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-banner-inner">
+        <div class="cookie-banner-text">
+            <strong>Cookies on the Kensington Ivy website</strong>
+            <p>We use some essential cookies to make this site work.</p>
+            <p>We'd like to set analytics cookies to understand how you use this site. We may use services from YouTube that may also use cookies.</p>
+            <p>For more detailed information, see our <a href="/pages/legal/cookies.html">Cookies page</a>.</p>
+        </div>
+        <div class="cookie-banner-actions">
+            <button class="cookie-btn-accept" id="cookieAcceptAll">Accept all cookies</button>
+            <button class="cookie-btn-necessary" id="cookieNecessary">Reject non-essential cookies</button>
+            <button class="cookie-btn-settings" id="cookieSettingsBtn" onclick="document.getElementById('cookieDetails').classList.toggle('expanded');">Manage preferences</button>
+        </div>
+
+        <div class="cookie-banner-details" id="cookieDetails">
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Essential cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" checked disabled>
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>These cookies are necessary for core functionality, such as security and network management. They always need to be on.</p>
+            </div>
+            
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Analytics cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="toggleAnalytics">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>We use analytics cookies to measure how you use our website to help us improve the experience.</p>
+            </div>
+
+            <div class="cookie-section">
+                <div class="cookie-section-header">
+                    <h4>Video player cookies</h4>
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="toggleVideo">
+                        <span class="cookie-slider"></span>
+                    </label>
+                </div>
+                <p>Pages that include videos hosted on YouTube may result in video platforms collecting information.</p>
+            </div>
+
+            <button class="cookie-btn-save" id="cookieSaveBtn">Save and close</button>
+        </div>
+    </div>
+</div>
+<script>
+(function(){
+    if(!localStorage.getItem("ki_cookie_consent")){
+        setTimeout(function(){document.getElementById("cookieBanner").classList.add("visible");},800);
+    }
+    function logConsent(consentData){
+        localStorage.setItem("ki_cookie_consent", typeof consentData === 'string' ? consentData : "custom");
+        document.getElementById("cookieBanner").classList.remove("visible");
+        fetch("/api/log-consent", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({consent: consentData})
+        }).catch(function(){});
+    }
+
+    document.getElementById("cookieAcceptAll").addEventListener("click",function(){
+        document.getElementById("toggleAnalytics").checked = true;
+        document.getElementById("toggleVideo").checked = true;
+        logConsent("all");
+    });
+    
+    document.getElementById("cookieNecessary").addEventListener("click",function(){
+        document.getElementById("toggleAnalytics").checked = false;
+        document.getElementById("toggleVideo").checked = false;
+        logConsent("necessary");
+    });
+    
+    document.getElementById("cookieSaveBtn").addEventListener("click", function(){
+        const analytics = document.getElementById("toggleAnalytics").checked;
+        const video = document.getElementById("toggleVideo").checked;
+        if(analytics && video) {
+            logConsent("all");
+        } else if (!analytics && !video) {
+            logConsent("necessary");
+        } else {
+            logConsent("custom_analytics:" + analytics + "_video:" + video);
+        }
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+/* ══════════════════════════════════════
+   KENSINGTON IVY — COMPONENTS
+   Cookie banner, cards, badges, forms,
+   service grid, network section
+   ══════════════════════════════════════ */
+
+/* ── COOKIE BANNER ───────────────────── */
+.cookie-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 340px;
+    max-width: 90vw;
+    height: 100vh;
+    z-index: 99999;
+    background: var(--navy);
+    color: #ffffff;
+    padding: 2.5rem 1.5rem;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.3);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), opacity 0.4s ease;
+    overflow-y: auto;
+}
+.cookie-banner.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+.cookie-banner-inner {
+    display: flex;
+    flex-direction: column;
+}
+.cookie-banner-text {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.cookie-banner-text strong {
+    display: block;
+    color: #ffffff;
+    font-family: var(--ff-head);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+}
+.cookie-banner-text p {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+}
+.cookie-banner-text a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+}
+.cookie-banner-text a:hover {
+    color: #ffffff;
+}
+.cookie-banner-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+.cookie-btn-accept,
+.cookie-btn-necessary {
+    width: 100%;
+    background: #ffffff;
+    color: var(--navy);
+    border: none;
+    padding: 0.85rem;
+    font-family: var(--ff-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-align: center;
+}
+.cookie-btn-accept:hover,
+.cookie-btn-necessary:hover {
+    background: #f1f5f9;
+    transform: translateY(-1px);
+}
+.cookie-btn-settings {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: none;
+    padding: 0.5rem 0;
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    text-align: left;
+    margin-top: 1rem;
+}
+.cookie-btn-settings:hover {
+    color: #ffffff;
+}
+
+/* ── COOKIE TOGGLES & SECTIONS ───────── */
+.cookie-banner-details {
+    display: none;
+    flex-direction: column;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1rem;
+}
+.cookie-banner-details.expanded {
+    display: flex;
+}
+.cookie-section {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.cookie-section:last-child {
+    border-bottom: none;
+}
+.cookie-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.cookie-section h4 {
+    color: #fff;
+    font-size: 1.05rem;
+    margin: 0;
+    font-weight: 600;
+}
+.cookie-section p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+}
+.cookie-toggle {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+.cookie-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.cookie-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(255,255,255,0.3);
+    transition: .3s;
+    border-radius: 24px;
+}
+.cookie-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+input:checked + .cookie-slider {
+    background-color: var(--gold);
+}
+input:checked + .cookie-slider:before {
+    transform: translateX(20px);
+}
+input:disabled + .cookie-slider {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.cookie-btn-save {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 0.85rem;
+    font-family: var(--ff-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--ease);
+    text-align: center;
+    margin-top: 1rem;
+}
+.cookie-btn-save:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* ── BADGE / PILL ────────────────────── */
+.badge-pill {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+}
+
+/* ── SERVICE CARDS ───────────────────── */
+.services-section { padding: 6rem 0; background: var(--white); background-image: var(--paper-texture); }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header h2 { font-family: var(--ff-head); font-size: 2.5rem; color: var(--navy); margin-bottom: 1rem; }
+.section-header p { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.service-card {
+    background: var(--off);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: var(--ease);
+    background-image: var(--paper-texture);
+}
+.service-card:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); border-color: var(--gold); }
+.service-card .icon-wrap {
+    width: 64px; height: 64px;
+    background: var(--white);
+    background-image: var(--paper-texture);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--gold);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.service-card h3 { font-size: 1.25rem; color: var(--navy); margin-bottom: 1rem; }
+.service-card p { font-size: 0.95rem; color: var(--muted); }
+
+/* ── SPLIT CTA ───────────────────────── */
+.split-section { display: flex; flex-wrap: wrap; }
+.split-half { flex: 1; min-width: 300px; padding: 6rem 10%; color: #fff; display: flex; flex-direction: column; justify-content: center; }
+.split-schools { background: var(--navy); }
+.split-teachers { background: var(--gold); }
+.split-half h2 { font-family: var(--ff-head); font-size: 2.5rem; margin-bottom: 1rem; }
+.split-half p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; max-width: 400px; }
+
+/* ── NETWORK SECTION ─────────────────── */
+.network-section { padding: 8rem 0; background: var(--white); border-top: 1px solid var(--border); background-image: var(--paper-texture); }
+.network-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.network-image img { width: 100%; max-width: 500px; height: auto; display: block; margin: 0 auto; mix-blend-mode: multiply; }
+.network-content h2 { font-family: var(--ff-head); font-size: 2.8rem; color: var(--navy); line-height: 1.2; margin-bottom: 1.5rem; }
+.network-content > p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 3rem; }
+.network-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; }
+.net-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+.net-item i { width: 26px; height: 26px; flex-shrink: 0; margin-top: 2px; }
+.net-item h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 0.4rem; }
+.net-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+/* ── FORMS ───────────────────────────── */
+.auth-box {
+    background: var(--white);
+    background-image: var(--paper-texture);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(10,17,40,0.06);
+    border: 1px solid var(--border);
+}
+.form-row { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
+.form-row .form-group { flex: 1; margin-bottom: 0; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.9rem 1rem;
+    border: 1px solid var(--border); border-radius: 8px;
+    font-family: var(--ff-body); font-size: 0.95rem; color: var(--text);
+    transition: var(--ease); background: var(--off);
+    background-image: var(--paper-texture);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--gold);
+    background-color: var(--white);
+    background-image: var(--paper-texture);
+    box-shadow: 0 0 0 3px rgba(201, 162, 88, 0.15);
+}
+.btn-print {
+    background: var(--off); color: var(--navy); border: 1px solid var(--border);
+    padding: .5rem 1rem; font-size: .825rem; display: inline-flex; align-items: center;
+    gap: .4rem; border-radius: 4px; cursor: pointer; font-weight: 600; font-family: var(--ff-body);
+    background-image: var(--paper-texture);
+}
+.btn-print:hover { background: var(--border); }
+.btn-print i { width: 14px; height: 14px; }
+
+
+/* ── PREMIUM METALLIC GOLD BUTTON ────── */
+.btn-gold {
+    background: var(--navy);
+    color: #fff !important;
+    border: 1px solid var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(10, 17, 40, 0.15);
+    transition: var(--ease);
+    border-radius: 6px;
+    padding: 0.75rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-family: var(--ff-body);
+}
+.btn-gold::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: 0.75s;
+}
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(201, 162, 88, 0.25);
+    background: var(--navy2);
+    border-color: var(--gold);
+}
+.btn-gold:hover::before {
+    left: 125%;
+}
+
+/* ── RESPONSIVE ──────────────────────── */
+@media (max-width: 991px) {
+    .network-section {
+        padding: 5rem 0;
+    }
+    .network-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .network-content h2 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    .network-content > p {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .network-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .services-section {
+        padding: 4rem 0;
+    }
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .featured-jobs {
+        padding: 4rem 0 !important;
+    }
+    .featured-jobs h2 {
+        font-size: 2.2rem !important;
+    }
+    .jobs-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    .job-card {
+        padding: 1.5rem !important;
+    }
+    
+    .process-section {
+        padding: 4rem 0 !important;
+    }
+    .process-section h2 {
+        font-size: 2.2rem !important;
+    }
+    .process-section h2 img {
+        display: none !important;
+    }
+    .compliance-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .auth-box {
+        padding: 2rem 1.5rem;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .form-row .form-group {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-row { flex-direction: column; gap: 0; }
+    .form-row .form-group { margin-bottom: 1.5rem; }
+}

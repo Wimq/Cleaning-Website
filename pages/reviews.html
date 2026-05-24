@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Reviews & Testimonials | Kensington Ivy</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+<style>
+body { background-color: var(--off, #ebe0cd); }
+
+.hero-reviews {
+    background: linear-gradient(135deg, var(--navy) 0%, #1c2541 100%);
+    padding: 10rem 0 8rem 0;
+    color: #fff;
+    text-align: center;
+}
+.hero-reviews h1 {
+    font-family: var(--ff-head);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+.hero-reviews p {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.8);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.reviews-section {
+    padding: 6rem 0;
+    background: #fff;
+}
+
+/* Updated Trustpilot Link Widget */
+.trustpilot-widget {
+    background: #fff;
+    border: 1px solid rgba(0,182,122,0.2);
+    border-top: 5px solid #00b67a;
+    border-radius: 16px;
+    padding: 4rem;
+    text-align: center;
+    margin-bottom: 6rem;
+    box-shadow: 0 20px 40px rgba(0,182,122,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.trustpilot-stars {
+    color: #00b67a;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.trustpilot-stars i { width: 40px; height: 40px; fill: #00b67a; color: #00b67a; }
+.trustpilot-widget h3 { font-family: var(--ff-head); font-size: 2.5rem; color: var(--navy); margin-bottom: 1rem; }
+.trustpilot-widget p { color: #666; font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; }
+.tp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #00b67a;
+    color: #fff;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+.tp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,182,122,0.2);
+    color: #fff;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 6rem;
+}
+.review-card {
+    background: var(--off);
+    border: 1px solid rgba(0,0,0,0.03);
+    padding: 3rem;
+    border-radius: 16px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+.review-card:hover { transform: translateY(-5px); }
+.review-card .quote-icon {
+    position: absolute;
+    top: 2rem; right: 2rem;
+    width: 40px; height: 40px;
+    color: rgba(201,162,88,0.2);
+}
+.review-card .stars {
+    color: var(--gold);
+    display: flex; gap: 0.3rem; margin-bottom: 1.5rem;
+}
+.review-card .stars i { width: 20px; height: 20px; fill: var(--gold); color: var(--gold); }
+.review-card p {
+    font-family: var(--ff-head);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--navy);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 1.5rem;
+}
+.author-avatar {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600; font-family: var(--ff-head); font-size: 1.2rem;
+}
+.author-info h4 { font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+.author-info span { font-size: 0.85rem; color: #666; font-weight: 500; }
+
+/* Enhanced Review Form */
+.submit-review-section {
+    background: linear-gradient(135deg, #1c2541 0%, var(--navy) 100%);
+    padding: 6rem 4rem;
+    border-radius: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #fff;
+    box-shadow: 0 30px 60px rgba(10,17,40,0.15);
+}
+.submit-review-section h2 {
+    font-family: var(--ff-head);
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.submit-review-section p {
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.8rem; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.5px; }
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 1.2rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #fff;
+    transition: border-color 0.3s ease;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+.form-group select option { background: var(--navy); color: #fff; }
+.form-group textarea { resize: vertical; min-height: 150px; }
+
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <a href="../index.html" class="logo">
+            <span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span>
+        </a>
+        <nav class="top-links" style="gap: 2rem;">
+            <a href="find-courses.html" style="color: var(--navy); font-weight: 500;">Find Courses</a>
+            <a href="registries.html" style="color: var(--navy); font-weight: 500;">University Registries</a>
+            <a href="foundation-years.html" style="color: var(--navy); font-weight: 500;">Foundation Years</a>
+            <a href="about.html?v=3" style="color: var(--navy); font-weight: 500;">About Us</a>
+        </nav>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="register.html" class="btn btn-gold">Enquire Now</a>
+            <button class="menu-toggle" onclick="document.querySelector('.top-links').classList.toggle('active')" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<section class="hero-reviews">
+    <div class="container">
+        <h1>Student Success Stories</h1>
+        <p>We are judged by our results. Read the first-hand experiences of students we've successfully advocated for and placed in elite universities across the UK.</p>
+    </div>
+</section>
+
+<section class="reviews-section">
+    <div class="container">
+        
+        <!-- Trustpilot Direct Link Widget -->
+        <div class="trustpilot-widget">
+            <div class="trustpilot-stars">
+                <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+            </div>
+            <h3>Rated Excellent on Trustpilot</h3>
+            <p>Our commitment to student success is reflected in our perfect track record. Read all of our verified reviews directly on Trustpilot.</p>
+            <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" class="tp-btn">
+                Read Reviews on Trustpilot <i data-lucide="external-link" style="width: 18px;"></i>
+            </a>
+        </div>
+
+        <h2 style="font-family: var(--ff-head); font-size: 2.5rem; text-align: center; color: var(--navy); margin-bottom: 3rem;">Featured Testimonials</h2>
+
+        <div class="review-grid">
+            <div class="review-card">
+                <i data-lucide="quote" class="quote-icon"></i>
+                <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+                <p>"I missed my offer for Law at Nottingham and panicked. The team at Kensington Ivy took over during Clearing, completely bypassed the public queues, and secured me a spot at a Russell Group university within hours. Incredible service."</p>
+                <div class="review-author">
+                    <div class="author-avatar">SM</div>
+                    <div class="author-info">
+                        <h4>Sarah M.</h4>
+                        <span>Placed in LLB Law</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <i data-lucide="quote" class="quote-icon"></i>
+                <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+                <p>"As a mature student returning to education, I was confused by the UCAS process. Kensington Ivy mapped out an Access to HE pathway for me and handled the entire admissions process. I'm now starting my degree next month."</p>
+                <div class="review-author">
+                    <div class="author-avatar">JT</div>
+                    <div class="author-info">
+                        <h4>James T.</h4>
+                        <span>Placed in Foundation Year</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <i data-lucide="quote" class="quote-icon"></i>
+                <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+                <p>"The interview prep I received for my Medicine application was phenomenal. The consultants know exactly what the panels are looking for. I felt completely confident and secured my first choice."</p>
+                <div class="review-author">
+                    <div class="author-avatar">AK</div>
+                    <div class="author-info">
+                        <h4>Aisha K.</h4>
+                        <span>Placed in Medicine (MBBS)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Review Form -->
+        <div class="submit-review-section" id="leave-review">
+            <h2>Share Your Journey</h2>
+            <p>Have you been successfully placed by Kensington Ivy? We would love to hear your story.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Thank you for your review! It will be published once verified.'); this.reset();">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="rev-name">Full Name</label>
+                        <input type="text" id="rev-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rev-course">Course Placed In</label>
+                        <input type="text" id="rev-course" placeholder="e.g. BSc Computer Science" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rev-rating">Experience Rating</label>
+                    <select id="rev-rating" required>
+                        <option value="5">⭐⭐⭐⭐⭐ 5 Stars - Exceptional</option>
+                        <option value="4">⭐⭐⭐⭐ 4 Stars - Very Good</option>
+                        <option value="3">⭐⭐⭐ 3 Stars - Good</option>
+                        <option value="2">⭐⭐ 2 Stars - Average</option>
+                        <option value="1">⭐ 1 Star - Poor</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rev-text">Your Testimonial</label>
+                    <textarea id="rev-text" placeholder="Detail your experience with our consultants..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-gold" style="width: 100%; justify-content: center; font-size: 1.2rem; padding: 1.2rem; margin-top: 1rem; border-radius: 12px;">Submit Testimonial</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<footer style="background: var(--navy); padding: 5rem 0 3rem 0; color: #fff;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+            
+            <div style="grid-column: span 1;">
+                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
+                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
+                </a>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
+                    <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
+                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
+                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
+                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
+                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
+                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
+                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
+                        <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
+            <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
+            <div style="opacity: 0.6;">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
+                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>lucide.createIcons();</script>
+<script>document.querySelectorAll('.dynamic-year').forEach(el => el.textContent = new Date().getFullYear());</script>
+</body>
+</html>

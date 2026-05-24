@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Clearing Support | Kensington Ivy</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+<style>
+body { background-color: var(--off, #ebe0cd); }
+
+/* Detailed Hero */
+.hero-clearing {
+    background: linear-gradient(to right, var(--navy), #1c2541);
+    padding: 8rem 0 6rem 0;
+    color: #fff;
+    border-bottom: 4px solid var(--gold);
+}
+.hero-content {
+    max-width: 900px;
+}
+.hero-clearing h1 {
+    font-family: var(--ff-head);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.hero-clearing p {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+.hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+}
+.stat-item h4 {
+    font-family: var(--ff-head);
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+}
+.stat-item span {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Detailed Overview */
+.overview-section {
+    padding: 6rem 0;
+    background: #fff;
+}
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+@media (max-width: 900px) {
+    .overview-grid { grid-template-columns: 1fr; }
+}
+.overview-text h2 {
+    font-family: var(--ff-head);
+    font-size: 2.2rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+}
+.overview-text p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+.overview-text ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+.overview-text li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    color: var(--navy);
+    font-weight: 500;
+}
+.overview-text i {
+    color: var(--gold);
+    margin-top: 2px;
+}
+
+/* Deep Dive Steps (Z-Pattern) */
+.detailed-steps {
+    padding: 6rem 0;
+    background: var(--off);
+}
+.step-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 6rem;
+    align-items: center;
+}
+.step-row:nth-child(even) .step-content {
+    order: 2;
+}
+.step-row:nth-child(even) .step-visual {
+    order: 1;
+}
+@media (max-width: 900px) {
+    .step-row { grid-template-columns: 1fr; margin-bottom: 4rem; }
+    .step-row:nth-child(even) .step-content { order: 1; }
+    .step-row:nth-child(even) .step-visual { order: 2; }
+}
+
+.step-content h3 {
+    font-family: var(--ff-head);
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.step-content h3 span {
+    background: var(--navy);
+    color: var(--gold);
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+.step-content p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+.step-content h4 {
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.step-visual {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(10,17,40,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.visual-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.visual-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--off);
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+}
+.visual-item i {
+    color: var(--navy);
+}
+.visual-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--navy);
+    line-height: 1.5;
+}
+
+/* CTA */
+.cta-clean { text-align: center; padding: 6rem 0; background: var(--navy); color: #fff; }
+.cta-clean h2 { font-family: var(--ff-head); font-size: 2.5rem; margin-bottom: 1.5rem; }
+
+</style>
+    <!-- SEO & Open Graph -->
+    <link rel="canonical" href="https://www.kensingtonivy.co.uk/">
+    <meta property="og:title" content="Kensington Ivy | Elite University Placement">
+    <meta property="og:description" content="UK's premier university admissions consultancy. We match students with their courses of choice and secure placements at leading institutions.">
+    <meta property="og:url" content="https://www.kensingtonivy.co.uk/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.kensingtonivy.co.uk/assets/og-image.jpg">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <a href="../index.html" class="logo">
+            <span class="logo-text">Kensington</span><span class="logo-accent">Ivy</span>
+        </a>
+        <nav class="top-links" style="gap: 2rem;">
+            <a href="find-courses.html" style="color: var(--navy); font-weight: 500;">Find Courses</a>
+            <a href="registries.html" style="color: var(--navy); font-weight: 500;">University Registries</a>
+            <a href="foundation-years.html" style="color: var(--navy); font-weight: 500;">Foundation Years</a>
+            <a href="about.html?v=3" style="color: var(--navy); font-weight: 500;">About Us</a>
+        </nav>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="register.html" class="btn btn-gold">Enquire Now</a>
+            <button class="menu-toggle" onclick="document.querySelector('.top-links').classList.toggle('active')" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+
+<section class="hero-clearing">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Comprehensive Representation for UCAS Clearing</h1>
+            <p>Navigating the UCAS Clearing process on Results Day is a high-stakes, time-sensitive endeavor. We provide exhaustive end-to-end advocacy—bypassing standard public queues to secure your placement at elite UK institutions through direct faculty negotiation.</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h4>130+</h4>
+                    <span>Partner Institutions</span>
+                </div>
+                <div class="stat-item">
+                    <h4>Direct</h4>
+                    <span>Faculty Access</span>
+                </div>
+                <div class="stat-item">
+                    <h4>Zero</h4>
+                    <span>Public Queueing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="overview-section">
+    <div class="container">
+        <div class="overview-grid">
+            <div class="overview-text">
+                <h2>The Reality of Results Day</h2>
+                <p>When A-Level and IB results are released, thousands of students who missed their conditional offers immediately flood the UCAS system. Phone lines to university admissions departments become jammed, and the most desirable course vacancies are filled within a matter of hours.</p>
+                <p>Attempting this process alone means you are fighting against the clock, constantly refreshing the UCAS Hub, and struggling to advocate for yourself over a chaotic public hotline.</p>
+                <ul>
+                    <li><i data-lucide="alert-triangle"></i> Severe bottlenecking on public university switchboards.</li>
+                    <li><i data-lucide="alert-triangle"></i> Limited visibility into unadvertised course vacancies.</li>
+                    <li><i data-lucide="alert-triangle"></i> Administrative errors during the "Add Clearing Choice" phase.</li>
+                </ul>
+            </div>
+            <div class="overview-text" style="background: var(--off); padding: 3rem; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05);">
+                <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">The Kensington Ivy Solution</h2>
+                <p>We completely remove the burden from you. By retaining our services prior to Results Day, our senior consultants handle every aspect of the Clearing process on your behalf.</p>
+                <p>We do not use public channels. We utilize our established network of university registrars and admissions deans to bypass the noise and place you exactly where you belong.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="detailed-steps">
+    <div class="container">
+        <h2 style="font-family: var(--ff-head); font-size: 2.5rem; text-align: center; color: var(--navy); margin-bottom: 4rem;">Our 4-Phase Executive Protocol</h2>
+        
+        <!-- Phase 1 -->
+        <div class="step-row">
+            <div class="step-content">
+                <h3><span>1</span> Academic Triage & Contingency</h3>
+                <p>Before the UCAS Hub officially updates, our team prepares a comprehensive contingency matrix. We map your predicted grades, your firm choices, and potential alternative pathways. The moment results are published, we perform an immediate audit of your UCAS Tariff points to determine your exact standing.</p>
+                <p>If you are released into Clearing, we instantly retrieve your UCAS Clearing ID without subjecting you to the delays of a crashing student portal.</p>
+            </div>
+            <div class="step-visual">
+                <h4 style="margin-bottom: 1.5rem; color: var(--navy); font-family: var(--ff-head); font-size: 1.4rem;">What We Handle:</h4>
+                <div class="visual-list">
+                    <div class="visual-item">
+                        <i data-lucide="file-text"></i>
+                        <p>Complete audit of your A-Level/IB results against original conditional offers.</p>
+                    </div>
+                    <div class="visual-item">
+                        <i data-lucide="refresh-cw"></i>
+                        <p>Real-time monitoring of your UCAS Hub status changes.</p>
+                    </div>
+                    <div class="visual-item">
+                        <i data-lucide="fingerprint"></i>
+                        <p>Immediate extraction of your unique Clearing Number.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="step-row">
+            <div class="step-content">
+                <h3><span>2</span> Private Network Sourcing</h3>
+                <p>While the general public relies on the standard UCAS Search tool—which is often delayed and missing crucial data—our consultants cross-reference your profile against our private database of university partners.</p>
+                <p>We identify unadvertised vacancies at Russell Group and elite institutions, analyzing which courses perfectly align with your long-term career aspirations, rather than just settling for what is publicly available.</p>
+            </div>
+            <div class="step-visual">
+                <h4 style="margin-bottom: 1.5rem; color: var(--navy); font-family: var(--ff-head); font-size: 1.4rem;">What We Handle:</h4>
+                <div class="visual-list">
+                    <div class="visual-item">
+                        <i data-lucide="network"></i>
+                        <p>Direct communication with faculty to uncover hidden course availabilities.</p>
+                    </div>
+                    <div class="visual-item">
+                        <i data-lucide="target"></i>
+                        <p>Strategic matching based on your specific subject strengths and weaknesses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="step-row">
+            <div class="step-content">
+                <h3><span>3</span> Direct Admissions Negotiation</h3>
+                <p>This is where our service provides the most value. We do not call public hotlines or speak to temporary call-center staff. Our senior consultants dial directly into the offices of Admissions Deans and Faculty Heads.</p>
+                <p>We present a compelling, professional case for your admission, highlighting your extracurricular achievements, specific module grades, and overall academic trajectory to negotiate a firm verbal offer on the spot.</p>
+            </div>
+            <div class="step-visual">
+                <h4 style="margin-bottom: 1.5rem; color: var(--navy); font-family: var(--ff-head); font-size: 1.4rem;">What We Handle:</h4>
+                <div class="visual-list">
+                    <div class="visual-item">
+                        <i data-lucide="phone-forwarded"></i>
+                        <p>Bypassing public switchboards to reach decision-makers instantly.</p>
+                    </div>
+                    <div class="visual-item">
+                        <i data-lucide="award"></i>
+                        <p>Professional pitch outlining why you are an exceptional candidate.</p>
+                    </div>
+                    <div class="visual-item">
+                        <i data-lucide="check-circle-2"></i>
+                        <p>Securing binding verbal offers and strict deadlines for portal entry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="step-row">
+            <div class="step-content">
+                <h3><span>4</span> Official Portal Lock-In</h3>
+                <p>A verbal offer is only the beginning. The process must be meticulously finalized through the UCAS Hub. We guide you precisely through the "Add Clearing Choice" process, ensuring the institution code, course code, and campus details are entered without a single error.</p>
+                <p>Our team then monitors the backend until the university officially updates your status to 'Unconditional', permanently locking in your placement.</p>
+            </div>
+            <div class="step-visual">
+                <h4 style="margin-bottom: 1.5rem; color: var(--navy); font-family: var(--ff-head); font-size: 1.4rem;">What We Handle:</h4>
+                <div class="visual-list">
+                    <div class="visual-item">
+                        <i data-lucide="mouse-pointer-click"></i>
+                        <p>Step-by-step guidance on entering the correct UCAS institution codes.</p>
+                    </div>
+                    <div class="visual-item">
+                        <i data-lucide="shield-check"></i>
+                        <p>Verification that the university has formally accepted the clearing choice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="cta-clean">
+    <div class="container">
+        <h2 style="font-family: var(--ff-head); font-size: 2.5rem; margin-bottom: 1rem;">Retain Our Services Today</h2>
+        <p style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 2.5rem; font-size: 1.1rem;">Do not wait until Results Day to formulate a plan. Secure your dedicated admissions advocate now to ensure you are fully prepared.</p>
+        <a href="register.html" class="btn btn-gold" style="font-size: 1.1rem; padding: 1rem 2.5rem; border-radius: 50px;">Enquire for Representation</a>
+    </div>
+</section>
+
+<footer style="background: var(--navy); padding: 5rem 0 3rem 0; color: #fff;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+            
+            <div style="grid-column: span 1;">
+                <a href="../index.html" class="logo" style="display: block; margin-bottom: 1.5rem;">
+                    <span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: #fff;">Kensington</span><span style="font-family: var(--ff-head); font-weight: 800; font-size: 2rem; color: var(--gold);">Ivy</span>
+                </a>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; max-width: 320px; margin-bottom: 2rem;">UK's trusted university placement and admissions partner. Built on academic excellence.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" aria-label="Instagram" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="instagram" style="width: 20px;"></i></a>
+                    <a href="#" aria-label="TikTok" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.3s ease;"><i data-lucide="linkedin" style="width: 20px;"></i></a>
+                    <a href="https://uk.trustpilot.com/review/kensingtonivy.co.uk" target="_blank" aria-label="Trustpilot" style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #00b67a; transition: background 0.3s ease;"><i data-lucide="star" style="width: 20px; fill: #00b67a;"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Menu</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../index.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Home</a>
+                    <a href="../pages/about.html?v=3" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">About Us</a>
+                    <a href="../pages/registries.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">University Registries</a>
+                    <a href="../pages/foundation-years.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Foundation Years</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Legal</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="../pages/legal/privacy.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Privacy Policy</a>
+                    <a href="../pages/legal/terms.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Website Terms</a>
+                    <a href="../pages/legal/cookies.html" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; transition: color 0.3s ease;">Cookie Policy</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-family: var(--ff-head); font-size: 1.3rem; margin-bottom: 2rem; color: #fff;">Contact Us</h4>
+                <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <div style="display: flex; gap: 1rem; color: rgba(255,255,255,0.7);">
+                        <i data-lucide="map-pin" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <p style="font-size: 0.95rem;">453 South End Road,<br>Hornchurch, England, RM12 5NX</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="mail" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="mailto:enquiries@kensingtonivy.co.uk" style="color: rgba(255,255,255,0.7); font-size: 0.95rem; text-decoration: underline;">enquiries@kensingtonivy.co.uk</a>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <i data-lucide="phone" style="width: 20px; flex-shrink: 0; color: var(--gold);"></i>
+                        <a href="tel:02074440009" style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">020 7444 0009</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;">
+            <p>&copy; <span class="dynamic-year">2026</span> Kensington Ivy LTD (Company No. 17167406). All rights reserved.</p>
+            <div style="opacity: 0.6;">
+                <a href="https://www.dmca.com/Protection/Status.aspx?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" title="DMCA.com Protection Status" class="dmca-badge"> 
+                    <img src="https://images.dmca.com/Badges/dmca_protected_sml_120n.png?ID=f3d4db82-c26d-44f0-87c5-10d923a53d0b" alt="DMCA.com Protection Status" style="display: block;" />
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
