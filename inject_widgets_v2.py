@@ -1,235 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consent Log Admin | KensingtonIvy</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <style>
-        .admin-container {
-            max-width: 1000px;
-            margin: 4rem auto;
-            padding: 2rem;
-            background: #fff;
-            border-radius: 8px;
-            color: var(--navy);
-        }
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--gray-light);
-            padding-bottom: 1rem;
-        }
-        .admin-header h1 {
-            font-family: var(--ff-head);
-            color: var(--navy);
-            margin: 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-        }
-        th, td {
-            text-align: left;
-            padding: 1rem;
-            border-bottom: 1px solid var(--gray-light);
-        }
-        th {
-            background: var(--navy);
-            color: #fff;
-            font-weight: 600;
-        }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        .badge {
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .badge-all { background: #d4edda; color: #155724; }
-        .badge-necessary { background: #fff3cd; color: #856404; }
-        .loading { text-align: center; padding: 2rem; color: var(--navy-light); font-style: italic; }
-    </style>
-</head>
-<body style="background: var(--bg-alt);">
+import os
+import glob
 
-<div class="admin-container">
-    <div class="admin-header">
-        <h1>User Consent Audit Log</h1>
-        <button class="btn btn-outline" onclick="fetchLogs()">Refresh Logs</button>
-    </div>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Timestamp (UTC)</th>
-                <th>IP Address</th>
-                <th>Consent Level</th>
-                <th>User Agent (Truncated)</th>
-            </tr>
-        </thead>
-        <tbody id="logTableBody">
-            <tr>
-                <td colspan="4" class="loading">Loading consent records...</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+workspace = "/Users/sharifafzal/untitled folder 10"
+html_files = glob.glob(os.path.join(workspace, "**", "*.html"), recursive=True)
 
-<script>
-    function fetchLogs() {
-        const tbody = document.getElementById('logTableBody');
-        tbody.innerHTML = '<tr><td colspan="4" class="loading">Loading consent records...</td></tr>';
-        
-        fetch('/api/get-consent-logs')
-            .then(res => res.json())
-            .then(data => {
-                if (data.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No consent logs found yet.</td></tr>';
-                    return;
-                }
-                
-                // Sort by timestamp descending
-                data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-                
-                tbody.innerHTML = '';
-                data.forEach(log => {
-                    const tr = document.createElement('tr');
-                    
-                    const dateObj = new Date(log.timestamp);
-                    const dateStr = dateObj.toLocaleString();
-                    
-                    let consentBadge = '';
-                    if (log.consent === 'all') {
-                        consentBadge = '<span class="badge badge-all">All Cookies</span>';
-                    } else if (log.consent === 'necessary') {
-                        consentBadge = '<span class="badge badge-necessary">Necessary Only</span>';
-                    } else {
-                        consentBadge = '<span class="badge">' + log.consent + '</span>';
-                    }
-                    
-                    const uaShort = log.user_agent.length > 50 ? log.user_agent.substring(0, 50) + '...' : log.user_agent;
-                    
-                    tr.innerHTML = `
-                        <td>${dateStr}</td>
-                        <td>${log.ip_address}</td>
-                        <td>${consentBadge}</td>
-                        <td title="${log.user_agent}">${uaShort}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            })
-            .catch(err => {
-                tbody.innerHTML = '<tr><td colspan="4" style="color:red; text-align:center;">Error loading logs. Make sure the server is running.</td></tr>';
-                console.error("Failed to load logs:", err);
-            });
-    }
-
-    // Initial fetch
-    document.addEventListener('DOMContentLoaded', fetchLogs);
-</script>
-
-
-<!-- Detailed Cookie Banner -->
-<div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-banner-inner">
-        <div class="cookie-banner-text">
-            <strong>Cookies on the Kensington Ivy website</strong>
-            <p>We use some essential cookies to make this site work.</p>
-            <p>We'd like to set analytics cookies to understand how you use this site. We may use services from YouTube that may also use cookies.</p>
-            <p>For more detailed information, see our <a href="/pages/legal/cookies.html">Cookies page</a>.</p>
-        </div>
-        <div class="cookie-banner-actions">
-            <button class="cookie-btn-accept" id="cookieAcceptAll">Accept all cookies</button>
-            <button class="cookie-btn-necessary" id="cookieNecessary">Reject non-essential cookies</button>
-            <button class="cookie-btn-settings" id="cookieSettingsBtn" onclick="document.getElementById('cookieDetails').classList.toggle('expanded');">Manage preferences</button>
-        </div>
-
-        <div class="cookie-banner-details" id="cookieDetails">
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Essential cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" checked disabled>
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>These cookies are necessary for core functionality, such as security and network management. They always need to be on.</p>
-            </div>
-            
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Analytics cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="toggleAnalytics">
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>We use analytics cookies to measure how you use our website to help us improve the experience.</p>
-            </div>
-
-            <div class="cookie-section">
-                <div class="cookie-section-header">
-                    <h4>Video player cookies</h4>
-                    <label class="cookie-toggle">
-                        <input type="checkbox" id="toggleVideo">
-                        <span class="cookie-slider"></span>
-                    </label>
-                </div>
-                <p>Pages that include videos hosted on YouTube may result in video platforms collecting information.</p>
-            </div>
-
-            <button class="cookie-btn-save" id="cookieSaveBtn">Save and close</button>
-        </div>
-    </div>
-</div>
-<script>
-(function(){
-    if(!localStorage.getItem("ki_cookie_consent")){
-        setTimeout(function(){document.getElementById("cookieBanner").classList.add("visible");},800);
-    }
-    function logConsent(consentData){
-        localStorage.setItem("ki_cookie_consent", typeof consentData === 'string' ? consentData : "custom");
-        document.getElementById("cookieBanner").classList.remove("visible");
-        fetch("/api/log-consent", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({consent: consentData})
-        }).catch(function(){});
-    }
-
-    document.getElementById("cookieAcceptAll").addEventListener("click",function(){
-        document.getElementById("toggleAnalytics").checked = true;
-        document.getElementById("toggleVideo").checked = true;
-        logConsent("all");
-    });
-    
-    document.getElementById("cookieNecessary").addEventListener("click",function(){
-        document.getElementById("toggleAnalytics").checked = false;
-        document.getElementById("toggleVideo").checked = false;
-        logConsent("necessary");
-    });
-    
-    document.getElementById("cookieSaveBtn").addEventListener("click", function(){
-        const analytics = document.getElementById("toggleAnalytics").checked;
-        const video = document.getElementById("toggleVideo").checked;
-        if(analytics && video) {
-            logConsent("all");
-        } else if (!analytics && !video) {
-            logConsent("necessary");
-        } else {
-            logConsent("custom_analytics:" + analytics + "_video:" + video);
-        }
-    });
-})();
-</script>
-
-
+injection_code = """
 <!-- Floating Cookie Button -->
 <button id="floatingCookieBtn" onclick="document.getElementById('cookieBanner').classList.add('visible');" style="position: fixed; bottom: 20px; left: 20px; z-index: 9998; background: var(--navy); color: #fff; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;">
     <i data-lucide="cookie" style="width: 24px; height: 24px;"></i>
@@ -470,6 +245,22 @@
     }
 </script>
 </body>
+"""
 
+for file in html_files:
+    with open(file, 'r', encoding='utf-8') as f:
+        content = f.read()
 
-</html>
+    # Skip if already injected v2
+    if 'id="accSidePanelOverlay"' in content:
+        continue
+
+    # Only inject into files that have a closing body tag
+    if '</body>' in content:
+        # Before we inject, make sure we only inject once
+        content = content.replace('</body>', injection_code)
+        
+        with open(file, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"Injected v2 widgets into {file}")
+
