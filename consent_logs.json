@@ -52,5 +52,11 @@
     "ip_address": "127.0.0.1",
     "consent": "all",
     "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+  },
+  {
+    "timestamp": "2026-05-24T15:23:37.789227Z",
+    "ip_address": "127.0.0.1",
+    "consent": "all",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
   }
 ]
