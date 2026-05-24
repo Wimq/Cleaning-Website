@@ -13,257 +13,259 @@
     
     <style>
         /* ═══════════════════════════════════════════════════ */
-        /*  ULTRA PREMIUM CREME WHITE AESTHETIC               */
+        /*  CREME WHITE AESTHETIC - NO IMAGES                 */
         /* ═══════════════════════════════════════════════════ */
         body {
             background-color: var(--white);
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(201,162,88,0.06), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(201,162,88,0.06), transparent 25%);
-            background-attachment: fixed;
             color: var(--navy);
             overflow-x: hidden;
         }
 
         /* ═══════════════════════════════════════════════════ */
-        /*  IMMERSIVE HERO                                    */
+        /*  TYPOGRAPHY-FOCUSED HERO                           */
         /* ═══════════════════════════════════════════════════ */
         .fy-hero {
             position: relative;
-            min-height: 90vh;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden;
+            padding: 14rem 0 10rem 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--off) 100%);
             border-bottom: 1px solid var(--border);
+            text-align: center;
+            overflow: hidden;
         }
-        /* Background image with a soft creme overlay to blend perfectly */
-        .fy-hero-bg {
-            position: absolute; inset: 0;
-            background: url('../assets/images/hero_illustration.png') center/cover no-repeat;
+        .fy-hero::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 400px; height: 400px;
+            background: var(--gold);
+            border-radius: 50%;
+            filter: blur(150px);
             opacity: 0.15;
-            filter: grayscale(100%) contrast(1.2);
-            pointer-events: none;
             z-index: 0;
+            pointer-events: none;
         }
-        .fy-hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(245, 238, 220, 0.4) 0%, rgba(245, 238, 220, 1) 100%);
-            z-index: 1;
-        }
-        
         .fy-hero-content {
             position: relative;
             z-index: 2;
-            text-align: center;
             max-width: 900px;
-            padding: 0 2rem;
-            margin-top: 5rem;
+            margin: 0 auto;
         }
         
         .fy-badge {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(201,162,88,0.3);
-            color: var(--gold);
+            background: rgba(255,255,255,0.6);
+            border: 1px solid var(--border);
+            color: var(--navy);
             padding: 0.6rem 1.5rem;
             border-radius: 50px;
             font-size: 0.8rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.15em;
+            text-transform: uppercase; letter-spacing: 0.1em;
             margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(201,162,88,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
 
         .fy-hero-title {
             font-family: var(--ff-head);
-            font-size: clamp(3.5rem, 6vw, 6rem);
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
             font-weight: 800;
             color: var(--navy);
             line-height: 1.05;
             margin-bottom: 2rem;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .fy-hero-title em {
             font-style: italic; font-weight: 400; color: var(--gold);
         }
         
         .fy-hero-desc {
-            font-size: 1.25rem; color: var(--muted); line-height: 1.8;
+            font-size: 1.2rem; color: var(--muted); line-height: 1.8;
             max-width: 700px; margin: 0 auto 3rem;
         }
 
         /* ═══════════════════════════════════════════════════ */
-        /*  FLOATING STATS STRIP                              */
+        /*  METRICS STRIP (NO BACKGROUND IMAGES)              */
         /* ═══════════════════════════════════════════════════ */
-        .fy-stats {
+        .fy-metrics {
             position: relative;
             z-index: 3;
-            margin-top: -5rem;
-            padding: 0 2rem;
+            margin-top: -4rem;
         }
-        .fy-stats-grid {
+        .fy-metrics-grid {
             display: grid; grid-template-columns: repeat(4, 1fr);
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(20px);
+            background: var(--white);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(10,17,40,0.05);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(10,17,40,0.04);
             overflow: hidden;
         }
-        .fy-stat-card {
+        .fy-metric-card {
             padding: 3rem 2rem;
             text-align: center;
             border-right: 1px solid var(--border);
         }
-        .fy-stat-card:last-child { border-right: none; }
-        .fy-stat-num {
-            font-family: var(--ff-head); font-size: 3.5rem; color: var(--gold);
+        .fy-metric-card:last-child { border-right: none; }
+        .fy-metric-num {
+            font-family: var(--ff-head); font-size: 3.2rem; color: var(--gold);
             line-height: 1; margin-bottom: 0.5rem;
-            text-shadow: 0 10px 20px rgba(201,162,88,0.15);
         }
-        .fy-stat-label {
+        .fy-metric-label {
             font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.1em; color: var(--navy);
         }
 
         /* ═══════════════════════════════════════════════════ */
-        /*  IMMERSIVE REALITY SECTION                         */
+        /*  STRUCTURED GRID SECTION (NO IMAGES)               */
         /* ═══════════════════════════════════════════════════ */
-        .fy-reality {
-            padding: 12rem 0 8rem 0;
+        .fy-structured {
+            padding: 8rem 0;
             background: var(--off);
             position: relative;
         }
-        .fy-reality-grid {
-            display: grid; grid-template-columns: 1fr 1.1fr; gap: 6rem;
-            align-items: center;
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
         }
-        
-        .reality-text h2 {
+        .section-header h2 {
             font-family: var(--ff-head); font-size: 3.5rem; color: var(--navy);
             line-height: 1.1; margin-bottom: 1.5rem;
         }
-        .reality-text p {
-            font-size: 1.15rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem;
+        .section-header p {
+            font-size: 1.15rem; color: var(--muted); line-height: 1.8;
         }
-        
-        .reality-list { list-style: none; margin-top: 3rem; }
-        .reality-list li {
-            display: flex; gap: 1.5rem; align-items: flex-start;
-            margin-bottom: 2rem;
-            background: var(--white);
-            padding: 2rem; border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.02);
-            transition: transform 0.4s ease;
-        }
-        .reality-list li:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .reality-list i { color: var(--gold); margin-top: 5px; flex-shrink: 0; width: 28px; height: 28px; }
 
-        .reality-image-wrapper {
-            position: relative; border-radius: 32px; overflow: hidden;
-            box-shadow: 0 40px 80px rgba(10,17,40,0.1);
+        .benefit-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+            margin-bottom: 5rem;
         }
-        .reality-image-wrapper img { width: 100%; display: block; background: #fff; padding: 2rem;}
-        
-        .subject-overlay {
-            position: absolute; bottom: 2rem; right: 2rem; left: 2rem;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(15px);
-            padding: 2rem; border-radius: 20px;
+        .benefit-card {
+            background: var(--white);
             border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
         }
-        .subject-overlay h4 { font-family: var(--ff-head); font-size: 1.5rem; color: var(--navy); margin-bottom: 1rem; }
-        .subject-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-        .s-tag {
-            background: var(--off); padding: 0.5rem 1rem; border-radius: 50px;
-            font-size: 0.85rem; font-weight: 600; color: var(--navy); border: 1px solid var(--border);
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 30px rgba(10,17,40,0.03);
         }
+        .benefit-card i {
+            color: var(--gold);
+            width: 40px; height: 40px;
+            margin-bottom: 1.5rem;
+        }
+        .benefit-card h4 {
+            font-family: var(--ff-head); font-size: 1.5rem; color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        .benefit-card p {
+            color: var(--muted); font-size: 0.95rem; line-height: 1.6;
+        }
+
+        /* Elite Subjects as Tags instead of an image box */
+        .subjects-wrapper {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+        }
+        .subjects-wrapper h3 {
+            font-family: var(--ff-head); font-size: 2.2rem; color: var(--navy); margin-bottom: 1rem;
+        }
+        .subjects-wrapper p {
+            color: var(--muted); margin-bottom: 2.5rem; font-size: 1.1rem;
+        }
+        .subject-tags {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+        }
+        .tag-pill {
+            display: flex; align-items: center; gap: 0.5rem;
+            background: var(--off);
+            border: 1px solid var(--border);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600; color: var(--navy);
+            transition: all 0.3s ease;
+        }
+        .tag-pill:hover {
+            background: #fff; border-color: var(--gold);
+        }
+        .tag-pill i { color: var(--gold); width: 18px; }
 
         /* ═══════════════════════════════════════════════════ */
-        /*  PATHWAYS GLASS CARDS                              */
+        /*  CLEAN PATHWAY CARDS                               */
         /* ═══════════════════════════════════════════════════ */
         .fy-pathways {
-            padding: 10rem 0;
+            padding: 8rem 0;
             background: var(--white);
             border-top: 1px solid var(--border);
-            position: relative;
+            border-bottom: 1px solid var(--border);
         }
-        .fy-pathways-header { text-align: center; max-width: 800px; margin: 0 auto 6rem; }
-        .fy-pathways-header h2 { font-family: var(--ff-head); font-size: 3.8rem; color: var(--navy); margin-bottom: 1.5rem; }
-        .fy-pathways-header p { font-size: 1.2rem; color: var(--muted); line-height: 1.7; }
-        
-        .pathway-cards { display: flex; flex-direction: column; gap: 3rem; }
-        
-        .path-card {
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(20px);
+        .pathway-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        .path-box {
+            background: var(--off);
             border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 4rem;
-            display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem;
-            align-items: center;
-            box-shadow: 0 20px 50px rgba(10,17,40,0.03);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative; overflow: hidden;
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex; flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .path-card::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(circle at top right, rgba(201,162,88,0.1), transparent 60%);
-            opacity: 0; transition: opacity 0.5s ease;
+        .path-box:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            background: #fff;
+            box-shadow: 0 20px 40px rgba(10,17,40,0.04);
         }
-        .path-card:hover { transform: translateY(-8px); border-color: rgba(201,162,88,0.4); box-shadow: 0 40px 80px rgba(10,17,40,0.08); }
-        .path-card:hover::before { opacity: 1; }
-
-        .path-left { position: relative; z-index: 2; }
-        .path-duration {
-            display: inline-block; padding: 0.5rem 1.5rem; background: var(--off);
-            color: var(--gold); border: 1px solid var(--border); border-radius: 50px;
-            font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
-            margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(201,162,88,0.1);
+        .path-badge {
+            display: inline-block; padding: 0.4rem 1rem; background: var(--white);
+            color: var(--navy); font-weight: 700; font-size: 0.75rem; border-radius: 50px;
+            text-transform: uppercase; letter-spacing: 0.1em; border: 1px solid var(--border);
+            align-self: flex-start; margin-bottom: 1.5rem;
         }
-        .path-left h3 { font-family: var(--ff-head); font-size: 2.5rem; color: var(--navy); margin-bottom: 1.5rem; line-height: 1.1; }
-        .path-left p { font-size: 1.1rem; color: var(--muted); line-height: 1.8; }
-        
-        .path-right { position: relative; z-index: 2; }
-        .path-right > p { font-size: 1.15rem; color: var(--navy); line-height: 1.8; margin-bottom: 2.5rem; }
-        
-        .path-req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .req-box {
-            background: var(--white); padding: 2rem; border-radius: 20px;
-            border: 1px solid var(--border);
+        .path-box h3 {
+            font-family: var(--ff-head); font-size: 2rem; color: var(--navy); margin-bottom: 1rem; line-height: 1.2;
         }
-        .req-box h5 { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem; }
-        .req-box p { margin: 0; font-size: 1.05rem; color: var(--navy); font-weight: 500; line-height: 1.5;}
+        .path-box > p {
+            color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem; flex-grow: 1;
+        }
+        .path-specs {
+            border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;
+        }
+        .spec-item {
+            display: flex; flex-direction: column; gap: 0.2rem;
+        }
+        .spec-item span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700;}
+        .spec-item strong { color: var(--navy); font-size: 0.95rem; font-weight: 600; }
 
         /* ═══════════════════════════════════════════════════ */
         /*  ELEGANT CTA                                       */
         /* ═══════════════════════════════════════════════════ */
         .fy-cta {
-            padding: 12rem 0;
+            padding: 10rem 0;
             background: var(--off);
             text-align: center;
             position: relative;
-            border-top: 1px solid var(--border);
         }
-        .fy-cta h2 { font-family: var(--ff-head); font-size: 4.5rem; color: var(--navy); margin-bottom: 1.5rem; }
-        .fy-cta p { font-size: 1.3rem; color: var(--muted); max-width: 600px; margin: 0 auto 3rem; line-height: 1.7; }
+        .fy-cta h2 { font-family: var(--ff-head); font-size: 4rem; color: var(--navy); margin-bottom: 1.5rem; }
+        .fy-cta p { font-size: 1.25rem; color: var(--muted); max-width: 600px; margin: 0 auto 3rem; line-height: 1.6; }
 
         @media (max-width: 1024px) {
-            .fy-reality-grid { grid-template-columns: 1fr; }
-            .path-card { grid-template-columns: 1fr; gap: 3rem; }
-            .fy-stats-grid { grid-template-columns: 1fr 1fr; }
+            .fy-metrics-grid { grid-template-columns: 1fr 1fr; }
+            .benefit-grid { grid-template-columns: 1fr; }
+            .pathway-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-            .fy-stats-grid { grid-template-columns: 1fr; }
-            .path-req-grid { grid-template-columns: 1fr; }
-            .fy-hero-title { font-size: 3rem; }
+            .fy-metrics-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV (CREME TRANSPARENT) -->
+    <!-- NAV -->
     <nav style="position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(245, 238, 220, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0;">
             <a href="../index.html" style="text-decoration: none;">
@@ -279,169 +281,149 @@
         </div>
     </nav>
 
-    <!-- IMMERSIVE HERO -->
+    <!-- HERO -->
     <header class="fy-hero">
-        <div class="fy-hero-bg"></div>
-        <div class="fy-hero-overlay"></div>
         <div class="container">
             <div class="fy-hero-content reveal">
-                <span class="fy-badge"><i data-lucide="shield-check" style="width: 16px;"></i> Guaranteed Progression</span>
+                <span class="fy-badge"><i data-lucide="shield-check" style="width: 16px; color: var(--gold);"></i> Guaranteed Progression</span>
                 <h1 class="fy-hero-title">The Premium Alternative to<br><em>Standard Entry.</em></h1>
-                <p class="fy-hero-desc">Missed your conditional entry grades? Kensington Ivy specializes in mapping exact academic profiles to fully integrated Foundation Year and Access to HE diplomas, securing your immediate place on a university campus.</p>
+                <p class="fy-hero-desc">Missed your conditional entry grades? Kensington Ivy specializes in mapping exact academic profiles to fully integrated Foundation Year and Access to HE diplomas.</p>
                 <a href="register.html" class="btn btn-gold" style="padding: 1.2rem 3rem; font-size: 1.1rem; box-shadow: 0 15px 30px rgba(201,162,88,0.2);">Request Placement Evaluation <i data-lucide="arrow-right" style="width: 18px; margin-left: 8px;"></i></a>
             </div>
         </div>
     </header>
 
-    <!-- FLOATING STATS -->
-    <section class="fy-stats reveal">
+    <!-- METRICS -->
+    <section class="fy-metrics reveal">
         <div class="container">
-            <div class="fy-stats-grid">
-                <div class="fy-stat-card">
-                    <div class="fy-stat-num">98%</div>
-                    <div class="fy-stat-label">Progression to Year 1</div>
+            <div class="fy-metrics-grid">
+                <div class="fy-metric-card">
+                    <div class="fy-metric-num">98%</div>
+                    <div class="fy-metric-label">Progression to Year 1</div>
                 </div>
-                <div class="fy-stat-card">
-                    <div class="fy-stat-num">0</div>
-                    <div class="fy-stat-label">A-Level Retakes</div>
+                <div class="fy-metric-card">
+                    <div class="fy-metric-num">0</div>
+                    <div class="fy-metric-label">A-Level Retakes</div>
                 </div>
-                <div class="fy-stat-card">
-                    <div class="fy-stat-num">130+</div>
-                    <div class="fy-stat-label">Partner Institutions</div>
+                <div class="fy-metric-card">
+                    <div class="fy-metric-num">130+</div>
+                    <div class="fy-metric-label">Partner Institutions</div>
                 </div>
-                <div class="fy-stat-card">
-                    <div class="fy-stat-num">100%</div>
-                    <div class="fy-stat-label">Finance Eligible</div>
+                <div class="fy-metric-card">
+                    <div class="fy-metric-num">100%</div>
+                    <div class="fy-metric-label">Finance Eligible</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- REALITY / COMPLIANCE -->
-    <section class="fy-reality">
+    <!-- STRUCTURED BENEFITS & TAGS -->
+    <section class="fy-structured">
         <div class="container">
-            <div class="fy-reality-grid">
-                <div class="reality-text reveal">
-                    <h2>Rethink Traditional Academic Entry.</h2>
-                    <p>Standard A-Level or IB grades are not the only measure of your intellect or ambition. Thousands of brilliant students miss their conditional offers by a narrow margin each year, forcing them into clearing chaos or gap years.</p>
-                    <p>We completely bypass this. We secure placements in specialized "Year 0" programs taught directly on the main university campus. You receive full student status, accommodation, and finance, while studying a tailored curriculum.</p>
-                    
-                    <ul class="reality-list">
-                        <li>
-                            <i data-lucide="building-2"></i>
-                            <div>
-                                <h4 style="font-family: var(--ff-head); font-size: 1.4rem; color: var(--navy); margin-bottom: 0.5rem;">Full Campus Integration</h4>
-                                <p style="margin: 0; font-size: 1rem;">You are a fully registered university student from day one, with access to all societies, libraries, and campus facilities.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i data-lucide="check-circle-2"></i>
-                            <div>
-                                <h4 style="font-family: var(--ff-head); font-size: 1.4rem; color: var(--navy); margin-bottom: 0.5rem;">Guaranteed Progression</h4>
-                                <p style="margin: 0; font-size: 1rem;">Pass the foundation year assignments, and you are unconditionally guaranteed a place in Year 1 of your Bachelor's degree.</p>
-                            </div>
-                        </li>
-                    </ul>
+            <div class="section-header reveal">
+                <h2>Rethink Traditional Academic Entry.</h2>
+                <p>Standard A-Level or IB grades are not the only measure of your intellect. We bypass the clearing chaos by securing placements in specialized "Year 0" programs taught directly on the main university campus.</p>
+            </div>
+            
+            <div class="benefit-grid reveal">
+                <div class="benefit-card">
+                    <i data-lucide="building-2"></i>
+                    <h4>Full Campus Integration</h4>
+                    <p>You are a fully registered university student from day one, with unrestricted access to all societies, libraries, and campus facilities.</p>
                 </div>
-                <div class="reality-image-wrapper reveal">
-                    <img src="../assets/images/collaboration_vector.png" alt="University Campus Support">
-                    <div class="subject-overlay">
-                        <h4>Elite Subject Placements</h4>
-                        <div class="subject-tags">
-                            <span class="s-tag">Medicine (MBBS)</span>
-                            <span class="s-tag">Dentistry</span>
-                            <span class="s-tag">LLB Law</span>
-                            <span class="s-tag">Computer Science</span>
-                            <span class="s-tag">Engineering</span>
-                        </div>
-                    </div>
+                <div class="benefit-card">
+                    <i data-lucide="check-square"></i>
+                    <h4>Guaranteed Progression</h4>
+                    <p>Pass the foundation year assignments, and you are unconditionally guaranteed a place in Year 1 of your Bachelor's degree.</p>
+                </div>
+                <div class="benefit-card">
+                    <i data-lucide="users"></i>
+                    <h4>Specialised Support</h4>
+                    <p>Benefit from smaller class sizes and intensive academic writing support before the pressure of a full degree begins.</p>
+                </div>
+            </div>
+
+            <div class="subjects-wrapper reveal">
+                <h3>Elite Subject Placements</h3>
+                <p>We secure Foundation pathways for the most competitive degrees in the UK.</p>
+                <div class="subject-tags">
+                    <div class="tag-pill"><i data-lucide="stethoscope"></i> Medicine (MBBS)</div>
+                    <div class="tag-pill"><i data-lucide="activity"></i> Dentistry</div>
+                    <div class="tag-pill"><i data-lucide="scale"></i> LLB Law</div>
+                    <div class="tag-pill"><i data-lucide="gavel"></i> Criminology</div>
+                    <div class="tag-pill"><i data-lucide="monitor"></i> Computer Science</div>
+                    <div class="tag-pill"><i data-lucide="cpu"></i> Artificial Intelligence</div>
+                    <div class="tag-pill"><i data-lucide="settings"></i> Engineering (BEng/MEng)</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PATHWAYS DEEP DIVE GLASS CARDS -->
+    <!-- CLEAN PATHWAY CARDS -->
     <section class="fy-pathways">
         <div class="container">
-            <div class="fy-pathways-header reveal">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
                 <h2>Our Primary Pathways</h2>
                 <p>Our senior consultants analyze your exact UCAS tariff, subject mix, and career goals to assign you to one of our three core alternative entry frameworks.</p>
             </div>
 
-            <div class="pathway-cards">
-                <!-- PATH 1 -->
-                <div class="path-card reveal">
-                    <div class="path-left">
-                        <span class="path-duration">4 Year Integrated Visa</span>
-                        <h3>Integrated Foundation Year</h3>
-                        <p>The ultimate solution for students who missed their conditional offers but still desire the immediate "university experience" without leaving campus.</p>
-                    </div>
-                    <div class="path-right">
-                        <p>This is a 4-year undergraduate degree where 'Year 0' prepares you for the rigor of Year 1. It is taught on the main university campus by university faculty. You apply for a single 4-year student visa and student finance loan.</p>
-                        <div class="path-req-grid">
-                            <div class="req-box">
-                                <h5><i data-lucide="target" style="width:14px;"></i> Ideal Profile</h5>
-                                <p>Recent school leavers who achieved DDD to CCD at A-Level.</p>
-                            </div>
-                            <div class="req-box">
-                                <h5><i data-lucide="star" style="width:14px;"></i> Key Benefit</h5>
-                                <p>No re-application needed for Year 1. Automatic progression.</p>
-                            </div>
+            <div class="pathway-grid reveal">
+                
+                <div class="path-box">
+                    <span class="path-badge">4 Year Duration</span>
+                    <h3>Integrated Foundation Year</h3>
+                    <p>The ultimate solution for students who missed their conditional offers but desire the immediate university experience. Taught directly on campus by university faculty.</p>
+                    <div class="path-specs">
+                        <div class="spec-item">
+                            <span>Ideal Profile</span>
+                            <strong>Recent school leavers (DDD to CCD at A-Level)</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>Key Benefit</span>
+                            <strong>Single visa & finance application, no Year 1 re-application</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- PATH 2 -->
-                <div class="path-card reveal">
-                    <div class="path-left">
-                        <span class="path-duration">1 Year Fast-Track</span>
-                        <h3>Access to HE Diploma</h3>
-                        <p>Designed specifically for mature students returning to education, or those seeking a rapid pivot in subject choice without traditional A-Levels.</p>
-                    </div>
-                    <div class="path-right">
-                        <p>A highly intensive 1-year course taught at partnered colleges. It is widely accepted by almost all UK universities (including the Russell Group) as a direct equivalent to 3 A-Levels, allowing you to leapfrog standard entry requirements.</p>
-                        <div class="path-req-grid">
-                            <div class="req-box">
-                                <h5><i data-lucide="target" style="width:14px;"></i> Ideal Profile</h5>
-                                <p>Mature students (19+) or those changing careers entirely.</p>
-                            </div>
-                            <div class="req-box">
-                                <h5><i data-lucide="star" style="width:14px;"></i> Key Benefit</h5>
-                                <p>Fully funded via the Advanced Learner Loan (written off eventually).</p>
-                            </div>
+                <div class="path-box">
+                    <span class="path-badge">1 Year Fast-Track</span>
+                    <h3>Access to HE Diploma</h3>
+                    <p>Designed specifically for mature students returning to education, or those seeking a rapid pivot in subject choice. Widely accepted as equivalent to 3 A-Levels.</p>
+                    <div class="path-specs">
+                        <div class="spec-item">
+                            <span>Ideal Profile</span>
+                            <strong>Mature students (19+) or career changers</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>Key Benefit</span>
+                            <strong>Fully funded via the Advanced Learner Loan</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- PATH 3 -->
-                <div class="path-card reveal">
-                    <div class="path-left">
-                        <span class="path-duration">Accelerated Progression</span>
-                        <h3>International Year One</h3>
-                        <p>The premier option for international students aiming to graduate on time without spending an extra year on a foundation course.</p>
-                    </div>
-                    <div class="path-right">
-                        <p>This pathway combines intensive English language support with Year 1 academic modules. Upon successful completion of the year, you progress directly into Year 2 of your chosen Bachelor's degree.</p>
-                        <div class="path-req-grid">
-                            <div class="req-box">
-                                <h5><i data-lucide="target" style="width:14px;"></i> Ideal Profile</h5>
-                                <p>International students requiring English language improvement.</p>
-                            </div>
-                            <div class="req-box">
-                                <h5><i data-lucide="star" style="width:14px;"></i> Key Benefit</h5>
-                                <p>Saves one full year of international tuition fees and living costs.</p>
-                            </div>
+                <div class="path-box">
+                    <span class="path-badge">Accelerated Entry</span>
+                    <h3>International Year One</h3>
+                    <p>The premier option for international students aiming to graduate on time. Combines English language support with Year 1 academic modules for direct entry to Year 2.</p>
+                    <div class="path-specs">
+                        <div class="spec-item">
+                            <span>Ideal Profile</span>
+                            <strong>International students requiring language improvement</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>Key Benefit</span>
+                            <strong>Saves one full year of international tuition fees</strong>
                         </div>
                     </div>
                 </div>
+
             </div>
-
         </div>
     </section>
 
     <!-- CTA CREME -->
     <section class="fy-cta reveal">
-        <div class="container" style="position: relative; z-index: 2;">
+        <div class="container">
             <h2>Your Degree Awaits.</h2>
             <p>Do not compromise on your academic future. Allow our senior consultants to secure your pathway into an elite UK institution today.</p>
             <a href="register.html" class="btn btn-gold" style="padding: 1.2rem 3.5rem; font-size: 1.15rem; border-radius: 50px; box-shadow: 0 15px 40px rgba(201,162,88,0.25);">Request a Placement Review <i data-lucide="arrow-right" style="width: 20px; margin-left: 10px;"></i></a>
