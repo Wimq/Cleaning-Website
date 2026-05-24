@@ -219,22 +219,56 @@
         .req-box p { margin: 0; font-size: 1.05rem; color: #fff; font-weight: 500; line-height: 1.5;}
 
         /* ═══════════════════════════════════════════════════ */
-        /*  ELEGANT CTA                                       */
+        /*  PREMIUM CTA CARD                                  */
         /* ═══════════════════════════════════════════════════ */
         .fy-cta {
-            padding: 12rem 0;
+            padding: 10rem 0;
             background: var(--off);
-            text-align: center;
-            position: relative;
             border-top: 1px solid var(--border);
+            position: relative;
         }
-        .fy-cta h2 { font-family: var(--ff-head); font-size: 4.5rem; color: var(--navy); margin-bottom: 1.5rem; }
-        .fy-cta p { font-size: 1.3rem; color: var(--muted); max-width: 600px; margin: 0 auto 3rem; line-height: 1.7; }
+        .cta-premium-card {
+            background: linear-gradient(135deg, var(--navy) 0%, #1c2541 100%);
+            border-radius: 40px;
+            padding: 6rem 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            box-shadow: 0 40px 80px rgba(10,17,40,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-premium-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, #a87e38 100%);
+        }
+        .cta-premium-card::after {
+            content: ''; position: absolute; bottom: -100px; right: -100px;
+            width: 300px; height: 300px; background: var(--gold);
+            border-radius: 50%; filter: blur(100px); opacity: 0.15; pointer-events: none;
+        }
+        .cta-left { position: relative; z-index: 2; flex: 1; }
+        .cta-left h2 { font-family: var(--ff-head); font-size: 4rem; color: #fff; margin-bottom: 1.5rem; line-height: 1.1; }
+        .cta-left p { font-size: 1.25rem; color: rgba(255,255,255,0.8); line-height: 1.7; max-width: 500px; margin: 0; }
+        .cta-right { position: relative; z-index: 2; flex-shrink: 0; }
+        .cta-premium-btn {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            background: var(--gold); color: var(--navy);
+            padding: 1.5rem 3rem; border-radius: 50px;
+            font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+            transition: all 0.4s ease; box-shadow: 0 15px 30px rgba(201,162,88,0.3); text-decoration: none;
+        }
+        .cta-premium-btn:hover {
+            transform: translateY(-5px); box-shadow: 0 25px 50px rgba(201,162,88,0.4); background: #fff;
+        }
 
         @media (max-width: 1024px) {
             .fy-reality-grid { grid-template-columns: 1fr; }
             .path-card { grid-template-columns: 1fr; gap: 3rem; }
             .fy-stats-grid { grid-template-columns: 1fr 1fr; }
+            .cta-premium-card { flex-direction: column; text-align: center; padding: 5rem 3rem; gap: 3rem; }
+            .cta-left p { margin: 0 auto; }
         }
         @media (max-width: 768px) {
             .fy-stats-grid { grid-template-columns: 1fr; }
@@ -420,10 +454,18 @@
 
     <!-- CTA CREME -->
     <section class="fy-cta reveal">
-        <div class="container" style="position: relative; z-index: 2;">
-            <h2>Your Degree Awaits.</h2>
-            <p>Do not compromise on your academic future. Allow our senior consultants to secure your pathway into an elite UK institution today.</p>
-            <a href="register.html" class="btn btn-gold" style="padding: 1.2rem 3.5rem; font-size: 1.15rem; border-radius: 50px; box-shadow: 0 15px 40px rgba(201,162,88,0.25);">Request a Placement Review <i data-lucide="arrow-right" style="width: 20px; margin-left: 10px;"></i></a>
+        <div class="container">
+            <div class="cta-premium-card">
+                <div class="cta-left">
+                    <h2>Your Degree Awaits.</h2>
+                    <p>Do not compromise on your academic future. Allow our senior consultants to secure your pathway into an elite UK institution today.</p>
+                </div>
+                <div class="cta-right">
+                    <a href="register.html" class="cta-premium-btn">
+                        Request Placement Review <i data-lucide="arrow-right" style="width: 20px;"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
