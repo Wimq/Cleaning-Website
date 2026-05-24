@@ -10,28 +10,32 @@ for file in html_files:
 
     original = content
     
-    # Replace the duplicate About Us pill with Free Assessment
+    # Remove the Free Assessment pill completely
     content = content.replace(
-        '<a href="pages/about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
-        '<a href="pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
+        '<a href="pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>\n',
+        ''
     )
     content = content.replace(
-        '<a href="about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
-        '<a href="register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
+        '<a href="register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>\n',
+        ''
     )
     content = content.replace(
-        '<a href="../pages/about.html" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
-        '<a href="../pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
+        '<a href="../pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>\n',
+        ''
     )
-    
-    # Also handle the ?v=3 version just in case
+
+    # In case there's no trailing newline
     content = content.replace(
-        '<a href="pages/about.html?v=3" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
-        '<a href="pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
+        '        <a href="pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>',
+        ''
     )
     content = content.replace(
-        '<a href="../pages/about.html?v=3" class="sec-nav-pill"><i data-lucide="info" style="width: 16px;"></i> About Us</a>',
-        '<a href="../pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>'
+        '        <a href="register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>',
+        ''
+    )
+    content = content.replace(
+        '        <a href="../pages/register.html" class="sec-nav-pill"><i data-lucide="clipboard-check" style="width: 16px;"></i> Free Assessment</a>',
+        ''
     )
 
     if content != original:
